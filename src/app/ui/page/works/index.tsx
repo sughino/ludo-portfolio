@@ -21,7 +21,9 @@ export default function Works() {
 
         const container = containerRef.current;
         const scrollWidth = container.scrollWidth - window.innerWidth;
-        const finalPadding = (window.innerWidth - container.lastElementChild?.clientWidth || 0) / 2;
+        const lastChild = container.lastElementChild as HTMLElement | null;
+        const lastChildWidth = lastChild?.clientWidth || 0;
+        const finalPadding = (window.innerWidth - lastChildWidth) / 2;
         const totalScroll = scrollWidth + finalPadding;
 
         const horizontalScroll = gsap.to(container, {
