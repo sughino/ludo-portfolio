@@ -1,0 +1,37 @@
+.carouselOuter {
+    width: 100%;
+    flex-direction: column;
+    gap: var(--spacing-gap-32);
+}
+.carouselContainer {
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+    gap: var(--spacing-gap-32);
+    position: relative;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.carouselSlideContainer {
+    display: flex;
+    gap: var(--spacing-gap-16);
+    width: 100%;
+    will-change: transform;
+}
+
+.carouselIndex {
+    display: flex;
+    gap: var(--spacing-gap-8);
+    align-items: center;
+    justify-content: center;
+}
+.carouselIndex div {
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background: var(--color-gray);
+}
+.carouselIndex div[data-variant="selected"] {
+    background: var(--color-red);
+}

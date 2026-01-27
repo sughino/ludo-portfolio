@@ -1,0 +1,51 @@
+.hero {
+    padding-block: var(--spacing-padding-50);
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.topBar {
+    padding-inline: var(--spacing-padding-150);
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+    font-size: var(--h3-size);
+}
+
+.logoImg {
+    height: 2em;
+    width: auto;
+}
+
+/*blueprint bar*/
+.bluePrintRight, .bluePrintLeft, .bluePrintTop, .bluePrintBottom {
+    --spacing: clamp(1.3rem, 2.23vw + 0.8rem, 2.9rem);
+    position: absolute;
+    background: var(--color-black);
+}
+.bluePrintRight {
+    width: 3px;
+    height: 40dvh;
+    top: 0;
+    right: var(--spacing);
+}
+.bluePrintLeft {
+    width: 3px;
+    height: 100dvh;
+    top: 250px;
+    left: var(--spacing);
+}
+.bluePrintTop {
+    width: 40vw;
+    height: 3px;
+    top: var(--spacing);
+    right: 0;
+}
+.bluePrintBottom {
+    width: 30vw;
+    height: 3px;
+    left: 0;
+    bottom: var(--spacing);
+}

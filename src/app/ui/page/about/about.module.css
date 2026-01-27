@@ -1,0 +1,56 @@
+.photoContainer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 800px;
+    gap: 100px;
+    overflow: hidden;
+}
+.photo {
+    width: 100%;
+    height: auto;
+    background: var(--color-red);
+    border-radius: var(--radius-variable);
+}
+.character {
+    height: 95%;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@media (width <= 48rem) {
+    .character {
+        bottom: -50px;
+        right: 0;
+        transform: translate(0, 0);
+    }
+}
+.character img {
+    height: 100% !important;
+    width: auto !important;
+    object-fit: contain;
+}
+
+.studiesContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-gap-32);
+}
+.studyContainer {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap-16);
+}
+.studyContainer h6 {
+    color: var(--color-red) !important;
+}
+.studyContentContainer {
+    display: inherit;
+    flex-direction: inherit;
+    gap: var(--spacing-gap-8);
+}

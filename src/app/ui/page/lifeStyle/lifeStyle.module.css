@@ -1,0 +1,30 @@
+.lifeStyleContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: var(--spacing-gap-40);
+}
+.lifeStyleInnerContainer {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-gap-32);
+}
+.lifeStyleInnerContainer[data-variant="reverse"] {
+    flex-direction: row-reverse !important;
+}
+
+.lifeStyleContentContainer {
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap-8);
+}
+.lifeStyleContentContainer h3 {
+    width: max-content !important;
+}
+
+.holderImg {
+    width: 100%;
+    background: var(--color-red);
+    border-radius: var(--radius-variable);
+}

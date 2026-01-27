@@ -1,0 +1,168 @@
+/*card styles*/
+.cardContainer {
+    padding: var(--spacing-padding-radius);
+    border-radius: var(--spacing-padding-radius);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap-32);
+    width: 100%;
+}
+.cardContainer[data-variant="red"] {
+    color: var(--color-white);
+    background: var(--color-red);
+    border: none;
+}
+.cardContainer[data-variant="red"] p::selection {
+    background: var(--color-gray) !important;
+}
+.cardContainer[data-variant="white"] {
+    color: var(--color-gray);
+    background: none;
+    border: 2px solid var(--color-black);
+}
+
+.chip {
+    padding-inline: 20px;
+    padding-block: 10px;
+    border-radius: 50px;
+    width: fit-content;
+}
+.cardContainer[data-variant="red"] .chip {
+    background: var(--color-white-30);
+    color: var(--color-white);
+}
+.cardContainer[data-variant="white"] .chip {
+    background: var(--color-red-30);
+    color: var(--color-gray);
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap-8);
+}
+
+.titleContainer {
+    display: flex;
+    font-size: clamp(1.40rem, 2.20vw + 1.1rem, 3rem);
+    justify-content: space-between;
+    align-items: center;
+}
+.icon {
+    width: 1em;
+    height: 1em;
+}
+
+/*blueprint card*/
+.blueprintContainer {
+    position: relative;
+    padding: var(--spacing-padding-radius);
+    border-radius: var(--spacing-padding-radius);
+    background: var(--color-black);
+    color: var(--color-white);
+    max-height: 22.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.blueprintCircle1, .blueprintCircle2, .blueprintCircle3, .blueprintCircle4 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: solid 2px var(--color-white-30);
+    border-radius: 50;
+}
+.blueprintCircle1::before, .blueprintCircle2::before, .blueprintCircle3::before, .blueprintCircle4::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--color-white);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+}
+.blueprintCircle1 {top: 0;left: 0;}
+.blueprintCircle2 {top: 0;right: 0;}
+.blueprintCircle3 {bottom: 0;left: 0;}
+.blueprintCircle4 {bottom: 0;right: 0;}
+
+.blueprintLine1, .blueprintLine2, .blueprintLine3, .blueprintLine4 {
+    position: absolute;
+    background: var(--color-white-30);
+}
+.blueprintLine5, .blueprintLine6 {
+    background: var(--color-white-30);
+    width: 100%;
+    height: 2px;
+}
+.blueprintLine1, .blueprintLine2 {
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+.blueprintLine3, .blueprintLine4 {
+    top: 0;
+    width: 2px;
+    height: 100%;
+}
+.blueprintLine3 {
+    right: 40px;
+}
+.blueprintLine2 {
+    bottom: 40px;
+}
+
+.info1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.info1 {
+    top: 10px;
+}
+.info2 {
+    width: 100%;
+    text-align: center;
+}
+.bluePrintContent {
+    overflow: hidden;
+    height: max-content;
+    flex-grow: 1;
+}
+
+/*code container*/
+.codeCardContainer {
+    border-radius: var(--spacing-padding-radius);
+    background: var(--color-gray);
+    overflow: hidden;
+}
+.codeCardContainer p::selection, .codeCardContainer span::selection, .codeCardContainer br::selection{
+    background: var(--color-white-30);
+}
+.codeTopBar {
+    background: var(--color-black);
+    height: 40px;
+    width: 100%;
+    display: flex;
+    gap: var(--spacing-gap-8);
+    align-items: center;
+    padding-left: 25px
+}
+.codeTextContainer {
+    padding-inline: 20px;
+}
+
+/*img card*/
+.imgCard {
+    background: var(--color-black);
+    border-radius: var(--spacing-padding-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgCard img {
+    width: 70%;
+}

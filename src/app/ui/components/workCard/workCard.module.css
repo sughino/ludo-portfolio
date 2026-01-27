@@ -1,0 +1,58 @@
+.workCard {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap-32);
+    height: fit-content;
+    transition: transform .2s var(--transition-beizer);
+}
+.workCard[data-variant="not-selected"] {
+    transform: scale(.9);
+}
+
+.imgWrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.imgColorBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-variable);
+}
+.imgColorBg[data-color="red"] {
+    background-color: var(--color-red) !important;
+}
+.imgColorBg[data-color="light-red"] {
+    background-color: var(--color-light-red) !important;
+}
+.imgColorBg[data-color="gray"] {
+    background-color: var(--color-gray) !important;
+}
+
+.workCard img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-variable);
+    z-index: 2;
+    position: relative;
+}
+
+.cardTitleContainer {
+    display: flex;
+    gap: var(--spacing-gap-8);
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cardTitleContainer h3 {
+    width: min-content;
+}
+
+@media (width >= 48rem) {
+    .cardTitleContainer {
+        gap: var(--spacing-gap-32);
+        flex-wrap: nowrap;
+    }
+}

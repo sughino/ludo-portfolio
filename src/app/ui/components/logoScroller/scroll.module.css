@@ -1,0 +1,42 @@
+.logoScrollContainer {
+  position: relative;
+  right: var(--spacing-padding-50);
+  width: 100vw;
+  height: clamp(7.25rem, 9.5vw + 4.5rem, 13rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollerInner {
+  height: 100%;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.scrollerInner {
+  display: flex;
+  height: 100%;
+  width: max-content;
+}
+.track {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw + 2.5rem, 6.75rem);
+  padding-right: clamp(2rem, 5vw + 2.5rem, 6.75rem);
+}
+
+.logoItemWrapper {
+  height: 90%;
+  width: fit-content;
+  display: inline-block;
+  filter: brightness(1);
+}
+.logoItem {
+  height: 100%;
+  width: auto;
+  position: relative;
+  flex-shrink: 0;
+  transform-origin: center;
+  will-change: transform, filter;
+}
