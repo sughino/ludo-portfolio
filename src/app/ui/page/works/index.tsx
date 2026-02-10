@@ -71,7 +71,7 @@ export default function Works() {
                 ))}
             </div>
             <div className={styles.carouselContainer}>
-                <Carousel dataType={'works'} />
+                <Carousel data={works} />
             </div>
         </section>
     )

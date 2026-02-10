@@ -1,6 +1,6 @@
-import type { Work } from '@/app/types/work';
+import type { CarouselType } from '@/app/types/carouselType';
 
-export const works: Work[] = [
+export const works: CarouselType[] = [
   { title: 'wts', img: '/works/wts/main.webp', description: 'Professional management platform for tracking project hours, leave requests, and business expenses.', width: 1280, height: 665, color: 'gray' },
   { title: 'user managment', img: '/works/userManagment/main.webp', description: 'A role-based CRUD application for managing user requests across multiple product categories.', width: 1280, height: 665, color: 'red' },
   { title: 'scriptorium', img: '/works/scriptorium/main.webp', description: 'A web-based code organizer to manage folders and programming files in one place.', width: 1280, height: 665, color: 'light-red' },

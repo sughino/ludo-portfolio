@@ -1,5 +1,6 @@
 import Carousel from '../../components/carousel'
 import styles from './lifeStyle.module.css'
+import { hobbies } from '@/app/data/hobbies';
 
 export default function LifeStyle () {
     return (
@@ -40,7 +41,7 @@ export default function LifeStyle () {
             </div>
 
             {/* <div className={styles.carouselContainer}>
-                <Carousel dataType={'hobbies'} />
+                <Carousel data={hobbies} />
             </div> */}
 
             <div className="h-(--spacing-160)" />

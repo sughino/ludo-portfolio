@@ -4,18 +4,15 @@ import styles from './carousel.module.css';
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import CauroselCard from '../carouselCard';
-import { works } from '@/app/data/works';
-import { hobbies } from '@/app/data/hobbies';
+import type { CarouselType } from '@/app/types/carouselType';
 
-export default function Carousel ({ dataType } : { dataType : 'works' | 'hobbies'}) {
+export default function Carousel ({ data } : { data : CarouselType[]}) {
     const [slideCount, setSlideCount] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
     const slidesRef = useRef<HTMLDivElement>(null);
     const touchStartX = useRef(0);
     const currentX = useRef(0);
     const isDragging = useRef(false);
-
-    const data = dataType === 'works' ? works : hobbies;
 
 
     const getSlideWidth = () => {

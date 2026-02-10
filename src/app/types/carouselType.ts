@@ -1,4 +1,4 @@
-export interface Hobby {
+export interface CarouselType {
     title: string;
     description: string;
     img: string;
