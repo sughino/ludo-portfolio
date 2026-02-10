@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import styles from './works.module.css';
-import WorkCard from "../../components/workCard";
+import WorkCard from "../../components/carouselCard";
 import { works } from '@/app/data/works';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -71,7 +71,7 @@ export default function Works() {
                 ))}
             </div>
             <div className={styles.carouselContainer}>
-                <Carousel data={works} />
+                <Carousel dataType={'works'} />
             </div>
         </section>
     )

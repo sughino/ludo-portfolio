@@ -1,3 +1,4 @@
+import Carousel from '../../components/carousel'
 import styles from './lifeStyle.module.css'
 
 export default function LifeStyle () {
@@ -7,7 +8,7 @@ export default function LifeStyle () {
             <h2>LiFeSTYlE</h2>
             <div className="h-(--spacing-80)" />
 
-            <div className={styles.lifeStyleContainer}>
+            <div className={`hidden md:grid ${styles.lifeStyleContainer}`}>
                 <div className={styles.lifeStyleInnerContainer}>
                     <div className={styles.holderImg}></div>
                     <div className={styles.lifeStyleContentContainer}>
@@ -37,6 +38,10 @@ export default function LifeStyle () {
                     </div>
                 </div>
             </div>
+
+            {/* <div className={styles.carouselContainer}>
+                <Carousel dataType={'hobbies'} />
+            </div> */}
 
             <div className="h-(--spacing-160)" />
         </section>

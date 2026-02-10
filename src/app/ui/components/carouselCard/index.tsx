@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import styles from './workCard.module.css';
-import type { Work } from '@/app/types/work';
+import styles from './carouselCard.module.css';
+import type { Hobby } from '@/app/types/hobby';
 
-export default function WorkCard (
+export default function CauroselCard (
     {
         title,
         description,
@@ -11,11 +11,11 @@ export default function WorkCard (
         height,
         color,
         variant
-    } : Work
+    } : Hobby
 ) {
     return (
         <div 
-            className={styles.workCard}
+            className={styles.carouselCard}
             data-variant={variant}
         >
             <div className={styles.imgWrapper}>

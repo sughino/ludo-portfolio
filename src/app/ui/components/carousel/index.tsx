@@ -1,20 +1,21 @@
 'use client'
 
-
 import styles from './carousel.module.css';
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { Work } from '@/app/types/work';
-import WorkCard from '../workCard';
+import CauroselCard from '../carouselCard';
+import { works } from '@/app/data/works';
+import { hobbies } from '@/app/data/hobbies';
 
-
-export default function Carousel ({ data } : { data: Work[]}) {
+export default function Carousel ({ dataType } : { dataType : 'works' | 'hobbies'}) {
     const [slideCount, setSlideCount] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
     const slidesRef = useRef<HTMLDivElement>(null);
     const touchStartX = useRef(0);
     const currentX = useRef(0);
     const isDragging = useRef(false);
+
+    const data = dataType === 'works' ? works : hobbies;
 
 
     const getSlideWidth = () => {
@@ -146,7 +147,7 @@ export default function Carousel ({ data } : { data: Work[]}) {
                 className={styles.carouselSlideContainer}
             >
                 {data.map((slide, i) => (
-                    <WorkCard
+                    <CauroselCard
                         key={i}
                         title={slide.title}
                         color={slide.color}
