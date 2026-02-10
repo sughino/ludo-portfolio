@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './carouselCard.module.css';
-import type { Hobby } from '@/app/types/hobby';
+import type { CarouselType } from '@/app/types/carouselType';
 
 export default function CauroselCard (
     {
@@ -11,7 +11,7 @@ export default function CauroselCard (
         height,
         color,
         variant
-    } : Hobby
+    } : CarouselType
 ) {
     return (
         <div 
