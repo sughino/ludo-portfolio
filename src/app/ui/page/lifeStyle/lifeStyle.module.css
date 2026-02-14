@@ -1,37 +1,51 @@
 .lifeStyleContainer {
-    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
     gap: var(--spacing-gap-40);
+    padding-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
 }
 .lifeStyleInnerContainer {
     display: flex;
     flex-direction: row;
     gap: var(--spacing-gap-32);
+    max-height: 12.5rem;
 }
 .lifeStyleInnerContainer[data-variant="reverse"] {
     flex-direction: row-reverse !important;
 }
 
 .lifeStyleContentContainer {
-    width: min-content;
+    height: 100%;
+    /* flex-shrink: 2; */
+    flex-basis: auto;
+    
     display: flex;
     flex-direction: column;
     gap: var(--spacing-gap-8);
+    overflow: hidden;
+    white-space: normal;
 }
 .lifeStyleContentContainer h3 {
     width: max-content !important;
 }
 
 .holderImg {
+    /* flex-grow: 5; */
+    flex-basis: 100%;
+
     width: 100%;
-    background: var(--color-red);
     border-radius: var(--radius-variable);
+    overflow: hidden;
 }
+.holderImg img {
+    width: 100%;
+    height: auto;
+}
+
 
 .carouselContainer {
     position: relative;
     width: 100vw;
-    /* padding-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150)); */
+    padding-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
     overflow: hidden;
 }
