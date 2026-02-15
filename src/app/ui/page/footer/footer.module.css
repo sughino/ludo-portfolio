@@ -9,10 +9,6 @@ footer p::selection {
     font-size: var(--h3-size);
     width: fit-content;
 }
-.logoImg {
-    height: 2em;
-    width: fit-content;
-}
 
 .contactContainer {
     display: flex;
@@ -35,4 +31,8 @@ footer p::selection {
 .linksContainer {
     display: flex;
     gap: var(--spacing-gap-8);
+}
+
+.coloredSpan {
+    color: var(--color-black) !important;
 }

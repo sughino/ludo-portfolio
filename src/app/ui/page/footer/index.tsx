@@ -1,21 +1,14 @@
-import Image from 'next/image';
 import styles from './footer.module.css';
 import { ExternalLink } from 'lucide-react';
+import LogoAnimation from '../../components/logoAnimation';
 
 export default function Footer () {
     return (
         <footer>
             <div className="h-(--spacing-padding-50)" />
             <div className={styles.footerTitleContainer}>
-                <Image
-                    src="/logoDark.webp"
-                    alt="Ludo Footer Portfolio Logo"
-                    width={150} 
-                    height={106}
-                    priority
-                    className={styles.logoImg}
-                />
-                <h3>web developer &<br/>designer</h3>
+                <LogoAnimation variant='footer'/> 
+                <h3>web developer <span className={styles.coloredSpan}>&</span><br/>designer</h3>
             </div>
             <div className={styles.contactContainer}>
                 <div className={styles.contact}>

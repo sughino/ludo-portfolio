@@ -14,9 +14,8 @@
     font-size: var(--h3-size);
 }
 
-.logoImg {
-    height: 2em;
-    width: auto;
+.coloredSpan {
+    color: var(--color-light-red) !important;
 }
 
 /*blueprint bar*/

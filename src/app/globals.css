@@ -94,6 +94,10 @@
     user-select: none;
     pointer-events: none !important;
   }
+  .logoImg {
+    height: 2em;
+    width: fit-content;
+  }
 
   ::selection {
     background: var(--color-red);

@@ -1,20 +1,13 @@
 import { montserrat } from '@/app/fonts/font';
 import styles from './hero.module.css';
-import Image from 'next/image';
+import LogoAnimation from '../../components/logoAnimation';
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.topBar}>
-          <Image
-              src="/logo.webp"
-              alt="Ludo Portfolio Logo"
-              width={150} 
-              height={106}
-              priority
-              className={styles.logoImg}
-          />
-          <h3>web developer &<br/>designer</h3>
+        <LogoAnimation/>  
+        <h3>web developer <span className={styles.coloredSpan}>&</span><br/>designer</h3>
       </div>
       <h1><span className={`${montserrat.className} antialiased uppercase`}>grasso</span><br/>LuDOvICo</h1>
 
