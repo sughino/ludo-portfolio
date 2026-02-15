@@ -95,6 +95,7 @@
     pointer-events: none !important;
   }
   .logoImg {
+    font-size: var(--h3-size);
     height: 2em;
     width: fit-content;
   }
