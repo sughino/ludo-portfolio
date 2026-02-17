@@ -11,28 +11,42 @@ export default function LifeStyle () {
     const imgHolderRef = useRef<(HTMLDivElement | null)[]>([]);
     const contentRef = useRef<(HTMLDivElement | null)[]>([]);
 
-    // useEffect(() => {
-    //     imgHolderRef.current.forEach((img, i) => {
-    //         const content = contentRef.current[i]
-    //         if (!img || !content) return
+    useEffect(() => {
+        imgHolderRef.current.forEach((img, i) => {
+            const content = contentRef.current[i]
+            if (!img || !content) return
 
-    //         const tl = gsap.timeline({ paused: true })
+            const parent = img.closest(`.${styles.lifeStyleInnerContainer}`) as HTMLElement
+            const isReverse = parent?.dataset.variant === 'reverse'
+            const xValue = isReverse ? -20 : 20
 
-    //         tl.to(content, {
-    //             opacity: 0,
-    //             x: -20,
-    //             // width: 0,
-    //             duration: 0.4,
-    //             ease: 'power2.out'
-    //         }).to(img, {
-    //             duration: 0.4,
-    //             ease: 'power2.out'
-    //         }, '<')
+            const initialImgWidth = img.getBoundingClientRect().width
+            const initialContentWidth = content.getBoundingClientRect().width
+            const targetImgWidth = initialImgWidth + initialContentWidth
 
-    //         img.addEventListener('mouseenter', () => tl.play())
-    //         img.addEventListener('mouseleave', () => tl.reverse())
-    //     })
-    // }, [])
+            const tl = gsap.timeline({ paused: true })
+
+            tl.to(content, {
+                opacity: 0,
+                x: xValue,
+                duration: 0.2,
+                ease: 'power2.out'
+            })
+            .to(content, {
+                width: 0,
+                duration: 0.2,
+                ease: 'power2.out'
+            })
+            .to(img, {
+                width: targetImgWidth,
+                duration: 0.3,
+                ease: 'power2.out'
+            }, '-=0.2')
+
+            img.addEventListener('mouseenter', () => tl.play())
+            img.addEventListener('mouseleave', () => tl.reverse())
+        })
+    }, [])
 
     return (
         <section className="noSpacing">

@@ -2,38 +2,38 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
     gap: var(--spacing-gap-40);
-    padding-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
+    margin-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
+    /* margin-inline: var(--spacing-padding-50) */
 }
 .lifeStyleInnerContainer {
     display: flex;
     flex-direction: row;
     gap: var(--spacing-gap-32);
-    max-height: 12.5rem;
+    height: 12.5rem;
 }
 .lifeStyleInnerContainer[data-variant="reverse"] {
     flex-direction: row-reverse !important;
 }
 
 .lifeStyleContentContainer {
-    height: 100%;
-    /* flex-shrink: 2; */
-    flex-basis: auto;
-    
+    max-height: 100%;
     display: flex;
+    width: fit-content;
     flex-direction: column;
     gap: var(--spacing-gap-8);
-    overflow: hidden;
-    white-space: normal;
+    overflow: visible;
+    white-space: nowrap;
+    display: block;
 }
 .lifeStyleContentContainer h3 {
-    width: max-content !important;
+    min-width: max-content;
+}
+.lifeStyleContentContainer p {
+    white-space: normal;
 }
 
 .holderImg {
-    /* flex-grow: 5; */
-    flex-basis: 100%;
-
-    width: 100%;
+    width: 200%;
     border-radius: var(--radius-variable);
     overflow: hidden;
 }

@@ -76,3 +76,4 @@ export default function Works() {
         </section>
     )
 }//TODO sistema, bug in device flick a caso dovuto allo scroll laterale
+//TODO metti le card non solo per la larghezza ma in base a device o desktop
