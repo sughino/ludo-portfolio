@@ -9,8 +9,9 @@
 .photo {
     width: 100%;
     height: auto;
-    background: var(--color-red);
+    background: var(--color-red);/*TODO rimuovi il background e sistema immagini*/
     border-radius: var(--radius-variable);
+    overflow: hidden;
 }
 .character {
     height: 95%;

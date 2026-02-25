@@ -57,7 +57,7 @@ export default function Works() {
             <div className="h-(--spacing-160)" />
             <h2>WoRKs</h2>
             <div className="h-(--spacing-40)" />
-            <div ref={containerRef} className={`hidden md:flex ${styles.worksContainer}`}>
+            <div ref={containerRef} className={`hidden lg:flex ${styles.worksContainer}`}>
                 {works.map((work, i) => (
                     <WorkCard 
                         key={i}

@@ -1,0 +1,64 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap-8);
+    text-align: center;
+    width: fit-content;
+    align-items: center;
+    position: relative;
+    margin-inline: auto;
+    top: 25%;
+}
+
+.bottomBar {
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-gap-32);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: var(--spacing-padding-50);
+}
+
+.coloredSpan {
+    color: var(--color-light-red) !important;
+}
+.verticalLine {
+    font-size: var(--h3-size);
+    width: 3px;
+    height: 1.5em;
+    background: var(--color-black);
+}
+
+/*blueprint bar*/
+.bluePrintRight, .bluePrintLeft, .bluePrintTop, .bluePrintBottom {
+    --spacing: clamp(1.3rem, 2.23vw + 0.8rem, 2.9rem);
+    position: absolute;
+    background: var(--color-black);
+}
+.bluePrintRight {
+    width: 3px;
+    height: 25dvh;
+    bottom: 0;
+    right: var(--spacing);
+}
+.bluePrintLeft {
+    width: 3px;
+    height: 40dvh;
+    top: 0;
+    left: var(--spacing);
+}
+.bluePrintTop {
+    width: 45vw;
+    height: 3px;
+    top: var(--spacing);
+    left: 0;
+}
+.bluePrintBottom {
+    width: 25vw;
+    height: 3px;
+    right: 0;
+    bottom: var(--spacing);
+}

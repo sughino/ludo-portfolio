@@ -130,7 +130,7 @@ export default function Carousel ({ data } : { data : CarouselType[]}) {
     return (
         <div
             ref={carouselRef}
-            className={`flex ${styles.carouselContainer} md:hidden`}
+            className={`flex ${styles.carouselContainer} lg:hidden`}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}

@@ -79,6 +79,10 @@
   section.bigSpacing {
     padding-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
   }
+  section.errorSection {
+    height: 100dvh;
+    padding: var(--spacing-padding-50);
+  }
 
   footer {
     background: var(--color-red);
@@ -117,6 +121,9 @@
     font-family: var(--font-dirtyline);
     font-size: var(--h3-size);
     text-transform: lowercase;
+  }
+  h3.ciao {
+    white-space: nowrap !important;
   }
   h6 {
     font-size: var(--h6-size);
