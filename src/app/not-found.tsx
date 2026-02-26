@@ -10,8 +10,7 @@ export default function NotFound() {
       </div>
       <div className={styles.bottomBar}>
         <LogoAnimation/>
-        {/* <div className={styles.verticalLine}/> */}
-        <h3>web developer <span className={styles.coloredSpan}>&</span><br/>designer</h3>
+        <h3 className='noWrap'>web developer&nbsp;<span className={styles.coloredSpan}>&</span><br/>designer</h3>
       </div>
 
       <div className={styles.bluePrintRight}></div>

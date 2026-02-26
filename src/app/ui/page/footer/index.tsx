@@ -10,7 +10,7 @@ export default function Footer () {
             <div className={styles.footerContainer}>
                 <div className={styles.footerTitleContainer}>
                     <LogoAnimation variant='footer'/> 
-                    <h3>web developer <span className={styles.coloredSpan}>&</span><br/>designer</h3>
+                    <h3>web developer&nbsp;<span className={styles.coloredSpan}>&</span><br/>designer</h3>
                 </div>
                 <div className={styles.contactContainer}>
                     <div className={styles.contact}>

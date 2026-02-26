@@ -4,6 +4,7 @@
     gap: var(--spacing-gap-32);
 }
 .carouselContainer {
+    display: flex;
     height: auto;
     width: 100%;
     flex-direction: column;

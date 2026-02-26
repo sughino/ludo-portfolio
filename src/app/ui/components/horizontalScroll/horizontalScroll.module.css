@@ -1,0 +1,7 @@
+.worksContainer {
+    display: flex;
+    padding-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
+    gap: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
+    will-change: transform;
+    padding-top: var(--spacing-40);
+}

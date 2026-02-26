@@ -7,7 +7,7 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.topBar}>
         <LogoAnimation/>  
-        <h3>web developer <span className={styles.coloredSpan}>&</span><br/>designer</h3>
+        <h3>web developer&nbsp;<span className={styles.coloredSpan}>&</span><br/>designer</h3>
       </div>
       <h1><span className={`${montserrat.className} antialiased uppercase`}>grasso</span><br/>LuDOvICo</h1>
 

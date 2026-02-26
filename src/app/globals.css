@@ -121,9 +121,10 @@
     font-family: var(--font-dirtyline);
     font-size: var(--h3-size);
     text-transform: lowercase;
+    
   }
-  h3.ciao {
-    white-space: nowrap !important;
+  h3.noWrap {
+    white-space: nowrap;
   }
   h6 {
     font-size: var(--h6-size);
