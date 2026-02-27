@@ -34,11 +34,12 @@
     background-color: var(--color-gray) !important;
 }
 
-.workCard img {
+.carouselImg {
     width: 100%;
     object-fit: contain;
     z-index: 2;
     position: relative;
+    right: 0
 }
 
 .cardTitleContainer {
