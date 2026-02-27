@@ -6,4 +6,5 @@ export interface CarouselType {
     height: number;
     variant?: string;
     color? : string;
+    role?: string;
 }

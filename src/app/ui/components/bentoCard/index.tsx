@@ -1,7 +1,7 @@
 import styles from './card.module.css';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
 import { Skill } from '@/app/types/skill';
+import ActionBadge from '../actionBadge';
 
 export function Card ({
     level,
@@ -14,16 +14,11 @@ export function Card ({
             className={styles.cardContainer}
             data-variant={color}
         >
-            <div className={styles.chip}>
-                <h6>{level}</h6>
-            </div>
             <div className={styles.textContainer}>
-                <div className={styles.titleContainer}>
-                    <h3>{title}</h3>
-                    <ArrowRight className={styles.icon}/>
-                </div>
+                <h3>{title}</h3>
                 <p>{description}</p>
             </div>
+            <ActionBadge info={level} usage={"skills"} color={color}/>
         </div>
     )
 }

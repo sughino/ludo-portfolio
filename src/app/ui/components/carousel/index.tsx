@@ -146,12 +146,7 @@ export default function Carousel ({ data } : { data : CarouselType[]}) {
                 {data.map((slide, i) => (
                     <CauroselCard
                         key={i}
-                        title={slide.title}
-                        color={slide.color}
-                        img={slide.img}
-                        width={slide.width}
-                        height={slide.height}
-                        description={slide.description}
+                        {...slide}
                         variant={i !== slideCount ? 'not-selected' : ''}
                     />
                 ))}

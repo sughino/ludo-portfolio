@@ -21,12 +21,6 @@
     border: 2px solid var(--color-black);
 }
 
-.chip {
-    padding-inline: 20px;
-    padding-block: 10px;
-    border-radius: 50px;
-    width: fit-content;
-}
 .cardContainer[data-variant="red"] .chip {
     background: var(--color-white-30);
     color: var(--color-white);
@@ -40,17 +34,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-gap-8);
-}
-
-.titleContainer {
-    display: flex;
-    font-size: clamp(1.40rem, 2.20vw + 1.1rem, 3rem);
-    justify-content: space-between;
-    align-items: center;
-}
-.icon {
-    width: 1em;
-    height: 1em;
 }
 
 /*blueprint card*/
