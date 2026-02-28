@@ -1,3 +1,4 @@
+import Button from '../button';
 import styles from './actionBadge.module.css'
 import { ArrowRight } from 'lucide-react';
 
@@ -18,7 +19,7 @@ export default function ActionBadge ({
             <div 
                 className={styles.actionBadgeIconContainer}
             >
-                <ArrowRight className={styles.actionBadgeIcon}/>
+                <Button icon={'arrow-right'} className={styles.actionBadgeIcon}/>
             </div>
         </div>
     )

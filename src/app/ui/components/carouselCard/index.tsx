@@ -2,6 +2,8 @@ import Image from 'next/image';
 import styles from './carouselCard.module.css';
 import type { CarouselType } from '@/app/types/carouselType';
 import ActionBadge from '../actionBadge';
+import { useIsTouchDevice } from '@/app/utils/isTouchDevice';
+import Button from '../button';
 
 export default function CauroselCard (
     {
@@ -15,6 +17,7 @@ export default function CauroselCard (
         role
     } : CarouselType
 ) {
+    const isTouch = useIsTouchDevice()
     return (
         <div 
             className={styles.carouselCard}
@@ -33,11 +36,15 @@ export default function CauroselCard (
                     height={height}
                     draggable={false}
                 />
-                {role && (
+                {!isTouch && role && (
                     <ActionBadge info={role} />
                 )}
             </div>
             <div className={styles.cardTitleContainer}>
+                {/* {isTouch && role && (
+                    <Button content={'go to'} icon={'arrow-right'} width={'full'}/>
+                    //TODO devi inserire qualcosa per far si che chi è da divce capisca che può cliccarlo
+                )} */}
                 <h3>{title}</h3>
                 <p>{description}</p>
             </div>

@@ -20,6 +20,7 @@
   --spacing-gap-40: 40px;
 
   /*padding*/
+  --radius-50: 50px;
   --radius-variable: clamp(1.25rem, 2.5vw + 0.75rem, 2.5rem);
   --spacing-padding-radius: 40px;
   --spacing-padding-50: clamp(1.56rem, 2.23vw + 1.11rem, 3.125rem);
@@ -29,6 +30,9 @@
   --spacing-80: clamp(2.5rem, 3.57vw + 1.78rem, 5rem);
   --spacing-40: calc(var(--spacing-80) / 2);
   --spacing-160: clamp(5rem, 7.14vw + 3.57rem, 10rem);
+
+  /*shadow*/
+  --little-shadow: 0px 0px 10px 5px var(--color-black-30);
 
   /*font*/
   --font-montserrat: var(--font-montserrat);
@@ -40,7 +44,6 @@
 
   /*font-size*/
   --h1-size: clamp(3.5rem, 9.5vw + 1.4rem, 10rem);
-  /* --h2-size: clamp(4.37rem, 10.54vw + 2.26rem, 11.75rem); */
   --h2-size: clamp(2.5rem, 10.54vw + 1rem, 11.75rem);
   --h3-size: clamp(1.40rem, 2.20vw + 1.1rem, 3rem);
   --h6-size: clamp(0.875rem, 0.18vw + 0.84rem, 1rem);
@@ -105,6 +108,19 @@
   ::selection {
     background: var(--color-red);
     color: var(--color-white);
+  }
+
+  button {
+    font-size: var(--h6-size);
+    display: flex;
+    gap: var(--spacing-gap-8);
+    align-items: center;
+    justify-content: center;
+    background: var(--color-red);
+    color: var(--color-white);
+    padding-inline: 20px;
+    padding-block: 10px;
+    border-radius: var(--radius-50);
   }
 
   /*typography*/

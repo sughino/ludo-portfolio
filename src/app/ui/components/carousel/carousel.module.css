@@ -30,7 +30,7 @@
 .carouselIndex div {
     width: 10px;
     height: 10px;
-    border-radius: 50px;
+    border-radius: var(--radius-50);
     background: var(--color-gray);
 }
 .carouselIndex div[data-variant="selected"] {
