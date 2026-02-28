@@ -2,7 +2,6 @@ import Image from 'next/image';
 import styles from './carouselCard.module.css';
 import type { CarouselType } from '@/app/types/carouselType';
 import ActionBadge from '../actionBadge';
-import Carousel from '../carousel';
 
 export default function CauroselCard (
     {
@@ -35,7 +34,7 @@ export default function CauroselCard (
                     draggable={false}
                 />
                 {role && (
-                    <ActionBadge info={role} usage={"works"} />
+                    <ActionBadge info={role} />
                 )}
             </div>
             <div className={styles.cardTitleContainer}>

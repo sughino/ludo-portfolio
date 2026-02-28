@@ -34,14 +34,6 @@ export const works: CarouselType[] = [
     color: 'gray',
     role: 'Full build'
   },{ 
-    title: 'donisi', 
-    img: '/works/donisi/main.webp', 
-    description: 'Modern landing page design for a professional plumbing company.',
-    width: 1280, 
-    height: 665, 
-    color: 'red',
-    role: 'Design'
-  },{ 
     title: 'mentecorpo', 
     img: '/works/mentecorpo/main.webp', 
     description: 'Minimal and calming showcase website designed for a professional psychologist.',
@@ -49,5 +41,13 @@ export const works: CarouselType[] = [
     height: 665, 
     color: 'light-red',
     role: 'Full build'
+  },{ 
+    title: 'donisi', 
+    img: '/works/donisi/main.webp', 
+    description: 'Modern landing page design for a professional plumbing company.',
+    width: 1280, 
+    height: 665, 
+    color: 'red',
+    role: 'Design'
   }
 ]

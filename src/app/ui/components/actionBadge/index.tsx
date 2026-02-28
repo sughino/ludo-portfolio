@@ -1,23 +1,16 @@
 import styles from './actionBadge.module.css'
 import { ArrowRight } from 'lucide-react';
-import { Expand } from 'lucide-react';
 
 type ActionBadgeProps = {
-  info: string
-  usage: 'skills' | 'works'
-  color?: string
+  info: 'Development only' | 'Full build' | 'Design'
 }
 
 export default function ActionBadge ({
-    info,
-    usage,
-    color
+    info
 } : ActionBadgeProps) {
     return (
         <div 
             className={styles.actionBadgeContainer}
-            data-variant={usage}
-            data-color={color}
         >
             <div className={styles.actionBadgeContent}>
                 <h6>{info}</h6>
@@ -25,11 +18,7 @@ export default function ActionBadge ({
             <div 
                 className={styles.actionBadgeIconContainer}
             >
-                {usage === 'works' ? (
-                    <ArrowRight className={styles.actionBadgeIcon}/>
-                ) : (
-                    <Expand className={styles.actionBadgeIcon}/>
-                )}
+                <ArrowRight className={styles.actionBadgeIcon}/>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import styles from './card.module.css';
 import Image from 'next/image';
 import { Skill } from '@/app/types/skill';
-import ActionBadge from '../actionBadge';
+import Chip from '../chip';
 
 export function Card ({
     level,
@@ -14,11 +14,15 @@ export function Card ({
             className={styles.cardContainer}
             data-variant={color}
         >
+            <Chip
+                content={level}
+                className={styles.chip}
+                variant={color}
+            />
             <div className={styles.textContainer}>
                 <h3>{title}</h3>
                 <p>{description}</p>
             </div>
-            <ActionBadge info={level} usage={"skills"} color={color}/>
         </div>
     )
 }
@@ -37,14 +41,14 @@ export function BlueprintCard () {
             <div className={styles.blueprintLine3} />
             <div className={styles.blueprintLine4} />
             {/*text for info*/}
-            <p className={`blueprintInfo ${styles.info1}`}>40px</p>
-            <p className='blueprintTitle'>
+            <p className={`${styles.info1} ${styles.blueprintInfo}`}>40px</p>
+            <p className={styles.blueprintTitle}>
                 what is lorem ipsum?
             </p>
             <div className={styles.blueprintLine5} />
 
             <div className="h-[8.5px]" />
-            <p className={`blueprintInfo ${styles.info2}`}>32px</p>
+            <p className={`${styles.info2} ${styles.blueprintInfo}`}>32px</p>
             <div className="h-[8.5px]" />
 
             <div className={styles.blueprintLine6} />
@@ -63,7 +67,7 @@ export function CodeCard () {
             </div>
             <div className="h-(--spacing-gap-8)" />
             <div className={styles.codeTextContainer}>
-                <p className='code'>
+                <p className={styles.code}>
                     PS C:\\Project&gt; <span className="text-[#ED8B00]">npm</span> run dev<br />
                     &gt; client@0.0.0 dev<br />
                     &gt; vite<br />
