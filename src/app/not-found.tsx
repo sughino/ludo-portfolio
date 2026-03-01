@@ -1,5 +1,5 @@
 import styles from './not-found.module.css'
-import LogoAnimation from './ui/components/logoAnimation'
+import LogoAnimation from '../ui/components/logoAnimation'
 
 export default function NotFound() {
   return (

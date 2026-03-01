@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { cascadia, dirtyline, montserrat } from "./fonts/font";
-import SmoothScroll from "./utils/ScrollSmoth";
+import { cascadia, dirtyline, montserrat } from "../fonts/font";
+import SmoothScroll from "../utils/ScrollSmoth";
 
 export const metadata: Metadata = {
   title: "Ludo portfolio",
