@@ -7,6 +7,8 @@ type ButtonProps = {
   icon?: IconName
   width?: "full" | "fit"
   className?: string
+  reverse?: boolean
+  iconColor?: string
 }
 
 export default function Button({
@@ -14,17 +16,21 @@ export default function Button({
   onlyIcon = false,
   icon,
   width = "fit",
-  className
+  className,
+  reverse = false,
+  iconColor
 }: ButtonProps) {
 
   const widthClass = width === "full" ? "w-full" : "w-fit"
+  const bgColorClass = reverse ? "bg-[var(--color-white)]" : "bg-[var(--color-red)]";
+  const txtColorClass = reverse ? "text-[var(--color-red)]" : "text-[var(--color-white)]";
 
   return (
     <button
-      className={`${widthClass} ${className}`}
+      className={`${widthClass} ${bgColorClass} ${className}`}
     >
-      {!onlyIcon && content && <span>{content}</span>}
-      {icon && <Icon name={icon}/>}
+      {!onlyIcon && content && <span className={txtColorClass}>{content}</span>}
+      {icon && <Icon name={icon} color={iconColor}/>}
     </button>
   )
 }

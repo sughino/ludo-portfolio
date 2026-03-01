@@ -12,6 +12,9 @@
     left: 20px;
     z-index: 5;
 }
+.actionBadgeContainer[data-variant="reverse"]{
+    flex-direction: row-reverse;
+}
 
 .actionBadgeContent {
     padding-inline: 20px;

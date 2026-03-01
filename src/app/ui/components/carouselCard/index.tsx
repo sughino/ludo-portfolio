@@ -26,7 +26,7 @@ export default function CauroselCard (
             <div className={styles.imgWrapper}>
                 <div 
                     className={styles.imgColorBg}
-                    data-color={color}
+                    style={{ backgroundColor: `var(--color-${color})` }}
                 />
                 <Image 
                     className={styles.carouselImg}

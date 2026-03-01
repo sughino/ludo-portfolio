@@ -1,17 +1,21 @@
 import Button from '../button';
 import styles from './actionBadge.module.css'
-import { ArrowRight } from 'lucide-react';
 
 type ActionBadgeProps = {
-  info: 'Development only' | 'Full build' | 'Design'
+  info: 'Development only' | 'Full build' | 'Design',
+  reverse?: boolean,
+  iconColor?: string
 }
 
 export default function ActionBadge ({
-    info
+    info,
+    reverse = false,
+    iconColor
 } : ActionBadgeProps) {
     return (
         <div 
             className={styles.actionBadgeContainer}
+            data-variant={reverse && 'reverse'}
         >
             <div className={styles.actionBadgeContent}>
                 <h6>{info}</h6>
@@ -19,7 +23,7 @@ export default function ActionBadge ({
             <div 
                 className={styles.actionBadgeIconContainer}
             >
-                <Button icon={'arrow-right'} className={styles.actionBadgeIcon}/>
+                <Button iconColor={iconColor} icon={reverse ? 'arrow-left' : 'arrow-right'} className={styles.actionBadgeIcon} reverse={reverse}/>
             </div>
         </div>
     )

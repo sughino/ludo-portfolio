@@ -1,11 +1,22 @@
 import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 
-export default function Icon({ name }: { name: IconName }) {
+type IconProps = {
+  name: IconName, 
+  color?: string,
+  size?: string
+}
+
+export default function Icon({ 
+  name, 
+  color = "white",
+  size = "size-[1.5em]"
+}: IconProps) {
+  const iconColor = `var(--color-${color})`;
   return (
     <DynamicIcon 
       name={name} 
-      className="size-[1.5em]"
-      color="var(--color-white)"
+      className={size}
+      color={iconColor}
     />
   );
 }
