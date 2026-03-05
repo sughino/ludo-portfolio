@@ -1,6 +1,6 @@
-import type { CarouselType } from '@/types/carouselType';
+import type { Hobby } from '@/types/hobby';
 
-export const hobbies: CarouselType[] = [
+export const hobbies: Hobby[] = [
     {
         title: 'capturing moments', 
         description: 'For me, photography is about freezing time. I like to observe the light and capture the spontaneity of my surroundings.', 

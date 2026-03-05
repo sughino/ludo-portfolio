@@ -3,10 +3,14 @@
 import styles from './carousel.module.css';
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import CauroselCard from '../carouselCard';
-import type { CarouselType } from '@/types/carouselType';
 
-export default function Carousel ({ data } : { data : CarouselType[]}) {
+export default function Carousel<T>({
+    data,
+    renderItem
+}: {
+    data: T[],
+    renderItem: (item: T, index: number, activeIndex: number) => React.ReactNode
+}) {
     const [slideCount, setSlideCount] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
     const slidesRef = useRef<HTMLDivElement>(null);
@@ -126,7 +130,6 @@ export default function Carousel ({ data } : { data : CarouselType[]}) {
         }
     };
 
-
     return (
         <div
             ref={carouselRef}
@@ -143,12 +146,10 @@ export default function Carousel ({ data } : { data : CarouselType[]}) {
                 ref={slidesRef}
                 className={styles.carouselSlideContainer}
             >
-                {data.map((slide, i) => (
-                    <CauroselCard
-                        key={i}
-                        {...slide}
-                        variant={i !== slideCount ? 'not-selected' : ''}
-                    />
+                {data.map((item, i) => (
+                    <div key={i} className={styles.renderContainer}>
+                        {renderItem(item, i, slideCount)}
+                    </div>
                 ))}
             </div>
            

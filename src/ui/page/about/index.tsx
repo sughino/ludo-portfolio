@@ -34,7 +34,7 @@ export default function About () {
                         <h3>{study.title}</h3>
                         <div className={styles.studyContentContainer}>
                             <h6>{study.date}</h6>
-                            <p>{study.school}</p>
+                            <p className={styles.studySchool}>{study.school}</p>
                         </div>
                     </div> 
                 ))}
@@ -42,3 +42,4 @@ export default function About () {
         </section>
     )
 }//TODO sistema visualizzazione per device
+//TODO vedi se riesci a fare il personaggino 3d, magari da mettere le footer in piccolo o sulla prima pagina penzolante

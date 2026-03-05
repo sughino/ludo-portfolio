@@ -13,6 +13,10 @@
     cursor: grab;
     touch-action: pan-y;
 }
+.renderContainer {
+    width: 100% !important;
+    flex-shrink: 0;
+}
 
 .carouselSlideContainer {
     display: flex;

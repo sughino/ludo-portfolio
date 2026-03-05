@@ -55,3 +55,7 @@
     flex-direction: inherit;
     gap: var(--spacing-gap-8);
 }
+
+.studySchool {
+    color: var(--color-black-30);
+}

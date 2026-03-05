@@ -5,7 +5,7 @@ import ActionBadge from '../actionBadge';
 import { useIsTouchDevice } from '@/utils/isTouchDevice';
 import Button from '../button';
 
-export default function CauroselCard (
+export function CarouselCard (
     {
         title,
         description,
@@ -47,6 +47,54 @@ export default function CauroselCard (
                 )} */}
                 <h3>{title}</h3>
                 <p>{description}</p>
+            </div>
+        </div>
+    )
+}
+
+export function CarouselImage (
+    {
+        title,
+        img,
+        width,
+        height,
+        color,
+        variant,
+    } : CarouselType
+) {
+    if (!img) return null;
+    const isMainImg = img.includes('main.webp');
+
+    return (
+        <div 
+            className={styles.carouselCard}
+            data-variant={variant}
+        >
+            <div className={styles.imgWrapper}>
+                {isMainImg && (
+                    <>
+                        <div 
+                            className={styles.imgColorBg}
+                            style={{ backgroundColor: `var(--color-${color})` }}
+                        />
+                        <Image 
+                            className={styles.placeholderImg}
+                            src={img}
+                            alt={`${title} image`}
+                            width={width}
+                            height={height}
+                            draggable={false}
+                        />
+                    </>
+                )}
+                <Image 
+                    className={styles.carouselImg}
+                    src={img}
+                    alt={`${title} image`}
+                    width={width}
+                    height={height}
+                    draggable={false}
+                />
             </div>
         </div>
     )

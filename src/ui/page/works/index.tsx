@@ -5,6 +5,7 @@ import { works } from '@/data/works'
 import Carousel from '../../components/carousel'
 import { useIsTouchDevice } from '@/utils/isTouchDevice'
 import HorizontalScroll from '../../components/horizontalScroll'
+import { CarouselCard } from '@/ui/components/carouselCard'
 
 export default function Works() {
   const isTouch = useIsTouchDevice()
@@ -17,7 +18,16 @@ export default function Works() {
 
       {isTouch ? (
         <div className={styles.carouselContainer}>
-          <Carousel data={works} />
+          {/* <Carousel data={works} /> */}
+          <Carousel
+            data={works}
+            renderItem={(item, i, active) => (
+              <CarouselCard
+                {...item}
+                variant={i !== active ? 'not-selected' : ''}
+              />
+            )}
+          />
         </div>
       ) : (
         <HorizontalScroll data={works} />

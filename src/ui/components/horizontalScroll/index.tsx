@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './horizontalScroll.module.css'
-import WorkCard from '../carouselCard'
+import { CarouselCard } from '../carouselCard'
 import { useIsTouchDevice } from '@/utils/isTouchDevice'
 import type { CarouselType } from '@/types/carouselType';
 
@@ -51,7 +51,7 @@ export default function HorizontalScroll({ data }: Props) {
   return (
     <div ref={containerRef} className={styles.worksContainer}>
       {data.map((work, i) => (
-        <WorkCard key={i} {...work} />
+        <CarouselCard key={i} {...work} />
       ))}
     </div>
   )

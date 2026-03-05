@@ -8,12 +8,19 @@
     width: calc(100% - 40px);
     backdrop-filter: blur(10px);
     position: absolute;
-    bottom: 20px;
     left: 20px;
     z-index: 5;
 }
-.actionBadgeContainer[data-variant="reverse"]{
+.actionBadgeContainer[data-variant="reverse"] {
     flex-direction: row-reverse;
+}
+.actionBadgeContainer[data-position="top"] {
+    top: 20px;
+    width: calc((100% - (var(--spacing-padding-50) * 2)) - 40px);
+    left: calc(var(--spacing-padding-50) + 20px);
+}
+.actionBadgeContainer[data-position="bottom"] {
+    bottom: 20px;
 }
 
 .actionBadgeContent {

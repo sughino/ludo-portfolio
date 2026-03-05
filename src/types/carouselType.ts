@@ -1,6 +1,6 @@
 export interface CarouselType {
     title: string;
-    description: string;
+    description?: string;
     img: string;
     width: number;
     height: number;
