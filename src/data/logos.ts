@@ -24,6 +24,9 @@ export const logos: Logo[] = [
     {id: 'tailwind', src: '/logos/tailwind.webp', alt: 'Tailwind CSS logo', href: 'https://tailwindcss.com/', width: 402, height: 242, skill: true},
     {id: 'typescript', src: '/logos/typescript.webp', alt: 'TypeScript logo', href: 'https://www.typescriptlang.org/', width: 242, height: 242, skill: true},
     {id: 'vite', src: '/logos/vite.webp', alt: 'Vite logo', href: 'https://vitejs.dev/', width: 241, height: 242, skill: true},
-    {id: 'vscode', src: '/logos/vscode.webp', alt: 'VS Code logo', href: 'https://code.visualstudio.com/', width: 243, height: 241, skill: true}
+    {id: 'vscode', src: '/logos/vscode.webp', alt: 'VS Code logo', href: 'https://code.visualstudio.com/', width: 243, height: 241, skill: true},
+
+    {id: 'sap', src: '/otherLogos/sap.webp', alt: 'Sap logo', href: 'https://www.sap.com/italy/index.html', width: 1200, height: 594, skill: false},
+    {id: 'sqlServer', src: '/otherLogos/sqlServer.webp', alt: 'Sql Server logo', href: 'https://www.microsoft.com/it-it/sql-server/sql-server-downloads', width: 1000, height: 1094, skill: false},
+    {id: 'xml', src: '/otherLogos/xml.webp', alt: 'Xml logo', href: 'https://it.wikipedia.org/wiki/XML', width: 1000, height: 992, skill: false}
 ];
-//TODO aggiungi loghi che non fanno parte delle skill

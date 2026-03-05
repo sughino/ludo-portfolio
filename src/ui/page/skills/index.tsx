@@ -1,6 +1,5 @@
 import { Card, BlueprintCard, CodeCard, ImgCard } from '../../components/bentoCard';
 import { skills } from '@/data/skills';
-import { logos } from '@/data/logos';
 import { LogoScroller } from '../../components/logoScroller';
 
 
@@ -40,7 +39,7 @@ export default function Skills() {
       </div>
       
       <div className="h-(--spacing-80)" />
-      <LogoScroller data={logos}/>
+      <LogoScroller />
     </section>
   );
 }

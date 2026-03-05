@@ -3,10 +3,15 @@
 import Image from 'next/image'
 import styles from './scroll.module.css';
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import type { Logo } from '@/types/logo';
+import { logos } from '@/data/logos';
+import gsap from 'gsap';
+import { useMemo } from 'react'
 
-export function LogoScroller({ data }: { data: Logo[] }) {
+export function LogoScroller() {
+  const skillLogos = useMemo(() => {
+    return logos.filter((logo) => logo.skill)
+  }, [logos])
+
   const containerRef = useRef<HTMLDivElement>(null)
   const scrollerRef = useRef<HTMLDivElement>(null)
   const tweenRef = useRef<gsap.core.Tween | null>(null)
@@ -107,7 +112,7 @@ export function LogoScroller({ data }: { data: Logo[] }) {
     <div ref={containerRef} className={styles.logoScrollContainer}>
       <div ref={scrollerRef} className={styles.scrollerInner}>
         <div className={styles.track}>
-          {[...data, ...data].map((d, i) => (
+          {[...skillLogos, ...skillLogos].map((d, i) => (
             <div
               key={i}
               className={styles.logoItemWrapper}
