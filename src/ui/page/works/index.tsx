@@ -6,6 +6,7 @@ import Carousel from '../../components/carousel'
 import { useIsTouchDevice } from '@/utils/isTouchDevice'
 import HorizontalScroll from '../../components/horizontalScroll'
 import { CarouselCard } from '@/ui/components/carouselCard'
+import TitleAnimation from '@/ui/components/titleAnimation'
 
 export default function Works() {
   const isTouch = useIsTouchDevice()
@@ -13,12 +14,13 @@ export default function Works() {
   return (
     <section className="noSpacing">
       <div className="h-(--spacing-160)" />
-      <h2>WoRKs</h2>
+      <TitleAnimation centerTitle={true}>
+        <h2 data-animate="title">WoRKs</h2>
+      </TitleAnimation>
       <div className="h-(--spacing-40)" />
 
       {isTouch ? (
         <div className={styles.carouselContainer}>
-          {/* <Carousel data={works} /> */}
           <Carousel
             data={works}
             renderItem={(item, i, active) => (

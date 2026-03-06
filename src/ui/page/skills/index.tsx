@@ -1,13 +1,16 @@
 import { Card, BlueprintCard, CodeCard, ImgCard } from '../../components/bentoCard';
 import { skills } from '@/data/skills';
 import { LogoScroller } from '../../components/logoScroller';
+import TitleAnimation from '@/ui/components/titleAnimation';
 
 
 export default function Skills() {
   return (
     <section>
       <div className="h-(--spacing-160)" />
-      <h2>SkILLS</h2>
+      <TitleAnimation centerTitle={true}>
+        <h2 data-animate="title">SkILLS</h2>
+      </TitleAnimation>
       <div className="h-(--spacing-80)" />
 
       <div className='hidden lg:grid grid-rows-[auto_auto_auto] gap-(--spacing-gap-32) h-fit'>

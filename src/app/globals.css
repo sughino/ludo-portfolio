@@ -132,12 +132,14 @@
     font-size: var(--h2-size);
     color: var(--color-red);
     text-align: center;
+    line-height: 0.9;
+    transform: translateY(0.1em);
   }
   h3 {
     font-family: var(--font-dirtyline);
     font-size: var(--h3-size);
     text-transform: lowercase;
-    
+    line-height: 0.9;
   }
   h3.noWrap {
     white-space: nowrap;
@@ -155,7 +157,7 @@
   }
 
   h1, h2, h3 {
-    line-height: 0.9;
+    position: relative;
     user-select: none;
   }
   h6, p {

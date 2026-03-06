@@ -1,12 +1,15 @@
 import Image from 'next/image'
 import styles from './about.module.css'
 import { studies } from '@/data/studies'
+import TitleAnimation from '@/ui/components/titleAnimation'
 
 export default function About () {
     return (
         <section className="bigSpacing">
             <div className="h-(--spacing-160)" />
-            <h2>AbOUT</h2>
+            <TitleAnimation centerTitle={true}>
+                <h2 data-animate="title">AbOUT</h2>
+            </TitleAnimation>
             <div className="h-(--spacing-80)" />
 
             <div className={styles.photoContainer}>

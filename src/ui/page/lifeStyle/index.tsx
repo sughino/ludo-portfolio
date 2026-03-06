@@ -6,6 +6,7 @@ import Carousel from '../../components/carousel'
 import { useIsTouchDevice } from '@/utils/isTouchDevice'
 import LifeStyleBento from '../../components/lifeStyleBento'
 import { CarouselCard } from '@/ui/components/carouselCard'
+import TitleAnimation from '@/ui/components/titleAnimation'
 
 export default function LifeStyle() {
   const isTouch = useIsTouchDevice()
@@ -13,7 +14,9 @@ export default function LifeStyle() {
   return (
     <section className="noSpacing">
       <div className="h-(--spacing-160)" />
-      <h2>LiFeSTYlE</h2>
+      <TitleAnimation centerTitle={true}>
+        <h2 className={styles.title} data-animate="title">LiFeSTYlE</h2>
+      </TitleAnimation>
       <div className="h-(--spacing-80)" />
 
       {isTouch ? (
