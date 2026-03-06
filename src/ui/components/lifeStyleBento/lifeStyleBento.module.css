@@ -33,7 +33,7 @@
 }
 
 .holderImg {
-    width: 200%;
+    flex-basis: 200%;
     border-radius: var(--radius-variable);
     overflow: hidden;
 }

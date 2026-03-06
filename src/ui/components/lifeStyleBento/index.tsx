@@ -20,6 +20,7 @@ export default function LifeStyleBento({ data }: Props) {
               src={hobby.img}
               width={hobby.width}
               height={hobby.height}
+              sizes="(max-width: 768px) 100vw, 50vw"
               alt={`${hobby.title} img`}
             />
           </div>
