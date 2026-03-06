@@ -147,4 +147,3 @@ export function LogoScroller() {
     </div>
   )
 }
-//TODO fai in modo che se skill è false allora non stampa a video i loghi nello scroll
