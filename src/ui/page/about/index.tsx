@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from './about.module.css'
 import { studies } from '@/data/studies'
 import TitleAnimation from '@/ui/components/titleAnimation'
+import { FadeIn } from '@/ui/components/fadeIn'
 
 export default function About () {
     return (
@@ -12,18 +13,20 @@ export default function About () {
             </TitleAnimation>
             <div className="h-(--spacing-80)" />
 
-            <div className={styles.photoContainer}>
-                <div className={styles.photo}></div>
-                <div className={styles.character}>
-                    <Image
-                        src={'/about/character.webp'}
-                        alt='character'
-                        width={633}
-                        height={1766}
-                    />
+            <FadeIn>
+                <div className={styles.photoContainer}>
+                    <div className={styles.photo}></div>
+                    <div className={styles.character}>
+                        <Image
+                            src={'/about/character.webp'}
+                            alt='character'
+                            width={633}
+                            height={1766}
+                        />
+                    </div>
+                    <div className={`hidden md:block ${styles.photo}`}></div>
                 </div>
-                <div className={`hidden md:block ${styles.photo}`}></div>
-            </div>
+            </FadeIn>
 
             <div className="h-(--spacing-gap-16)" />
 
@@ -33,13 +36,15 @@ export default function About () {
 
             <div className={styles.studiesContainer}>
                 {studies.map((study, i) => (
-                    <div className={styles.studyContainer} key={i}>
-                        <h3>{study.title}</h3>
-                        <div className={styles.studyContentContainer}>
-                            <h6>{study.date}</h6>
-                            <p className={styles.studySchool}>{study.school}</p>
-                        </div>
-                    </div> 
+                    <FadeIn key={i}>
+                        <div className={styles.studyContainer}>
+                            <h3>{study.title}</h3>
+                            <div className={styles.studyContentContainer}>
+                                <h6>{study.date}</h6>
+                                <p className={styles.studySchool}>{study.school}</p>
+                            </div>
+                        </div> 
+                    </FadeIn>
                 ))}
             </div>
         </section>

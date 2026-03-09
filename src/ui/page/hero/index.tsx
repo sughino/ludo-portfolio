@@ -2,14 +2,17 @@ import { montserrat } from '@/fonts/font';
 import styles from './hero.module.css';
 import LogoAnimation from '../../components/logoAnimation';
 import TitleAnimation from "@/ui/components/titleAnimation";
+import { FadeIn } from '@/ui/components/fadeIn';
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      <div className={styles.topBar}>
-        <LogoAnimation/>  
-        <h3>web developer&nbsp;<span className={styles.coloredSpan}>&</span><br/>designer</h3>
-      </div>
+      <FadeIn>
+        <div className={styles.topBar}>
+          <LogoAnimation/>
+          <h3>web developer&nbsp;<span className={styles.coloredSpan}>&</span><br/>designer</h3>
+        </div>
+      </FadeIn>
 
       <div className={styles.titleContainer}>
         <div className={`${styles.bluePrint} ${styles.bluePrintTopTitle}`}/>

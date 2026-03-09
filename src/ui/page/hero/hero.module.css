@@ -13,6 +13,12 @@
     text-align: right;
     font-size: var(--h3-size);
 }
+@media (width <= 48rem) {
+    .topBar {
+        padding-inline: 0;
+    }
+}
+
 .coloredSpan {
     color: var(--color-light-red) !important;
 }

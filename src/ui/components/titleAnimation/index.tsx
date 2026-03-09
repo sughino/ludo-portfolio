@@ -36,7 +36,7 @@ export default function TitleAnimation({
         delay: delay,
         scrollTrigger: {
           trigger: titleContainerRef.current,
-          start: "top 80%",
+          start: "top 100%",
           once: true
         }
       }

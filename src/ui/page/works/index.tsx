@@ -11,6 +11,7 @@ import { useRef } from "react";
 import gsap from 'gsap'
 import { useRouter } from "next/navigation";
 import { Flip } from "gsap/Flip";
+import { FadeIn } from '@/ui/components/fadeIn'
 
 gsap.registerPlugin(Flip);
 
@@ -52,19 +53,21 @@ export default function Works() {
         <h2 data-animate="title">WoRKs</h2>
       </TitleAnimation>
       <div className="h-(--spacing-40)" />
-
+      
       {isTouch ? (
         <div className={styles.carouselContainer}>
-          <Carousel
-            data={works}
-            renderItem={(item, i, active) => (
-              <CarouselCard
-                {...item}
-                variant={i !== active ? 'not-selected' : ''}
-                onClick={(id) => startAnimation(id)}
-              />
-            )}
-          />
+          <FadeIn>
+            <Carousel
+              data={works}
+              renderItem={(item, i, active) => (
+                <CarouselCard
+                  {...item}
+                  variant={i !== active ? 'not-selected' : ''}
+                  onClick={(id) => startAnimation(id)}
+                />
+              )}
+            />
+          </FadeIn>
         </div>
       ) : (
         <HorizontalScroll data={works} onClick={(id) => startAnimation(id)}/>

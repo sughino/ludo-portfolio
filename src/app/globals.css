@@ -5,6 +5,7 @@
   /*colors*/
   --color-black: #111418;
   --color-black-30: rgba(17, 20, 24, .3);
+  --color-black-50: rgba(17, 20, 24, .5);
   --color-gray: #24272B;
   --color-white: #F2F7FD;
   --color-white-30: rgba(242, 247, 253, .3);

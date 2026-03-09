@@ -7,6 +7,7 @@ import { useIsTouchDevice } from '@/utils/isTouchDevice'
 import LifeStyleBento from '../../components/lifeStyleBento'
 import { CarouselCard } from '@/ui/components/carouselCard'
 import TitleAnimation from '@/ui/components/titleAnimation'
+import { FadeIn } from '@/ui/components/fadeIn'
 
 export default function LifeStyle() {
   const isTouch = useIsTouchDevice()
@@ -21,15 +22,17 @@ export default function LifeStyle() {
 
       {isTouch ? (
         <div className={styles.carouselContainer}>
-          <Carousel
-            data={hobbies}
-            renderItem={(item, i, active) => (
-              <CarouselCard
-                {...item}
-                variant={i !== active ? 'not-selected' : ''}
-              />
-            )}
-          />
+          <FadeIn>
+            <Carousel
+              data={hobbies}
+              renderItem={(item, i, active) => (
+                <CarouselCard
+                  {...item}
+                  variant={i !== active ? 'not-selected' : ''}
+                />
+              )}
+            />
+          </FadeIn>
         </div>
       ) : (
         <LifeStyleBento data={hobbies} />

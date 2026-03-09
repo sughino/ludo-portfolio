@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode, useEffect, useRef } from "react"
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,10 +8,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
     children: ReactNode;
-    width?: 'grow' | 'fit' | 'full'
+    width?: 'grow' | 'fit' | 'full',
+    duration?: number
 }
 
-export const FadeIn = ({ children, width } : Props) => {
+export const FadeIn = ({ children, width, duration = 1 } : Props) => {
     const divContainerRef = useRef<HTMLDivElement>(null);
 
     const widthMap: Record<string, string> = {
@@ -32,7 +35,7 @@ export const FadeIn = ({ children, width } : Props) => {
                 y: 0,
                 opacity: 1,
                 scale: 1,
-                duration: 2,
+                duration: duration,
                 ease: "power4.out",
                 scrollTrigger: {
                     trigger: divContainerRef.current,

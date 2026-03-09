@@ -31,9 +31,10 @@ export default function Work() {
         backEnd: 'Back-end',
         database: 'Database',
         design: 'Design'
-    }//TODO sistema lo shadows del titolo
+    }
+    //TODO sistema flick iniziale
     return (
-        <section className={styles.workSection}>
+        <section className={styles.workSection} data-device={isTouch && 'device'}>
             {isTouch && (
                 <>
                     {titleWords.map((word, i) => (
@@ -50,7 +51,7 @@ export default function Work() {
                     <div className={styles.grabBar}/>
                 </>
             )}
-            <FadeIn>
+            <FadeIn duration={2.5}>
                 <div className={styles.carouselContainer}>
                 <Carousel
                         data={work.images}
