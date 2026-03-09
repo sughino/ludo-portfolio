@@ -1,4 +1,5 @@
 export interface CarouselType {
+    id?: string,
     title: string;
     description?: string;
     img: string;

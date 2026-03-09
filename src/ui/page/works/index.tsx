@@ -7,14 +7,48 @@ import { useIsTouchDevice } from '@/utils/isTouchDevice'
 import HorizontalScroll from '../../components/horizontalScroll'
 import { CarouselCard } from '@/ui/components/carouselCard'
 import TitleAnimation from '@/ui/components/titleAnimation'
+import { useRef } from "react";
+import gsap from 'gsap'
+import { useRouter } from "next/navigation";
+import { Flip } from "gsap/Flip";
+
+gsap.registerPlugin(Flip);
 
 export default function Works() {
   const isTouch = useIsTouchDevice()
+  const animationDivRef= useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  const tl = gsap.timeline();
+
+  const startAnimation = (id: string) => {
+    if (!animationDivRef.current) return;
+
+    document.body.style.overflow = "hidden";
+    tl.to(animationDivRef.current, {
+      y: 0,
+      duration: 0.9,
+      ease: "power4.out",
+      onComplete: () => {
+        router.push(`/${id}`);
+      }
+    })
+    .to(
+      animationDivRef.current,
+      {
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      },
+      "-=0.4"
+    )
+  }
 
   return (
     <section className="noSpacing">
       <div className="h-(--spacing-160)" />
-      <TitleAnimation centerTitle={true}>
+      <TitleAnimation position={'center'}>
         <h2 data-animate="title">WoRKs</h2>
       </TitleAnimation>
       <div className="h-(--spacing-40)" />
@@ -27,13 +61,15 @@ export default function Works() {
               <CarouselCard
                 {...item}
                 variant={i !== active ? 'not-selected' : ''}
+                onClick={(id) => startAnimation(id)}
               />
             )}
           />
         </div>
       ) : (
-        <HorizontalScroll data={works} />
+        <HorizontalScroll data={works} onClick={(id) => startAnimation(id)}/>
       )}
+      <div className={styles.animationDiv} ref={animationDivRef}/>
     </section>
   )
 }

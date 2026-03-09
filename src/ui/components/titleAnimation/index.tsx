@@ -10,13 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 type Props = {
   children: ReactNode;
   delay?: number;
-  centerTitle?: boolean
+  position?: string;
+  reverse?: boolean;
 }
 
 export default function TitleAnimation({ 
     children, 
     delay = 0,
-    centerTitle = false
+    position,
+    reverse = false
 }: Props) {
   const titleContainerRef = useRef<HTMLDivElement>(null);
 
@@ -26,9 +28,9 @@ export default function TitleAnimation({
 
     gsap.fromTo(
       titles,
-      { bottom: -150 },
+      { bottom: reverse ? 0 : -150 },
       {
-        bottom: 0,
+        bottom: reverse ? -150 : 0,
         duration: 1.2,
         ease: "power4.out",
         delay: delay,
@@ -39,10 +41,10 @@ export default function TitleAnimation({
         }
       }
     );
-  }, []);
+  }, [delay, reverse]);
 
   return (
-    <div className={styles.titleContainer} data-position={centerTitle && 'center'} ref={titleContainerRef}>
+    <div className={styles.titleContainer} data-position={position} ref={titleContainerRef}>
       {children}
     </div>
   );

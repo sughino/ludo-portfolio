@@ -2,13 +2,14 @@ import Icon from "./icon"
 import { IconName } from "lucide-react/dynamic"
 
 type ButtonProps = {
-  content?: string
-  onlyIcon?: boolean
-  icon?: IconName
-  width?: "full" | "fit"
-  className?: string
-  reverse?: boolean
-  iconColor?: string
+  content?: string;
+  onlyIcon?: boolean;
+  icon?: IconName;
+  width?: "full" | "fit";
+  className?: string;
+  reverse?: boolean;
+  iconColor?: string;
+  onClick?: () => void;
 }
 
 export default function Button({
@@ -18,7 +19,8 @@ export default function Button({
   width = "fit",
   className,
   reverse = false,
-  iconColor
+  iconColor,
+  onClick
 }: ButtonProps) {
 
   const widthClass = width === "full" ? "w-full" : "w-fit"
@@ -28,6 +30,10 @@ export default function Button({
   return (
     <button
       className={`${widthClass} ${bgColorClass} ${className}`}
+      onClick={(e) => {
+        e.stopPropagation()
+        onClick?.()
+      }}
     >
       {!onlyIcon && content && <span className={txtColorClass}>{content}</span>}
       {icon && <Icon name={icon} color={iconColor}/>}

@@ -2,3 +2,19 @@
     padding-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
     overflow: hidden;
 }
+
+.animationDiv {
+    position: fixed;
+    inset: 0;
+    background: var(--color-white);
+    z-index: 999;
+    box-shadow: var(--shadow);
+    border-top-left-radius: var(--spacing-padding-radius);
+    border-top-right-radius: var(--spacing-padding-radius);
+    transform: translateY(120%);
+
+    background-image: url('/texture.webp');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: repeat;
+}

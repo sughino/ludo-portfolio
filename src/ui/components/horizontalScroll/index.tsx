@@ -11,10 +11,11 @@ import type { CarouselType } from '@/types/carouselType';
 gsap.registerPlugin(ScrollTrigger)
 
 type Props = {
-  data: CarouselType[]
+  data: CarouselType[];
+  onClick?: (id: string) => void;
 }
 
-export default function HorizontalScroll({ data }: Props) {
+export default function HorizontalScroll({ data, onClick }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const isTouch = useIsTouchDevice()
 
@@ -51,7 +52,7 @@ export default function HorizontalScroll({ data }: Props) {
   return (
     <div ref={containerRef} className={styles.worksContainer}>
       {data.map((work, i) => (
-        <CarouselCard key={i} {...work} />
+        <CarouselCard key={i} onClick={(id) => onClick?.(id)} {...work} />
       ))}
     </div>
   )

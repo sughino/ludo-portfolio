@@ -7,7 +7,7 @@ export default function About () {
     return (
         <section className="bigSpacing">
             <div className="h-(--spacing-160)" />
-            <TitleAnimation centerTitle={true}>
+            <TitleAnimation position={'center'}>
                 <h2 data-animate="title">AbOUT</h2>
             </TitleAnimation>
             <div className="h-(--spacing-80)" />

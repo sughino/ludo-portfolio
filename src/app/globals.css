@@ -120,6 +120,7 @@
     padding-inline: 20px;
     padding-block: 10px;
     border-radius: var(--radius-50);
+    cursor: pointer;
   }
 
   /*typography*/

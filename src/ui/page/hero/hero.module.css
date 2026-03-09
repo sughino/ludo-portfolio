@@ -23,12 +23,6 @@
     gap: var(--spacing-gap-8);
     position: relative;
 }
-.titleInnerContainer {
-    height: fit-content;
-    width: fit-content;
-    overflow: hidden;
-    position: relative;
-}
 .title {
     line-height: .75;
 }

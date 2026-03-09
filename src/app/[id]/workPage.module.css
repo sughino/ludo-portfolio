@@ -2,15 +2,6 @@
     padding-inline: 0;
     padding-top: var(--spacing-padding-50);
 }
-.workSection[data-device='device'] {
-    margin-top: 10px;
-    padding-top: var(--spacing-padding-radius);
-    border-top-left-radius: var(--spacing-padding-radius);
-    border-top-right-radius: var(--spacing-padding-radius);
-    box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
-}
 
 .grabBar {
     height: 3px;
@@ -26,18 +17,21 @@
 .carouselContainer {
     width: 100%;
     padding-inline: var(--spacing-padding-50);
-    overflow: hidden;
     position: relative;
 }
-.workTitle {
-    width: min-content;
-    color: var(--color-white);
-    text-align: left;
+
+.workTitleContainer {
     position: absolute;
-    bottom: 35px;
+    bottom: 50px;
     left: calc(var(--spacing-padding-50) + 20px);
     z-index: 5;
-     filter: drop-shadow(0 0px 10px var(--color-black));
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap-8);
+}
+.workTitle {
+    color: var(--color-white);
+    filter: drop-shadow(0 0px 10px var(--color-black));
 }
 .workTitleDevice {
     text-align: left;

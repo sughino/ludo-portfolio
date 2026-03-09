@@ -2,17 +2,19 @@ import Button from '../button';
 import styles from './actionBadge.module.css'
 
 type ActionBadgeProps = {
-  info: 'Development only' | 'Full build' | 'Design',
-  reverse?: boolean,
-  iconColor?: string,
-  position?: 'top' | 'bottom'
+  info: 'Development only' | 'Full build' | 'Design';
+  reverse?: boolean;
+  iconColor?: string;
+  position?: 'top' | 'bottom';
+  onClick?: () => void;
 }
 
 export default function ActionBadge ({
     info,
     reverse = false,
     iconColor,
-    position = 'bottom'
+    position = 'bottom',
+    onClick
 } : ActionBadgeProps) {
     return (
         <div 
@@ -26,7 +28,7 @@ export default function ActionBadge ({
             <div 
                 className={styles.actionBadgeIconContainer}
             >
-                <Button iconColor={iconColor} icon={reverse ? 'arrow-left' : 'arrow-right'} className={styles.actionBadgeIcon} reverse={reverse}/>
+                <Button onClick={() => onClick?.()} iconColor={iconColor} icon={reverse ? 'arrow-left' : 'arrow-right'} className={styles.actionBadgeIcon} reverse={reverse}/>
             </div>
         </div>
     )

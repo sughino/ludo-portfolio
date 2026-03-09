@@ -28,4 +28,5 @@ export default function Hero() {
       <div className={`${styles.bluePrint} ${styles.bluePrintBottom}`}/>
     </section>
   )
-}
+}//TODO sistema animazione, su schermo grande ludovico esce dopo perchè non lo "vede", quindi fai in modo che quando sia caricata la pagina faccia l'animazione
+//TODO sistema top bar quando schermo è piccolo non diventa padding 0

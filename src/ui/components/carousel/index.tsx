@@ -6,10 +6,12 @@ import { gsap } from 'gsap';
 
 export default function Carousel<T>({
     data,
-    renderItem
+    renderItem,
+    onSlideChange
 }: {
     data: T[],
     renderItem: (item: T, index: number, activeIndex: number) => React.ReactNode
+    onSlideChange?: (index: number) => void
 }) {
     const [slideCount, setSlideCount] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
@@ -29,6 +31,7 @@ export default function Carousel<T>({
 
 
     useEffect(() => {
+        onSlideChange?.(slideCount)
         if (slidesRef.current) {
             const slideWidth = getSlideWidth();
             gsap.to(slidesRef.current, {
@@ -37,7 +40,7 @@ export default function Carousel<T>({
                 ease: 'power2.out'
             });
         }
-    }, [slideCount]);
+    }, [slideCount, onSlideChange]);
 
 
     const handleStart = (clientX: number) => {

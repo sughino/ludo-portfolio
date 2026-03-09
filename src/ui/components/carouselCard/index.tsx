@@ -5,8 +5,13 @@ import ActionBadge from '../actionBadge';
 import { useIsTouchDevice } from '@/utils/isTouchDevice';
 import Button from '../button';
 
+type CarouselCardProps = CarouselType & {
+    onClick?: (id: string) => void;
+};
+
 export function CarouselCard (
     {
+        id,
         title,
         description,
         img,
@@ -14,16 +19,18 @@ export function CarouselCard (
         height,
         color,
         variant,
-        role
-    } : CarouselType
+        role,
+        onClick
+    } : CarouselCardProps
 ) {
-    const isTouch = useIsTouchDevice()
+    const isTouch = useIsTouchDevice();
     return (
         <div 
             className={styles.carouselCard}
             data-variant={variant}
         >
             <div className={styles.imgWrapper}>
+                <div className={styles.imgShadowBg} data-variant={'main'}/>
                 <div 
                     className={styles.imgColorBg}
                     style={{ backgroundColor: `var(--color-${color})` }}
@@ -36,15 +43,15 @@ export function CarouselCard (
                     height={height}
                     draggable={false}
                 />
-                {!isTouch && role && (
-                    <ActionBadge info={role} />
+                {!isTouch && role && id && (
+                    <ActionBadge info={role} onClick={() => onClick?.(id)}/>
                 )}
             </div>
             <div className={styles.cardTitleContainer}>
-                {/* {isTouch && role && (
-                    <Button content={'go to'} icon={'arrow-right'} width={'full'}/>
+                {isTouch && role && id && (
+                    <Button content={'go to'} icon={'arrow-right'} width={'full'} onClick={() => onClick?.(id)}/>
                     //TODO devi inserire qualcosa per far si che chi è da divce capisca che può cliccarlo
-                )} */}
+                )}
                 <h3>{title}</h3>
                 <p>{description}</p>
             </div>
@@ -62,7 +69,6 @@ export function CarouselImage (
         variant,
     } : CarouselType
 ) {
-    if (!img) return null;
     const isMainImg = img.includes('main.webp');
 
     return (
@@ -77,6 +83,7 @@ export function CarouselImage (
                             className={styles.imgColorBg}
                             style={{ backgroundColor: `var(--color-${color})` }}
                         />
+                        <div className={styles.imgShadowBg} data-variant={'main'}/>
                         <Image 
                             className={styles.placeholderImg}
                             src={img}
