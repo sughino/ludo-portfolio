@@ -9,16 +9,17 @@ gsap.registerPlugin(ScrollTrigger);
 type Props = {
     children: ReactNode;
     width?: 'grow' | 'fit' | 'full',
-    duration?: number
+    duration?: number;
+    onComplete?: () => void
 }
 
-export const FadeIn = ({ children, width, duration = 1 } : Props) => {
+export const FadeIn = ({ children, width, duration = 1, onComplete } : Props) => {
     const divContainerRef = useRef<HTMLDivElement>(null);
 
     const widthMap: Record<string, string> = {
         grow: 'grow',
         fit: 'w-fit',
-        full: 'w-full'
+        full: 'w-full shrink-0'
     }
 
     useEffect(() => {
@@ -37,6 +38,7 @@ export const FadeIn = ({ children, width, duration = 1 } : Props) => {
                 scale: 1,
                 duration: duration,
                 ease: "power4.out",
+                onComplete,
                 scrollTrigger: {
                     trigger: divContainerRef.current,
                     start: "top 80%",
@@ -44,7 +46,7 @@ export const FadeIn = ({ children, width, duration = 1 } : Props) => {
                 }
             }
         );
-    }, []);
+    }, [duration]);
 
     return (
         <div ref={divContainerRef} className={width && widthMap[width]}>

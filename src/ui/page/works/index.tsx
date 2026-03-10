@@ -10,22 +10,18 @@ import TitleAnimation from '@/ui/components/titleAnimation'
 import { useRef } from "react";
 import gsap from 'gsap'
 import { useRouter } from "next/navigation";
-import { Flip } from "gsap/Flip";
 import { FadeIn } from '@/ui/components/fadeIn'
-
-gsap.registerPlugin(Flip);
 
 export default function Works() {
   const isTouch = useIsTouchDevice()
   const animationDivRef= useRef<HTMLDivElement>(null);
   const router = useRouter();
-
   const tl = gsap.timeline();
 
-  const startAnimation = (id: string) => {
+  const goTo = (id: string) => {
     if (!animationDivRef.current) return;
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "hidden";
     tl.to(animationDivRef.current, {
       y: 0,
       duration: 0.9,
@@ -63,14 +59,14 @@ export default function Works() {
                 <CarouselCard
                   {...item}
                   variant={i !== active ? 'not-selected' : ''}
-                  onClick={(id) => startAnimation(id)}
+                  onClick={(id) => goTo(id)}
                 />
               )}
             />
           </FadeIn>
         </div>
       ) : (
-        <HorizontalScroll data={works} onClick={(id) => startAnimation(id)}/>
+        <HorizontalScroll data={works} onClick={(id) => goTo(id)}/>
       )}
       <div className={styles.animationDiv} ref={animationDivRef}/>
     </section>

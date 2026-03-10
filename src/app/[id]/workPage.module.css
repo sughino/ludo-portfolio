@@ -1,6 +1,7 @@
 .workSection {
     padding-inline: 0;
     padding-top: var(--spacing-padding-50);
+    box-shadow: var(--shadow);
 }
 .workSection[data-device='device'] {
     padding-top: 50px;

@@ -11,13 +11,18 @@ import ActionBadge from '@/ui/components/actionBadge'
 import Image from 'next/image'
 import { useIsTouchDevice } from '@/utils/isTouchDevice';
 import TitleAnimation from '@/ui/components/titleAnimation'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { FadeIn } from '@/ui/components/fadeIn'
+import gsap from 'gsap'
+import { useRouter } from "next/navigation";
 
 export default function Work() {
     const params = useParams()
     const id = params.id as string  
 
+    const router = useRouter();
+    const carouselConatinerRef = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
     const isTouch = useIsTouchDevice()
     const [currentSlide, setCurrentSlide] = useState(false);
 
@@ -25,16 +30,39 @@ export default function Work() {
     if (!work) return
 
     const titleWords = work.title.split(" ");
-
     const categoryMap: Record<string, string> = {
         frontEnd: 'Front-end',
         backEnd: 'Back-end',
         database: 'Database',
         design: 'Design'
     }
+
+    const tl = gsap.timeline();
     //TODO sistema flick iniziale
+    //TODO sistema il fatto che quando apri da telefono ti fa vedere prima la visualizzazione del pc
+
+    const goBack = () => {
+        if (!sectionRef.current) return;
+
+        document.body.style.overflowY = "hidden";
+
+        tl.to(sectionRef.current, {
+            borderTopLeftRadius: '40px',
+            borderTopRightRadius: '40px',
+            duration: 0.3,
+            ease: "power2.out",
+        })
+        .to(sectionRef.current, {
+            y: '100%',
+            duration: 0.9,
+            ease: "power4.inOut",
+            onComplete: () => {
+                router.back();
+            }
+        }, "-=0.1")
+    }
     return (
-        <section className={styles.workSection} data-device={isTouch && 'device'}>
+        <section ref={sectionRef} className={styles.workSection} data-device={isTouch && 'device'}>
             {isTouch && (
                 <>
                     {titleWords.map((word, i) => (
@@ -51,9 +79,14 @@ export default function Work() {
                     <div className={styles.grabBar}/>
                 </>
             )}
-            <FadeIn duration={2.5}>
-                <div className={styles.carouselContainer}>
-                <Carousel
+            <FadeIn duration={2.5} onComplete={() => {
+                if (carouselConatinerRef.current) {
+                    carouselConatinerRef.current.style.overflow = 'hidden';
+                    document.body.style.overflowY = "scroll";
+                }
+            }}>
+                <div className={styles.carouselContainer} ref={carouselConatinerRef}>
+                    <Carousel
                         data={work.images}
                         onSlideChange={(index) => setCurrentSlide(index === 0 ? false : true)}
                         renderItem={(imgPath, i, active) => (
@@ -69,7 +102,7 @@ export default function Work() {
                     />
                     {!isTouch && (
                         <>
-                            <ActionBadge info={work.role} reverse={true} iconColor={work.color} position={'top'}/>
+                            <ActionBadge info={work.role} reverse={true} iconColor={work.color} position={'top'} onClick={() => goBack()}/>
                             <div className={styles.workTitleContainer}>
                                 {titleWords.map((word, i) => (
                                     <TitleAnimation 

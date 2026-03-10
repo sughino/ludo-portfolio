@@ -7,6 +7,7 @@ import styles from './horizontalScroll.module.css'
 import { CarouselCard } from '../carouselCard'
 import { useIsTouchDevice } from '@/utils/isTouchDevice'
 import type { CarouselType } from '@/types/carouselType';
+import { FadeIn } from '../fadeIn'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -51,9 +52,11 @@ export default function HorizontalScroll({ data, onClick }: Props) {
 
   return (
     <div ref={containerRef} className={styles.worksContainer}>
-      {data.map((work, i) => (
-        <CarouselCard key={i} onClick={(id) => onClick?.(id)} {...work} />
-      ))}
+        {data.map((work, i) => (
+          <FadeIn key={i} width='full'>
+            <CarouselCard key={i} onClick={(id) => onClick?.(id)} {...work} />
+          </FadeIn>
+        ))}
     </div>
   )
 }

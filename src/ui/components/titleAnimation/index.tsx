@@ -28,9 +28,9 @@ export default function TitleAnimation({
 
     gsap.fromTo(
       titles,
-      { bottom: reverse ? 0 : -150 },
+      { bottom: reverse ? 0 : -180 },
       {
-        bottom: reverse ? -150 : 0,
+        bottom: reverse ? -180 : 0,
         duration: 1.2,
         ease: "power4.out",
         delay: delay,
