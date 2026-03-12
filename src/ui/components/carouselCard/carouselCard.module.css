@@ -11,6 +11,32 @@
     transform: scale(.9);
 }
 
+.carouselButtonContainer {
+    position: absolute;
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-variable);
+    display: flex;
+    overflow: hidden;
+}
+.carouselButton {
+    height: 100%;
+    border-radius: 0;
+    flex-basis: 0;
+    flex-shrink: 1;
+    display: block;
+}
+.carouselButton[data-size='0'] {
+    display: none;
+}
+.carouselButton[data-size='1'] {
+    flex-grow: 1;
+}
+.carouselButton[data-size='2'] {
+    flex-grow: 2;
+}
+
 .imgWrapper {
     width: 100%;
     height: auto;

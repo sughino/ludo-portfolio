@@ -3,7 +3,7 @@
 import styles from './works.module.css'
 import { works } from '@/data/works'
 import Carousel from '../../components/carousel'
-import { useIsTouchDevice } from '@/utils/isTouchDevice'
+import { useIsTouch } from '@/contexts/DeviceContext'
 import HorizontalScroll from '../../components/horizontalScroll'
 import { CarouselCard } from '@/ui/components/carouselCard'
 import TitleAnimation from '@/ui/components/titleAnimation'
@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import { FadeIn } from '@/ui/components/fadeIn'
 
 export default function Works() {
-  const isTouch = useIsTouchDevice()
+  const isTouch = useIsTouch()
   const animationDivRef= useRef<HTMLDivElement>(null);
   const router = useRouter();
   const tl = gsap.timeline();

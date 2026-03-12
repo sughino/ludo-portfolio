@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { cascadia, dirtyline, montserrat } from "../fonts/font";
-import SmoothScroll from "../utils/ScrollSmoth";
+import SmoothScroll from "../contexts/ScrollSmoth";
+import { DeviceProvider } from '@/contexts/DeviceContext'
 
 export const metadata: Metadata = {
   title: "Ludo portfolio",
@@ -18,9 +19,11 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${dirtyline.variable} ${cascadia.variable} antialiased`}
       >
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
+        <DeviceProvider>
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
+        </DeviceProvider>
       </body>
     </html>
   );

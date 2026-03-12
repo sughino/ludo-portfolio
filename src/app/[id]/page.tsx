@@ -9,7 +9,7 @@ import { logos } from '@/data/logos'
 import { CarouselImage } from '@/ui/components/carouselCard'
 import ActionBadge from '@/ui/components/actionBadge'
 import Image from 'next/image'
-import { useIsTouchDevice } from '@/utils/isTouchDevice';
+import { useIsTouch } from '@/contexts/DeviceContext'
 import TitleAnimation from '@/ui/components/titleAnimation'
 import { useRef, useState } from 'react'
 import { FadeIn } from '@/ui/components/fadeIn'
@@ -17,14 +17,15 @@ import gsap from 'gsap'
 import { useRouter } from "next/navigation";
 
 export default function Work() {
-    const params = useParams()
-    const id = params.id as string  
+    const params = useParams();
+    const id = params.id as string;
 
     const router = useRouter();
     const carouselConatinerRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
-    const isTouch = useIsTouchDevice()
+    const isTouch = useIsTouch();
     const [currentSlide, setCurrentSlide] = useState(false);
+    const [isActionBarHidden, setIsActionBarHidden] = useState(false);
 
     const work = works.find(item => item.id === id);
     if (!work) return
@@ -37,13 +38,14 @@ export default function Work() {
         design: 'Design'
     }
 
-    const tl = gsap.timeline();
-    //TODO sistema flick iniziale
+    //TODO sistema animazione iniziale per device
     //TODO sistema il fatto che quando apri da telefono ti fa vedere prima la visualizzazione del pc
+    //TODO aggiungi il grab e il goBack anche per il device
+    //TODO sistema il fatto che quando torni indietro nella pagina non ti fliccka le animazioni non viste
 
     const goBack = () => {
         if (!sectionRef.current) return;
-
+        const tl = gsap.timeline()
         document.body.style.overflowY = "hidden";
 
         tl.to(sectionRef.current, {
@@ -62,7 +64,7 @@ export default function Work() {
         }, "-=0.1")
     }
     return (
-        <section ref={sectionRef} className={styles.workSection} data-device={isTouch && 'device'}>
+        <section ref={sectionRef} className={styles.workSection} data-device={isTouch && 'device'}> 
             {isTouch && (
                 <>
                     {titleWords.map((word, i) => (
@@ -89,7 +91,7 @@ export default function Work() {
                     <Carousel
                         data={work.images}
                         onSlideChange={(index) => setCurrentSlide(index === 0 ? false : true)}
-                        renderItem={(imgPath, i, active) => (
+                        renderItem={(imgPath, i, active, onPrev, onNext) => (
                             <CarouselImage
                                 img={imgPath}
                                 title={work.title}
@@ -97,12 +99,17 @@ export default function Work() {
                                 height={work.height}
                                 color={work.color}
                                 variant={i !== active ? 'not-selected' : ''}
+                                index={i}
+                                totalImages={work.images.length}
+                                onPrev={onPrev}
+                                onNext={onNext}
+                                onOpen={() => {setIsActionBarHidden(!isActionBarHidden)}}
                             />
                         )}
                     />
                     {!isTouch && (
                         <>
-                            <ActionBadge info={work.role} reverse={true} iconColor={work.color} position={'top'} onClick={() => goBack()}/>
+                            <ActionBadge hidden={isActionBarHidden} info={work.role} reverse={true} iconColor={work.color} position={'top'} onClick={() => goBack()}/>
                             <div className={styles.workTitleContainer}>
                                 {titleWords.map((word, i) => (
                                     <TitleAnimation 

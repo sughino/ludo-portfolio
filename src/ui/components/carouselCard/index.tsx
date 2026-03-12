@@ -2,10 +2,12 @@ import Image from 'next/image';
 import styles from './carouselCard.module.css';
 import type { CarouselType } from '@/types/carouselType';
 import ActionBadge from '../actionBadge';
-import { useIsTouchDevice } from '@/utils/isTouchDevice';
 import Button from '../button';
+import { useIsTouch } from '@/contexts/DeviceContext'
 
 type CarouselCardProps = CarouselType & {
+    description?: string;
+    role?: 'Development only' | 'Full build' | 'Design';
     onClick?: (id: string) => void;
 };
 
@@ -23,7 +25,7 @@ export function CarouselCard (
         onClick
     } : CarouselCardProps
 ) {
-    const isTouch = useIsTouchDevice();
+    const isTouch = useIsTouch();
     return (
         <div 
             className={styles.carouselCard}
@@ -51,6 +53,7 @@ export function CarouselCard (
                 {isTouch && role && id && (
                     <Button content={'go to'} icon={'arrow-right'} width={'full'} onClick={() => onClick?.(id)}/>
                     //TODO devi inserire qualcosa per far si che chi è da divce capisca che può cliccarlo
+                    //TODO sistema carosello per telefono (quando arrivo al carosello e voglio andare sotto si blocca)
                 )}
                 <h3>{title}</h3>
                 <p>{description}</p>
@@ -58,6 +61,14 @@ export function CarouselCard (
         </div>
     )
 }
+
+type CarouselImageProps = CarouselType & {
+    index: number;
+    totalImages: number;
+    onPrev: () => void;
+    onNext: () => void;
+    onOpen: () => void;
+};
 
 export function CarouselImage (
     {
@@ -67,9 +78,15 @@ export function CarouselImage (
         height,
         color,
         variant,
-    } : CarouselType
+        index,
+        totalImages,
+        onPrev,
+        onNext,
+        onOpen
+    } : CarouselImageProps
 ) {
     const isMainImg = img.includes('main.webp');
+    const isTouch = useIsTouch();
 
     return (
         <div 
@@ -77,6 +94,13 @@ export function CarouselImage (
             data-variant={variant}
         >
             <div className={styles.imgWrapper}>
+                {!isTouch && (
+                    <div className={styles.carouselButtonContainer}>
+                        <button className={styles.carouselButton} data-size={index === 0 ? '0' : '1'} onClick={onPrev}/>
+                        <button className={styles.carouselButton} data-size={'2'} onClick={onOpen}/>
+                        <button className={styles.carouselButton} data-size={index === totalImages - 1 ? '0' : '1'} onClick={onNext}/>
+                    </div>
+                )}
                 {isMainImg && (
                     <>
                         <div 

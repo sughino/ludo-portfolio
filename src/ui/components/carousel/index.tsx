@@ -3,14 +3,14 @@
 import styles from './carousel.module.css';
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-
+//TODO togliere dragging per desktop
 export default function Carousel<T>({
     data,
     renderItem,
     onSlideChange
 }: {
     data: T[],
-    renderItem: (item: T, index: number, activeIndex: number) => React.ReactNode
+    renderItem: (item: T, index: number, activeIndex: number, onPrev: () => void, onNext: () => void) => React.ReactNode
     onSlideChange?: (index: number) => void
 }) {
     const [slideCount, setSlideCount] = useState(0);
@@ -151,7 +151,13 @@ export default function Carousel<T>({
             >
                 {data.map((item, i) => (
                     <div key={i} className={styles.renderContainer}>
-                        {renderItem(item, i, slideCount)}
+                        {renderItem(
+                            item, 
+                            i, 
+                            slideCount,
+                            () => setSlideCount(prev => Math.max(0, prev - 1)),
+                            () => setSlideCount(prev => Math.min(data.length - 1, prev + 1))
+                        )}
                     </div>
                 ))}
             </div>

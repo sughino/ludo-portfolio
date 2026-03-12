@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './horizontalScroll.module.css'
 import { CarouselCard } from '../carouselCard'
-import { useIsTouchDevice } from '@/utils/isTouchDevice'
+import { useIsTouch } from '@/contexts/DeviceContext'
 import type { CarouselType } from '@/types/carouselType';
 import { FadeIn } from '../fadeIn'
 
@@ -18,7 +18,7 @@ type Props = {
 
 export default function HorizontalScroll({ data, onClick }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const isTouch = useIsTouchDevice()
+  const isTouch = useIsTouch()
 
   useLayoutEffect(() => {
     if (isTouch) return

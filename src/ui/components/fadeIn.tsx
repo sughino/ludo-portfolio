@@ -6,14 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Props = {
+type FadeInProps = {
     children: ReactNode;
     width?: 'grow' | 'fit' | 'full',
     duration?: number;
-    onComplete?: () => void
+    onComplete?: () => void;
 }
 
-export const FadeIn = ({ children, width, duration = 1, onComplete } : Props) => {
+export const FadeIn = ({ children, width, duration = 1, onComplete } : FadeInProps) => {
     const divContainerRef = useRef<HTMLDivElement>(null);
 
     const widthMap: Record<string, string> = {

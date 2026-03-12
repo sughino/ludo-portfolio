@@ -3,14 +3,14 @@
 import styles from './lifeStyle.module.css'
 import { hobbies } from '@/data/hobbies'
 import Carousel from '../../components/carousel'
-import { useIsTouchDevice } from '@/utils/isTouchDevice'
+import { useIsTouch } from '@/contexts/DeviceContext'
 import LifeStyleBento from '../../components/lifeStyleBento'
 import { CarouselCard } from '@/ui/components/carouselCard'
 import TitleAnimation from '@/ui/components/titleAnimation'
 import { FadeIn } from '@/ui/components/fadeIn'
 
 export default function LifeStyle() {
-  const isTouch = useIsTouchDevice()
+  const isTouch = useIsTouch()
 
   return (
     <section className="noSpacing">

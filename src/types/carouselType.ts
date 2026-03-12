@@ -7,5 +7,4 @@ export interface CarouselType {
     height: number;
     variant?: string;
     color? : string;
-    role?: 'Development only' | 'Full build' | 'Design';
 }

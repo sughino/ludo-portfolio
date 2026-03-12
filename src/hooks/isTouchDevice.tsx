@@ -5,9 +5,7 @@ export function useIsTouchDevice() {
 
   useEffect(() => {
     const mq = window.matchMedia('(hover: none), (pointer: coarse)')
-
     const update = () => setIsTouch(mq.matches)
-
     update()
     mq.addEventListener('change', update)
 
