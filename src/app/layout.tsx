@@ -19,11 +19,11 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${dirtyline.variable} ${cascadia.variable} antialiased`}
       >
-        <DeviceProvider>
           <SmoothScroll>
-            {children}
+            <DeviceProvider>
+              {children}
+            </DeviceProvider>
           </SmoothScroll>
-        </DeviceProvider>
       </body>
     </html>
   );
