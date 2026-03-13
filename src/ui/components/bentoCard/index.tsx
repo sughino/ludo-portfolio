@@ -13,6 +13,7 @@ export function Card ({
         <div 
             className={styles.cardContainer}
             data-variant={color}
+            {...(color === "red" && { "data-cursor-blend": true })}
         >
             <Chip
                 content={level}
@@ -21,7 +22,7 @@ export function Card ({
             />
             <div className={styles.textContainer}>
                 <h3>{title}</h3>
-                <p>{description}</p>
+                <p data-cursor="text">{description}</p>
             </div>
         </div>
     )
@@ -41,18 +42,18 @@ export function BlueprintCard () {
             <div className={styles.blueprintLine3} />
             <div className={styles.blueprintLine4} />
             {/*text for info*/}
-            <p className={`${styles.info1} ${styles.blueprintInfo}`}>40px</p>
-            <p className={styles.blueprintTitle}>
+            <p data-cursor="text" className={`${styles.info1} ${styles.blueprintInfo}`}>40px</p>
+            <p data-cursor="text" className={styles.blueprintTitle}>
                 what is lorem ipsum?
             </p>
             <div className={styles.blueprintLine5} />
 
             <div className="h-[8.5px]" />
-            <p className={`${styles.info2} ${styles.blueprintInfo}`}>32px</p>
+            <p data-cursor="text" className={`${styles.info2} ${styles.blueprintInfo}`}>32px</p>
             <div className="h-[8.5px]" />
 
             <div className={styles.blueprintLine6} />
-            <p className={styles.bluePrintContent}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <p data-cursor="text" className={styles.bluePrintContent}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
         </div>
     )
 }
@@ -67,7 +68,7 @@ export function CodeCard () {
             </div>
             <div className="h-(--spacing-gap-8)" />
             <div className={styles.codeTextContainer}>
-                <p className={styles.code}>
+                <p data-cursor="text" className={styles.code}>
                     PS C:\\Project&gt; <span className="text-[#ED8B00]">npm</span> run dev<br />
                     &gt; client@0.0.0 dev<br />
                     &gt; vite<br />

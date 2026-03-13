@@ -1,0 +1,107 @@
+.cursor {
+    --color-cursor: var(--color-red);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    will-change: left, top;
+    opacity: 1;
+    transition: opacity 0.2s var(--transition-beizer);
+}
+.cursor.blend {
+    --color-cursor: var(--color-black) !important;
+}
+
+/* default */
+.cursor svg {
+    transition: transform 0.2s var(--transition-beizer);
+    display: block;
+    overflow: visible;
+}
+.dot {
+    transform-origin: center;
+    transition: transform 0.2s var(--transition-beizer);
+    fill: var(--color-cursor);
+}
+
+/* hover & click */
+.cursor.hover .dot {
+    transform: scale(5);
+}
+.cursor.clicking svg {
+    transform: scale(0.65);
+}
+
+/* text */
+.text {
+    display: none; 
+}
+.line {
+    fill: var(--color-cursor);
+    width: 4px;
+    height: 20px;
+}
+.cursor.textActive .default {
+    display: none;
+}
+.cursor.textActive .text {
+    display: block;
+}
+
+/* arrow */
+.arrow {
+    display: none;
+}
+.arrowPath {
+    transform-origin: center;
+    stroke: var(--color-cursor);
+    fill: none;
+    stroke-width: 50;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+.arrowRightActive .arrowPath {
+    transform: scaleX(-1);
+}
+.cursor.arrowLeftActive .default {
+    display: none;
+}
+.cursor.arrowLeftActive .arrow {
+    display: block;
+}
+.cursor.arrowRightActive .default {
+    display: none;
+}
+.cursor.arrowRightActive .arrow {
+    display: block;
+}
+
+/* label */
+.label {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-cursor);
+    color: var(--color-white);
+    font-size: var(--h6-size);
+    font-family: inherit;
+    font-weight: var(--font-bold);
+    padding: 10px 20px;
+    border-radius: 40px;
+    letter-spacing: 0.03em;
+    transition: opacity 0.15s var(--transition-beizer);
+}
+.cursor.labelActive .default {
+    display: none;
+}
+.cursor.labelActive .label {
+    display: flex;
+}
+
+/* other */
+:global(body.customCursorActive),
+:global(body.customCursorActive *) {
+    cursor: none !important;
+}

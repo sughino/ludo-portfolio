@@ -4,7 +4,7 @@ import LogoAnimation from '../../components/logoAnimation';
 
 export default function Footer () {
     return (
-        <footer>
+        <footer data-cursor-blend>
             <div className="h-(--spacing-padding-50)" />
             
             <div className={styles.footerContainer}>
@@ -14,22 +14,22 @@ export default function Footer () {
                 </div>
                 <div className={styles.contactContainer}>
                     <div className={styles.contact}>
-                        <p className={styles.contactTitle}>Phone number</p>
-                        <p className={styles.contactContent}>+39 333 955 3916</p>
+                        <p data-cursor="text" className={styles.contactTitle}>Phone number</p>
+                        <p data-cursor="text" className={styles.contactContent}>+39 333 955 3916</p>
                     </div>
                     <div className={styles.contact}>
-                        <p className={styles.contactTitle}>Email</p>
-                        <p className={styles.contactContent}>ludograsso08@gmail.com</p>
+                        <p data-cursor="text" className={styles.contactTitle}>Email</p>
+                        <p data-cursor="text" className={styles.contactContent}>ludograsso08@gmail.com</p>
                     </div>
                     <div className={styles.contact}>
-                        <p className={styles.contactTitle}>Quick links</p>
+                        <p data-cursor="text" className={styles.contactTitle}>Quick links</p>
                         <div className={styles.contactContainer}>
                             <div className={styles.linksContainer}>
-                                <p className={styles.contactContent}>Github</p>
+                                <p data-cursor="text" className={styles.contactContent}>Github</p>
                                 <ExternalLink />
                             </div>
                             <div className={styles.linksContainer}>
-                                <p className={styles.contactContent}>Linkedin</p>
+                                <p data-cursor="text" className={styles.contactContent}>Linkedin</p>
                                 <ExternalLink />
                             </div>
                         </div>

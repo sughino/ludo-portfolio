@@ -129,7 +129,7 @@ export default function Work() {
             </FadeIn>
             <div className="h-(--spacing-80)" />
             <div className={styles.paddingContainer}>
-                <p>{work.longDescription}</p>
+                <p data-cursor="text">{work.longDescription}</p>
 
                 <div className="h-(--spacing-160)" />
                 <div className={styles.mainContentContainer}>
@@ -144,7 +144,7 @@ export default function Work() {
                             return (
                                 <FadeIn key={category} width='grow'>
                                     <div className={styles.techStackInnerContainer}>
-                                        <p className={styles.littleTitle}>
+                                        <p data-cursor="text" className={styles.littleTitle}>
                                             {categoryMap[category]}:
                                         </p>
 
@@ -154,14 +154,22 @@ export default function Work() {
                                             if (!logo) return null;
 
                                             return (
-                                                <Image
-                                                key={id}
-                                                src={logo.src}
-                                                alt={logo.alt}
-                                                width={logo.width}
-                                                height={logo.height}
-                                                className={styles.techStackIcon}
-                                                />
+                                                <a
+                                                    key={id}  
+                                                    href={logo.href ?? '#'}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label={`Go to ${logo.alt} site`}
+                                                    data-cursor="hover"  
+                                                >
+                                                    <Image
+                                                        src={logo.src}
+                                                        alt={logo.alt}
+                                                        width={logo.width}
+                                                        height={logo.height}
+                                                        className={styles.techStackIcon}
+                                                    />
+                                                </a>
                                             );
                                             })}
                                         </div>
@@ -181,8 +189,8 @@ export default function Work() {
                         {Object.entries(work.keyFeatures).map(([title, description]) => (
                             <FadeIn key={title}>
                                 <div className={styles.keyFeaturesInnerContainer}>
-                                    <p className={styles.littleTitle}>{title}</p>
-                                    <p>{description}</p>
+                                    <p data-cursor="text" className={styles.littleTitle}>{title}</p>
+                                    <p data-cursor="text">{description}</p>
                                 </div>
                             </FadeIn>
                         ))}

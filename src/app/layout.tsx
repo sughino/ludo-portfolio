@@ -3,6 +3,7 @@ import "./globals.css";
 import { cascadia, dirtyline, montserrat } from "../fonts/font";
 import SmoothScroll from "../contexts/ScrollSmoth";
 import { DeviceProvider } from '@/contexts/DeviceContext'
+import CursorInit from "@/utils/customCursor/initCursor";
 
 export const metadata: Metadata = {
   title: "Ludo portfolio",
@@ -21,6 +22,7 @@ export default function RootLayout({
       >
           <SmoothScroll>
             <DeviceProvider>
+              <CursorInit />
               {children}
             </DeviceProvider>
           </SmoothScroll>

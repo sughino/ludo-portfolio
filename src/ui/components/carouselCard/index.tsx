@@ -56,7 +56,7 @@ export function CarouselCard (
                     //TODO sistema carosello per telefono (quando arrivo al carosello e voglio andare sotto si blocca)
                 )}
                 <h3>{title}</h3>
-                <p>{description}</p>
+                <p data-cursor="text">{description}</p>
             </div>
         </div>
     )
@@ -96,9 +96,9 @@ export function CarouselImage (
             <div className={styles.imgWrapper}>
                 {!isTouch && (
                     <div className={styles.carouselButtonContainer}>
-                        <button className={styles.carouselButton} data-size={index === 0 ? '0' : '1'} onClick={onPrev}/>
-                        <button className={styles.carouselButton} data-size={'2'} onClick={onOpen}/>
-                        <button className={styles.carouselButton} data-size={index === totalImages - 1 ? '0' : '1'} onClick={onNext}/>
+                        <button className={styles.carouselButton} data-size={index === 0 ? '0' : '1'} onClick={onPrev} data-cursor="arrowLeft"/>
+                        <button className={styles.carouselButton} data-size={'2'} onClick={onOpen} data-cursor="label" data-label="Toggle gui"/>
+                        <button className={styles.carouselButton} data-size={index === totalImages - 1 ? '0' : '1'} onClick={onNext} data-cursor="arrowRight"/>
                     </div>
                 )}
                 {isMainImg && (

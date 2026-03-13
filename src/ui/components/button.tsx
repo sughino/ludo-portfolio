@@ -30,6 +30,7 @@ export default function Button({
   return (
     <button
       className={`${widthClass} ${bgColorClass} ${className}`}
+      data-cursor="hover"
       onClick={(e) => {
         e.stopPropagation()
         onClick?.()

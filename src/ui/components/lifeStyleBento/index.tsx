@@ -28,7 +28,7 @@ export default function LifeStyleBento({ data }: Props) {
 
             <div className={styles.lifeStyleContentContainer}>
               <h3>{hobby.title}</h3>
-              <p>{hobby.description}</p>
+              <p data-cursor="text">{hobby.description}</p>
             </div>
           </div>
         </FadeIn>

@@ -30,7 +30,7 @@ export default function About () {
 
             <div className="h-(--spacing-gap-16)" />
 
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+            <p data-cursor="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
 
             <div className="h-(--spacing-gap-40)" />
 
@@ -41,7 +41,7 @@ export default function About () {
                             <h3>{study.title}</h3>
                             <div className={styles.studyContentContainer}>
                                 <h6>{study.date}</h6>
-                                <p className={styles.studySchool}>{study.school}</p>
+                                <p data-cursor="text" className={styles.studySchool}>{study.school}</p>
                             </div>
                         </div> 
                     </FadeIn>

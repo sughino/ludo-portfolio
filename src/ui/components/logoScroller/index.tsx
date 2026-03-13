@@ -113,12 +113,16 @@ export function LogoScroller() {
       <div ref={scrollerRef} className={styles.scrollerInner}>
         <div className={styles.track}>
           {[...skillLogos, ...skillLogos].map((d, i) => (
-            <div
+            <a
               key={i}
+              href={d.href ?? '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Go to ${d.alt} site`}
+              data-cursor="hover"
               className={styles.logoItemWrapper}
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {
-                  scale: 1.1,
                   filter: 'brightness(0.8)',
                   duration: 0.5,
                   ease: 'power2.out'
@@ -126,7 +130,6 @@ export function LogoScroller() {
               }}
               onMouseLeave={(e) => {
                 gsap.to(e.currentTarget, {
-                  scale: 1,
                   filter: 'brightness(1)',
                   duration: 0.5,
                   ease: 'power2.out'
@@ -140,7 +143,7 @@ export function LogoScroller() {
                 height={d.height}
                 className={styles.logoItem}
               />
-            </div>
+            </a>
           ))}
         </div>
       </div>
