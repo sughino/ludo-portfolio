@@ -89,12 +89,26 @@
     flex-wrap: wrap;
 }
 .cardTitleContainer h3 {
-    width: min-content;
+    width: fit-content;
+}
+
+.line {
+    display: none;
+    font-size: var(--h3-size);
+    height: 1em;
+    width: 3px;
+    background: var(--color-black);
 }
 
 @media (width >= 48rem) {
     .cardTitleContainer {
         gap: var(--spacing-gap-32);
         flex-wrap: nowrap;
+    }
+    .line {
+        display: block;
+    }
+    .cardTitleContainer h3 {
+        width: min-content;
     }
 }

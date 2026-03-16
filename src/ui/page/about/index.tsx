@@ -3,6 +3,7 @@ import styles from './about.module.css'
 import { studies } from '@/data/studies'
 import TitleAnimation from '@/ui/components/titleAnimation'
 import { FadeIn } from '@/ui/components/fadeIn'
+import { about } from '@/data/about'
 
 export default function About () {
     return (
@@ -28,10 +29,21 @@ export default function About () {
                 </div>
             </FadeIn>
 
-            <div className="h-(--spacing-gap-16)" />
+            <div className="h-(--spacing-gap-40)" />
 
-            <p data-cursor="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+            <div className={styles.aboutContainer}>
+                {about.map((a, i) => (
+                    <FadeIn key={i}>
+                        <div className={styles.aboutInnerContainer}>
+                            <p data-cursor="text" className="littleTitle">{a.title}</p>
+                            <p data-cursor="text">{a.description}</p>
+                        </div>
+                    </FadeIn>
+                ))}
+            </div>
 
+            <div className="h-(--spacing-gap-40)" />
+            <div className={styles.line}/>
             <div className="h-(--spacing-gap-40)" />
 
             <div className={styles.studiesContainer}>

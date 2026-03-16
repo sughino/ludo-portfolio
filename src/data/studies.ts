@@ -1,4 +1,8 @@
-import type { Study } from "@/types/study";
+interface Study {
+    title: string;
+    school: string;
+    date: string;
+}
 
 export const studies: Study[] = [
     {

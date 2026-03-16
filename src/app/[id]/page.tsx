@@ -15,6 +15,7 @@ import { useRef, useState } from 'react'
 import { FadeIn } from '@/ui/components/fadeIn'
 import gsap from 'gsap'
 import { useRouter } from "next/navigation";
+import Chip from '@/ui/components/chip'
 
 export default function Work() {
     const params = useParams();
@@ -38,6 +39,7 @@ export default function Work() {
         design: 'Design'
     }
 
+    //TODO sistema immagini
     //TODO sistema animazione iniziale per device
     //TODO sistema il fatto che quando apri da telefono ti fa vedere prima la visualizzazione del pc
     //TODO aggiungi il grab e il goBack anche per il device
@@ -68,14 +70,16 @@ export default function Work() {
             {isTouch && (
                 <>
                     {titleWords.map((word, i) => (
-                        <TitleAnimation 
-                            key={i} 
-                            delay={titleWords.length > 1 && i === 0 ? .5 : 0}
-                        >
-                            <h2 className={styles.workTitleDevice} data-animate="title">
-                                {word}
-                            </h2>
-                        </TitleAnimation>
+                        <div key={i} className={styles.deviceTitleContainer}>
+                            <TitleAnimation 
+                                delay={titleWords.length > 1 && i === 0 ? .5 : 0}
+                            >
+                                <h2 className={styles.workTitleDevice} data-animate="title">
+                                    {word}
+                                </h2>
+                            </TitleAnimation>
+                            <Chip content={work.role}/>
+                        </div>
                     ))}
                     <div className="h-(--spacing-40)" />
                     <div className={styles.grabBar}/>
@@ -160,7 +164,8 @@ export default function Work() {
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     aria-label={`Go to ${logo.alt} site`}
-                                                    data-cursor="hover"  
+                                                    data-cursor="hover" 
+                                                    className={styles.logoLink}
                                                 >
                                                     <Image
                                                         src={logo.src}
@@ -189,7 +194,7 @@ export default function Work() {
                         {Object.entries(work.keyFeatures).map(([title, description]) => (
                             <FadeIn key={title}>
                                 <div className={styles.keyFeaturesInnerContainer}>
-                                    <p data-cursor="text" className={styles.littleTitle}>{title}</p>
+                                    <p data-cursor="text" className="littleTitle">{title}</p>
                                     <p data-cursor="text">{description}</p>
                                 </div>
                             </FadeIn>
@@ -206,5 +211,3 @@ export default function Work() {
         </section>
     )
 }
-//TODO la card per il carosello avrà per mobile solo l'immagine, per quanto riguarda il pc ma gari delle frecce laterali?
-//TODO magari quando andiamo hover sarebbe figo in modo da non dare fastidio con l'ui, oppure il cursore si forma in modo da diventare una freccia

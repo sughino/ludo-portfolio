@@ -4,6 +4,7 @@ import { cascadia, dirtyline, montserrat } from "../fonts/font";
 import SmoothScroll from "../contexts/ScrollSmoth";
 import { DeviceProvider } from '@/contexts/DeviceContext'
 import CursorInit from "@/utils/customCursor/initCursor";
+import PrintCVInterceptor from "@/utils/printCV/interceptor";
 
 export const metadata: Metadata = {
   title: "Ludo portfolio",
@@ -26,6 +27,7 @@ export default function RootLayout({
               {children}
             </DeviceProvider>
           </SmoothScroll>
+          <PrintCVInterceptor/>
       </body>
     </html>
   );

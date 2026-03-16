@@ -21,15 +21,6 @@
     border: 2px solid var(--color-black);
 }
 
-.cardContainer[data-variant="red"] .chip {
-    background: var(--color-white-30);
-    color: var(--color-white);
-}
-.cardContainer[data-variant="white"] .chip {
-    background: var(--color-red-30);
-    color: var(--color-gray);
-}
-
 .textContainer {
     display: flex;
     flex-direction: column;

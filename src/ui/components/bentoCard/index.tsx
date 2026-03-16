@@ -5,7 +5,7 @@ import Chip from '../chip';
 
 export function Card ({
     level,
-    color,
+    color = "red",
     title,
     description
 } : Skill) {
@@ -17,7 +17,6 @@ export function Card ({
         >
             <Chip
                 content={level}
-                className={styles.chip}
                 variant={color}
             />
             <div className={styles.textContainer}>

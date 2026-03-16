@@ -31,7 +31,10 @@ export function CarouselCard (
             className={styles.carouselCard}
             data-variant={variant}
         >
-            <div className={styles.imgWrapper}>
+            <div 
+                className={styles.imgWrapper}
+                data-device={isTouch && role && id && 'device'}
+            >
                 <div className={styles.imgShadowBg} data-variant={'main'}/>
                 <div 
                     className={styles.imgColorBg}
@@ -56,6 +59,7 @@ export function CarouselCard (
                     //TODO sistema carosello per telefono (quando arrivo al carosello e voglio andare sotto si blocca)
                 )}
                 <h3>{title}</h3>
+                <div className={styles.line}/>
                 <p data-cursor="text">{description}</p>
             </div>
         </div>

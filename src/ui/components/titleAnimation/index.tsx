@@ -12,13 +12,15 @@ type Props = {
   delay?: number;
   position?: string;
   reverse?: boolean;
+  duration?: number;
 }
 
 export default function TitleAnimation({ 
     children, 
     delay = 0,
     position,
-    reverse = false
+    reverse = false,
+    duration = .8
 }: Props) {
   const titleContainerRef = useRef<HTMLDivElement>(null);
 
@@ -31,7 +33,7 @@ export default function TitleAnimation({
       { bottom: reverse ? 0 : -180 },
       {
         bottom: reverse ? -180 : 0,
-        duration: 1.2,
+        duration: duration,
         ease: "power4.out",
         delay: delay,
         scrollTrigger: {
