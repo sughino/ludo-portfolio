@@ -104,7 +104,7 @@ export const works: WorkType[] = [
     color: 'light-red',
     role: 'Full build',
     longDescription: 'Mente Corpo is a minimal showcase website developed for a professional psychologist. The project focuses on creating a calm and welcoming online presence, with a clean design that reflects the nature of the profession. The website presents information about the services offered, professional background, and contact details in a clear and accessible way. Particular attention was given to performance and search engine visibility by implementing caching strategies and proper SEO configurations such as robots.txt and structured metadata.',
-    images: ['/works/mentecorpo/main.webp', '/works/mentecorpo/1.webp', '/works/mentecorpo/2.webp', '/works/mentecorpo/3.webp', '/works/mentecorpo/4.webp', '/works/mentecorpo/5.webp', '/works/mentecorpo/6.webp', '/works/mentecorpo/7.webp', '/works/mentecorpo/8.webp'],
+    images: ['/works/mentecorpo/main.webp', '/works/mentecorpo/1.webp', '/works/mentecorpo/2.webp', '/works/mentecorpo/3.webp', '/works/mentecorpo/4.webp', '/works/mentecorpo/5.webp', '/works/mentecorpo/6.webp', '/works/mentecorpo/7.webp'],
     techStack: {
       frontEnd: ['html', 'javascript', 'css'],
       design: ['illustrator'],
