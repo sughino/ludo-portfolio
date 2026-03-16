@@ -5,13 +5,10 @@
     flex-direction: column;
     gap: var(--spacing-gap-32);
     height: fit-content;
+    max-height: calc(100dvh - (var(--spacing-padding-50) * 2));
     transition: transform .2s var(--transition-beizer);
 }
-@media (width >= 48rem) {
-    .carouselCard {
-        height: calc(100dvh - (var(--spacing-padding-50) * 2));
-    }
-}
+
 .carouselCard[data-variant="not-selected"] {
     transform: scale(.9);
 }
@@ -43,6 +40,7 @@
 }
 
 .imgWrapper {
+    font-size: var(--h3-size);
     width: 100%;
     height: auto;
     position: relative;

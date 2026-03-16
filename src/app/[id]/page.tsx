@@ -39,7 +39,6 @@ export default function Work() {
         design: 'Design'
     }
 
-    //TODO sistema immagini
     //TODO sistema animazione iniziale per device
     //TODO sistema il fatto che quando apri da telefono ti fa vedere prima la visualizzazione del pc
     //TODO aggiungi il grab e il goBack anche per il device

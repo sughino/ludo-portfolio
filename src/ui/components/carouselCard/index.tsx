@@ -47,6 +47,7 @@ export function CarouselCard (
                     width={width}
                     height={height}
                     draggable={false}
+                    data-variant={'scroll'}
                 />
                 {!isTouch && role && id && (
                     <ActionBadge info={role} onClick={() => onClick?.(id)}/>

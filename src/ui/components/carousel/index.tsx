@@ -3,7 +3,7 @@
 import styles from './carousel.module.css';
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-//TODO togliere dragging per desktop
+
 export default function Carousel<T>({
     data,
     renderItem,
