@@ -5,7 +5,6 @@
     flex-direction: column;
     gap: var(--spacing-gap-32);
     height: fit-content;
-    max-height: calc(100dvh - (var(--spacing-padding-50) * 2));
     transition: transform .2s var(--transition-beizer);
 }
 

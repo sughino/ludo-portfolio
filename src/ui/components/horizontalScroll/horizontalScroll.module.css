@@ -3,5 +3,8 @@
     padding-inline: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
     gap: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
     will-change: transform;
-    padding-top: var(--spacing-40);
+    /* padding-top: var(--spacing-40); */
+    align-items: start;
+    height: 100dvh;
+    padding-block: var(--spacing-40);
 }
