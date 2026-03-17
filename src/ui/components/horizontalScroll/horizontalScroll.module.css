@@ -7,4 +7,5 @@
     align-items: start;
     height: 100dvh;
     padding-block: var(--spacing-40);
+    outline: solid 2px green;
 }

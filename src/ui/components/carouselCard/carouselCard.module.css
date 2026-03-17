@@ -6,6 +6,7 @@
     gap: var(--spacing-gap-32);
     height: fit-content;
     transition: transform .2s var(--transition-beizer);
+    outline: solid 2px blue;
 }
 
 .carouselCard[data-variant="not-selected"] {
