@@ -66,6 +66,7 @@
 
 .carouselImg {
     width: 100%;
+    max-height: calc(100dvh - var(--spacing-40) * 2 - 6rem);
     object-fit: cover;
     z-index: 2;
     position: relative;
