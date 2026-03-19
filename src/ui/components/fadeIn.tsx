@@ -10,10 +10,11 @@ type FadeInProps = {
     children: ReactNode;
     width?: 'grow' | 'fit' | 'full',
     duration?: number;
+    animationStart?: string;
     onComplete?: () => void;
 }
 
-export const FadeIn = ({ children, width, duration = 1, onComplete } : FadeInProps) => {
+export const FadeIn = ({ children, width, duration = 1, animationStart = "70", onComplete } : FadeInProps) => {
     const divContainerRef = useRef<HTMLDivElement>(null);
 
     const widthMap: Record<string, string> = {
@@ -41,7 +42,7 @@ export const FadeIn = ({ children, width, duration = 1, onComplete } : FadeInPro
                 onComplete,
                 scrollTrigger: {
                     trigger: divContainerRef.current,
-                    start: "top 80%",
+                    start: `top ${animationStart}%`,
                     once: true
                 }
             }
@@ -49,7 +50,7 @@ export const FadeIn = ({ children, width, duration = 1, onComplete } : FadeInPro
     }, [duration]);
 
     return (
-        <div ref={divContainerRef} className={width && widthMap[width]}>
+        <div ref={divContainerRef} className={width && widthMap[width]} style={{ opacity: 0 }}>
             {children}
         </div>
     )

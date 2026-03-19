@@ -6,6 +6,14 @@
     gap: var(--spacing-gap-32);
     transition: transform .2s var(--transition-beizer);
 }
+.carouselCard[data-card="carousel"] {
+    .imgWrapper {
+        max-height: calc(100dvh - var(--spacing-40) * 2 - 6rem);
+    }
+    .carouselImg {
+        max-height: calc(100dvh - var(--spacing-40) * 2 - 6rem);
+    }
+}
 
 .carouselCard[data-variant="not-selected"] {
     transform: scale(.9);
@@ -40,7 +48,6 @@
 .imgWrapper {
     font-size: var(--h3-size);
     width: 100%;
-    max-height: calc(100dvh - var(--spacing-40) * 2 - 6rem);
     position: relative;
     border-radius: var(--radius-variable);
     box-shadow: inset var(--shadow);
@@ -66,7 +73,6 @@
 
 .carouselImg {
     width: 100%;
-    max-height: calc(100dvh - var(--spacing-40) * 2 - 6rem);
     object-fit: cover;
     z-index: 2;
     position: relative;

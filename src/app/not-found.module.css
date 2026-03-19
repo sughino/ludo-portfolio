@@ -1,3 +1,9 @@
+.fullPageLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .mainContainer {
     display: flex;
     flex-direction: column;
@@ -10,16 +16,18 @@
     top: 25%;
 }
 
+.bottomBarContianer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: var(--spacing-padding-50);
+}
 .bottomBar {
     width: fit-content;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: var(--spacing-gap-32);
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: var(--spacing-padding-50);
 }
 
 .coloredSpan {

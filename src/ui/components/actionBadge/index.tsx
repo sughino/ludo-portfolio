@@ -31,26 +31,26 @@ export default function ActionBadge ({
         gsap.fromTo(
             el,
             {
-            y: hidden ? 0 : 15,
-            opacity: hidden ? 1 : 0,
-            scale: hidden ? 1 : 0.9,
+                y: hidden ? 0 : 15,
+                opacity: hidden ? 1 : 0,
+                scale: hidden ? 1 : 0.9,
             },
             {
-            y: hidden ? 15 : 0,
-            opacity: hidden ? 0 : 1,
-            scale: hidden ? 0.9 : 1,
-            duration: 0.5,
-            ease: "power4.out",
-            onStart: () => {
-                if (!hidden) {
-                gsap.set(el, { display: "flex" });
+                y: hidden ? 15 : 0,
+                opacity: hidden ? 0 : 1,
+                scale: hidden ? 0.9 : 1,
+                duration: 0.5,
+                ease: "power4.out",
+                onStart: () => {
+                    if (!hidden) {
+                        gsap.set(el, { display: "flex" });
+                    }
+                },
+                onComplete: () => {
+                    if (hidden) {
+                    gsap.set(el, { display: "none" });
+                    }
                 }
-            },
-            onComplete: () => {
-                if (hidden) {
-                gsap.set(el, { display: "none" });
-                }
-            }
             }
         );
     }, [hidden]);

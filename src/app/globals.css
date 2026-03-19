@@ -121,7 +121,10 @@
     padding-inline: 20px;
     padding-block: 10px;
     border-radius: var(--radius-50);
-    cursor: pointer;
+    outline: none;
+  }
+  button:active {
+    outline: none;
   }
 
   /*typography*/

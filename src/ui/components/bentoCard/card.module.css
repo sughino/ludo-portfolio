@@ -40,8 +40,8 @@ p.blueprintInfo {
 }
 .blueprintContainer {
     position: relative;
-    padding: var(--spacing-padding-radius);
-    border-radius: var(--spacing-padding-radius);
+    padding: var(--radius-variable);
+    border-radius: var(--radius-variable);
     background: var(--color-black);
     color: var(--color-white);
     max-height: 22.5rem;

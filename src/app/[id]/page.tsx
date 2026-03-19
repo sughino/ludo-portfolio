@@ -1,6 +1,6 @@
 'use client'
 
-import { useParams } from 'next/navigation'
+import { useParams, useRouter, notFound } from 'next/navigation'
 import Footer from '@/ui/page/footer'
 import styles from './workPage.module.css'
 import Carousel from '@/ui/components/carousel'
@@ -14,7 +14,6 @@ import TitleAnimation from '@/ui/components/titleAnimation'
 import { useRef, useState } from 'react'
 import { FadeIn } from '@/ui/components/fadeIn'
 import gsap from 'gsap'
-import { useRouter } from "next/navigation";
 import Chip from '@/ui/components/chip'
 
 export default function Work() {
@@ -29,7 +28,7 @@ export default function Work() {
     const [isActionBarHidden, setIsActionBarHidden] = useState(false);
 
     const work = works.find(item => item.id === id);
-    if (!work) return
+    if (!work) notFound();
 
     const titleWords = work.title.split(" ");
     const categoryMap: Record<string, string> = {
@@ -65,21 +64,24 @@ export default function Work() {
         }, "-=0.1")
     }
     return (
-        <section ref={sectionRef} className={styles.workSection} data-device={isTouch && 'device'}> 
+        <section ref={sectionRef} className={styles.workSection} data-device={isTouch && 'device'}>
             {isTouch && (
                 <>
-                    {titleWords.map((word, i) => (
-                        <div key={i} className={styles.deviceTitleContainer}>
-                            <TitleAnimation 
-                                delay={titleWords.length > 1 && i === 0 ? .5 : 0}
-                            >
-                                <h2 className={styles.workTitleDevice} data-animate="title">
-                                    {word}
-                                </h2>
-                            </TitleAnimation>
-                            <Chip content={work.role}/>
+                    <div className={styles.deviceTopContainer}>
+                        <div className={styles.deviceTitleContainer}>
+                            {titleWords.map((word, i) => (
+                                <TitleAnimation
+                                    key={i}
+                                    delay={titleWords.length > 1 && i === 0 ? .5 : 0}
+                                >
+                                    <h2 className={styles.workTitleDevice} data-animate="title">
+                                        {word}
+                                    </h2>
+                                </TitleAnimation>
+                            ))}
                         </div>
-                    ))}
+                        <Chip content={work.role}/>
+                    </div>
                     <div className="h-(--spacing-40)" />
                     <div className={styles.grabBar}/>
                 </>
@@ -201,7 +203,11 @@ export default function Work() {
                     </div>
                 </div>
 
-                <div className="h-(--spacing-160)" />
+                {isTouch ? (
+                    <div className="h-(--spacing-40)" />
+                ) : (
+                    <div className="h-(--spacing-160)" />
+                )}
             </div>
 
             {!isTouch && (

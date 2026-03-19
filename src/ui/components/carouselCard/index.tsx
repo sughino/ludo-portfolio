@@ -30,6 +30,7 @@ export function CarouselCard (
         <div 
             className={styles.carouselCard}
             data-variant={variant}
+            data-card={"carousel"}
         >
             <div 
                 className={styles.imgWrapper}
