@@ -24,6 +24,7 @@
     overflow: visible;
     white-space: nowrap;
     display: block;
+    flex: 1;
 }
 .lifeStyleContentContainer h3 {
     min-width: max-content;
@@ -33,7 +34,7 @@
 }
 
 .holderImg {
-    flex-basis: 200%;
+    flex: 2;
     border-radius: var(--radius-variable);
     overflow: hidden;
 }

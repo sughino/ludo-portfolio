@@ -14,7 +14,35 @@
     --color-cursor: var(--color-black) !important;
 }
 
-/* default */
+/* all */
+.default,
+.text,
+.arrow,
+.label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s var(--transition-beizer);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.cursor:not(.textActive):not(.arrowLeftActive):not(.arrowRightActive):not(.labelActive):not(.imageActive):not(.hover) .default {
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0 !important;
+}
+
+/* hover */
+.cursor.hover .default {
+    opacity: 1;
+}
+
+/* svg base */
 .cursor svg {
     transition: transform 0.2s var(--transition-beizer);
     display: block;
@@ -35,25 +63,16 @@
 }
 
 /* text */
-.text {
-    display: none; 
-}
 .line {
     fill: var(--color-cursor);
     width: 4px;
     height: 20px;
 }
-.cursor.textActive .default {
-    display: none;
-}
 .cursor.textActive .text {
-    display: block;
+    opacity: 1;
 }
 
 /* arrow */
-.arrow {
-    display: none;
-}
 .arrowPath {
     transform-origin: center;
     stroke: var(--color-cursor);
@@ -62,25 +81,17 @@
     stroke-linejoin: round;
     stroke-linecap: round;
 }
-.arrowRightActive .arrowPath {
+.cursor.arrowRightActive .arrowPath {
     transform: scaleX(-1);
 }
-.cursor.arrowLeftActive .default {
-    display: none;
-}
-.cursor.arrowLeftActive .arrow {
-    display: block;
-}
-.cursor.arrowRightActive .default {
-    display: none;
-}
+.cursor.arrowLeftActive .arrow,
 .cursor.arrowRightActive .arrow {
-    display: block;
+    opacity: 1;
 }
 
 /* label */
 .label {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     background: var(--color-cursor);
@@ -91,16 +102,36 @@
     padding: 10px 20px;
     border-radius: 40px;
     letter-spacing: 0.03em;
-    transition: opacity 0.15s var(--transition-beizer);
-}
-.cursor.labelActive .default {
-    display: none;
 }
 .cursor.labelActive .label {
-    display: flex;
+    opacity: 1;
 }
 
-/* other */
+/* image */
+.cursorImageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99998;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s var(--transition-beizer);
+    will-change: left, top;
+    width: 600px !important;
+}
+.cursorImageContainer.visible {
+    opacity: 1;
+}
+.cursorImg {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-variable);
+    display: block;
+}
+
+/* global */
 :global(body.customCursorActive),
 :global(body.customCursorActive *) {
     cursor: none !important;

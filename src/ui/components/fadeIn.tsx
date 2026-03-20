@@ -31,12 +31,14 @@ export const FadeIn = ({ children, width, duration = 1, animationStart = "70", o
             {
                 y: 15,
                 opacity: 0,
-                scale: .9
+                scale: .9,
+                filter: "blur(5px)"
             },
             {
                 y: 0,
                 opacity: 1,
                 scale: 1,
+                filter: "blur(0px)",
                 duration: duration,
                 ease: "power4.out",
                 onComplete,

@@ -30,9 +30,13 @@ export default function TitleAnimation({
 
     gsap.fromTo(
       titles,
-      { bottom: reverse ? 0 : -180 },
+      { 
+        bottom: reverse ? 0 : -180,
+        filter: reverse ? "blur(0px)" : "blur(10px)"
+      },
       {
         bottom: reverse ? -180 : 0,
+        filter: reverse ? "blur(10px)" : "blur(0px)",
         duration: duration,
         ease: "power4.out",
         delay: delay,

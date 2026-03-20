@@ -1,6 +1,6 @@
 import styles from './customCursor.module.css';
 
-type CursorState = 'hover' | 'text' | 'arrowLeft' | 'arrowRight' | 'label' | 'default';
+type CursorState = 'hover' | 'text' | 'arrowLeft' | 'arrowRight' | 'label' | 'default' | 'image';
 
 interface CursorAPI {
   setState: (type: CursorState, labelText?: string) => void;
@@ -9,11 +9,12 @@ interface CursorAPI {
 }
 
 const CURSOR_STATES: Record<Exclude<CursorState, 'default'>, string> = {
-  hover:  styles.hover,
-  text:   styles.textActive,
+  hover:      styles.hover,
+  text:       styles.textActive,
   arrowLeft:  styles.arrowLeftActive,
-  arrowRight:  styles.arrowRightActive,
-  label:  styles.labelActive,
+  arrowRight: styles.arrowRightActive,
+  label:      styles.labelActive,
+  image:      styles.imageActive,
 };
 
 const buildMarkup = (): string => `
@@ -34,36 +35,59 @@ const buildMarkup = (): string => `
       </svg>
     </div>
     <div class="${styles.label}" aria-hidden="true"></div>
+  </div>
+  <div class="${styles.cursorImageContainer}" aria-hidden="true">
+    <img class="${styles.cursorImg}" src="" alt="" />
   </div>`;
 
 export function CustomCursor(): CursorAPI {
   document.body.insertAdjacentHTML('beforeend', buildMarkup());
   document.body.classList.add('customCursorActive');
 
-  const el    = document.body.lastElementChild as HTMLDivElement;
-  const label = el.querySelector<HTMLDivElement>(`.${styles.label}`) as HTMLDivElement;
+  
+  const children = document.body.children;
+  const el           = children[children.length - 2] as HTMLDivElement;
+  const imgContainer = children[children.length - 1] as HTMLDivElement;
+  const label        = el.querySelector<HTMLDivElement>(`.${styles.label}`) as HTMLDivElement;
+  const cursorImg    = imgContainer.querySelector<HTMLImageElement>(`.${styles.cursorImg}`) as HTMLImageElement;
 
   let mx = -300, my = -300;
   let cx = -300, cy = -300;
+  let ix = -300, iy = -300;
   let rafId: number;
 
   const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
-  const SPEED = 0.13;
+  const SPEED       = 0.13;
+  const IMAGE_SPEED = 0.08;
 
   function tick(): void {
     cx = lerp(cx, mx, SPEED);
     cy = lerp(cy, my, SPEED);
     el.style.left = `${cx}px`;
     el.style.top  = `${cy}px`;
+
+    
+    ix = lerp(ix, mx, IMAGE_SPEED);
+    iy = lerp(iy, my, IMAGE_SPEED);
+    imgContainer.style.left = `${ix}px`;
+    imgContainer.style.top  = `${iy}px`;
+
     rafId = requestAnimationFrame(tick);
   }
   rafId = requestAnimationFrame(tick);
 
+  
   const onMouseMove  = (e: MouseEvent): void => { mx = e.clientX; my = e.clientY; };
   const onMouseDown  = (): void => el.classList.add(styles.clicking);
   const onMouseUp    = (): void => el.classList.remove(styles.clicking);
-  const onMouseLeave = (): void => { el.style.opacity = '0'; };
-  const onMouseEnter = (): void => { el.style.opacity = '1'; };
+  const onMouseLeave = (): void => { 
+    el.classList.add(styles.hidden);
+    imgContainer.classList.add(styles.hidden);
+  };
+  const onMouseEnter = (): void => { 
+    el.classList.remove(styles.hidden);
+    imgContainer.classList.remove(styles.hidden);
+  };
 
   document.addEventListener('mousemove',  onMouseMove);
   document.addEventListener('mousedown',  onMouseDown);
@@ -71,19 +95,33 @@ export function CustomCursor(): CursorAPI {
   document.addEventListener('mouseleave', onMouseLeave);
   document.addEventListener('mouseenter', onMouseEnter);
 
+
   function clearStates(): void {
     el.classList.remove(...Object.values(CURSOR_STATES));
+    imgContainer.classList.remove(styles.visible);
   }
 
   function applyState(type: CursorState, labelText?: string): void {
     clearStates();
     if (type === 'default') return;
     el.classList.add(CURSOR_STATES[type]);
+
     if (type === 'label') {
       label.textContent = labelText ?? '';
     }
-  }//TODO quando fai hover sulle immagini di lifestyle mo stra l'immagine come cursore
 
+    if (type === 'image') {
+      const nextSrc = labelText ?? '';
+      const preloader = new Image();
+      preloader.src = nextSrc;
+      preloader.onload = () => {
+          cursorImg.src = nextSrc;
+          imgContainer.style.left = `${mx}px`;
+          imgContainer.style.top  = `${my}px`;
+          imgContainer.classList.add(styles.visible);
+      };
+  }
+  }
 
   const onMouseOver = (e: MouseEvent): void => {
     const target = (e.target as Element).closest<HTMLElement>('[data-cursor]');
@@ -92,28 +130,28 @@ export function CustomCursor(): CursorAPI {
     if (!cursorType) return;
     applyState(cursorType, target.dataset.label);
   };
- 
+
   const onMouseOut = (e: MouseEvent): void => {
     const leaving  = (e.target as Element).closest('[data-cursor]');
     const entering = (e.relatedTarget as Element | null)?.closest('[data-cursor]');
     if (leaving && !entering) clearStates();
   };
- 
+
   document.addEventListener('mouseover', onMouseOver);
   document.addEventListener('mouseout',  onMouseOut);
- 
+
 
   const onMouseOverBlend = (e: MouseEvent): void => {
     const inBlend = !!(e.target as Element).closest('[data-cursor-blend]');
     el.classList.toggle(styles.blend, inBlend);
   };
- 
+
   const onMouseOutBlend = (e: MouseEvent): void => {
     const leaving  = (e.target as Element).closest('[data-cursor-blend]');
     const entering = (e.relatedTarget as Element | null)?.closest('[data-cursor-blend]');
     if (leaving && !entering) el.classList.remove(styles.blend);
   };
- 
+
   document.addEventListener('mouseover', onMouseOverBlend);
   document.addEventListener('mouseout',  onMouseOutBlend);
 
@@ -129,7 +167,10 @@ export function CustomCursor(): CursorAPI {
       document.removeEventListener('mouseenter', onMouseEnter);
       document.removeEventListener('mouseover',  onMouseOver);
       document.removeEventListener('mouseout',   onMouseOut);
+      document.removeEventListener('mouseover',  onMouseOverBlend);
+      document.removeEventListener('mouseout',   onMouseOutBlend);
       el.remove();
+      imgContainer.remove();
       document.body.classList.remove('customCursorActive');
     },
   };
