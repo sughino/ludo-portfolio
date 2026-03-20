@@ -29,9 +29,14 @@ const buildMarkup = (): string => `
         <rect class="${styles.line}" x="0" y="0" width="2" height="20" rx="1"/>
       </svg>
     </div>
-    <div class="${styles.arrow}" aria-hidden="true">
+    <div class="${styles.arrowRight}" aria-hidden="true">
       <svg width="40" height="80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191.53 340.5">
-        <path class="${styles.arrowPath}" d="M170.25,319.22L21.28,170.25,170.25,21.28" />
+        <path class="${styles.arrowRightPath}" d="M170.25,319.22L21.28,170.25,170.25,21.28" />
+      </svg>
+    </div>
+    <div class="${styles.arrowLeft}" aria-hidden="true">
+      <svg width="40" height="80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191.53 340.5">
+        <path class="${styles.arrowLeftPath}" d="M170.25,319.22L21.28,170.25,170.25,21.28" />
       </svg>
     </div>
     <div class="${styles.label}" aria-hidden="true"></div>

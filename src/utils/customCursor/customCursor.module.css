@@ -17,20 +17,23 @@
 /* all */
 .default,
 .text,
-.arrow,
+.arrowLeft,
+.arrowRight,
 .label {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
     opacity: 0;
-    transition: opacity 0.2s var(--transition-beizer);
+    transition: opacity 0.2s var(--transition-beizer),
+                transform 0.2s var(--transition-beizer);
     pointer-events: none;
     white-space: nowrap;
 }
 
 .cursor:not(.textActive):not(.arrowLeftActive):not(.arrowRightActive):not(.labelActive):not(.imageActive):not(.hover) .default {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .hidden {
@@ -40,6 +43,7 @@
 /* hover */
 .cursor.hover .default {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* svg base */
@@ -70,10 +74,11 @@
 }
 .cursor.textActive .text {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* arrow */
-.arrowPath {
+.arrowLeftPath, .arrowRightPath {
     transform-origin: center;
     stroke: var(--color-cursor);
     fill: none;
@@ -81,12 +86,16 @@
     stroke-linejoin: round;
     stroke-linecap: round;
 }
-.cursor.arrowRightActive .arrowPath {
+.arrowRightPath {
     transform: scaleX(-1);
 }
-.cursor.arrowLeftActive .arrow,
-.cursor.arrowRightActive .arrow {
+.cursor.arrowLeftActive .arrowLeft {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+.cursor.arrowRightActive .arrowRight {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* label */
@@ -105,6 +114,10 @@
 }
 .cursor.labelActive .label {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+.cursor.clicking .label {
+    transform: translate(-50%, -50%) scale(0.7);
 }
 
 /* image */
@@ -122,6 +135,7 @@
 }
 .cursorImageContainer.visible {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 .cursorImg {
     width: 100%;

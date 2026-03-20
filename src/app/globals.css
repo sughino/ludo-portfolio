@@ -122,6 +122,10 @@
     padding-block: 10px;
     border-radius: var(--radius-50);
     outline: none;
+    transition: filter .5s var(--transition-beizer);
+  }
+  button:hover {
+    filter: brightness(.8);
   }
   button:active {
     outline: none;
