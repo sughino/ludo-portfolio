@@ -159,7 +159,7 @@
   p {
     font-size: var(--p-size);
     text-wrap: wrap;
-    user-select: all;
+    user-select: text;
   }
   .littleTitle {
     font-weight: var(--font-bold);

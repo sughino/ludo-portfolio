@@ -3,21 +3,26 @@
     padding-top: var(--spacing-padding-50);
     box-shadow: var(--shadow);
     will-change: transform;
+    overscroll-behavior-y: none;
 }
 .workSection[data-device='device'] {
-    padding-top: 50px;
+    padding-top: 0;
 }
 
+.grabBarContainer {
+    height: calc(3px + 50px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .grabBar {
     height: 3px;
     background: var(--color-black-30);
     border-radius: 50px;
     width: 25%;
-    position: absolute;
-    top: 25px;
-    left: 50%;
-    transform: translateX(-50%);
 }
+
 .deviceTopContainer {
     padding-inline: var(--spacing-padding-50);
     display: flex;

@@ -27,8 +27,6 @@ export const metadata: Metadata = {
 };
 
 //TODO cose importanti prima di martedì:
-//TODO almeno la descrizione per la seo
-//TODO goback per i device
 //TODO animazione delle line
 //TODO fixxa il flick dell'animazione quando torni indietro da una pagina progetto
 //TODO questo non è importantissimo ma sarebbe figo attaccare un iframe di figma

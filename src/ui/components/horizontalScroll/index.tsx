@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './horizontalScroll.module.css'
 import { CarouselCard } from '../carouselCard'
 import { useIsTouch } from '@/contexts/DeviceContext'
-import type { CarouselType } from '@/types/carouselType';
+import type { CarouselType } from '@/types/carouselType'
 import { FadeIn } from '../fadeIn'
 
 gsap.registerPlugin(ScrollTrigger)
