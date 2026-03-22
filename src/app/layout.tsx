@@ -8,7 +8,8 @@ import PrintCVInterceptor from "@/utils/printCV/interceptor";
 
 export const metadata: Metadata = {
   title: "Ludo – Web Developer & UX-Focused Portfolio",
-  description: "Web developer focused on design and user experience. I build fast, modern, and visually engaging digital products.",
+  description:
+    "Web developer focused on design and user experience. I build fast, modern, and visually engaging digital products.",
   keywords: [
     "web developer",
     "frontend developer",
@@ -17,12 +18,30 @@ export const metadata: Metadata = {
     "ui design",
     "next.js developer",
   ],
+
   openGraph: {
     title: "Ludo – Web Developer Portfolio",
-    description: "Modern, high-performance digital experiences with strong focus on design and UX.",
-    url: "https://tuosito.com",
+    description:
+      "Modern, high-performance digital experiences with strong focus on design and UX.",
+    url: "https://www.ludo-portfolio.com",
     siteName: "Ludo Portfolio",
     type: "website",
+    images: [
+      {
+        url: "https://www.ludo-portfolio.com/logo.webp",
+        width: 1200,
+        height: 630,
+        alt: "Ludo Portfolio Preview",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Ludo – Web Developer Portfolio",
+    description:
+      "Modern, high-performance digital experiences with strong focus on design and UX.",
+    images: ["https://www.ludo-portfolio.com/logo.webp"],
   },
 };
 
