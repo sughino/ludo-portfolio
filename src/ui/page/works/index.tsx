@@ -46,7 +46,7 @@ export default function Works() {
     <section className="noSpacing">
       <div className="h-(--spacing-160)" />
       <TitleAnimation position={'center'}>
-        <h2 data-animate="title">WoRKs</h2>
+        <h2 data-animate="title" translate="no" className="notranslate">WoRKs</h2>
       </TitleAnimation>
       <div className="h-(--spacing-40)" />
       

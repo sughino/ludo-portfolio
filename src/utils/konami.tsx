@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect } from "react"
-import { triggerPrint } from "../printCV"
+import { triggerPrint } from "./printCV"
 
-export default function KonamiCV() {
+export default function Konami() {
 
   useEffect(() => {
 

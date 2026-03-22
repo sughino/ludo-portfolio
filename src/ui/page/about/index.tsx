@@ -10,7 +10,7 @@ export default function About () {
         <section className="bigSpacing">
             <div className="h-(--spacing-160)" />
             <TitleAnimation position={'center'}>
-                <h2 data-animate="title">AbOUT</h2>
+                <h2 data-animate="title" translate="no" className="notranslate">AbOUT</h2>
             </TitleAnimation>
             <div className="h-(--spacing-80)" />
 

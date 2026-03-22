@@ -18,7 +18,7 @@ export default function Hero() {
         <div className={`${styles.bluePrint} ${styles.bluePrintTopTitle}`}/>
         <div className={`${styles.bluePrint} ${styles.bluePrintBetween}`}/>
         <TitleAnimation delay={.5} duration={1.2}>
-          <h1 className={`${styles.title} ${montserrat.className} antialiased uppercase`} data-animate="title">grasso</h1>
+          <h1 translate="no" className={`${styles.title} ${montserrat.className} antialiased uppercase notranslate`} data-animate="title">grasso</h1>
         </TitleAnimation>
         <TitleAnimation duration={1.2}>
           <h1 className={styles.titleStyled} data-animate="title">LuDOvICo</h1>

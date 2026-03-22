@@ -16,7 +16,7 @@ export default function LifeStyle() {
     <section className="noSpacing">
       <div className="h-(--spacing-160)" />
       <TitleAnimation position={'center'}>
-        <h2 className={styles.title} data-animate="title">LiFeSTYlE</h2>
+        <h2 className={`${styles.title} notranslate`} data-animate="title" translate="no">LiFeSTYlE</h2>
       </TitleAnimation>
       <div className="h-(--spacing-80)" />
 

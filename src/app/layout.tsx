@@ -5,7 +5,7 @@ import SmoothScroll from "../contexts/ScrollSmoth";
 import { DeviceProvider } from '@/contexts/DeviceContext'
 import CursorInit from "@/utils/customCursor/initCursor";
 import PrintCVInterceptor from "@/utils/printInterceptor";
-import KonamiCV from "@/utils/konamiCV";
+import Konami from "@/utils/konami";
 
 export const metadata: Metadata = {
   title: "Ludo – Web Developer & UX-Focused Portfolio",
@@ -71,7 +71,7 @@ export default function RootLayout({
             </DeviceProvider>
           </SmoothScroll>
           <PrintCVInterceptor/>
-          <KonamiCV /> 
+          <Konami /> 
       </body>
     </html>
   );

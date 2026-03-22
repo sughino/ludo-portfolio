@@ -10,7 +10,7 @@ export default function Skills() {
     <section>
       <div className="h-(--spacing-160)" />
       <TitleAnimation position={'center'}>
-        <h2 data-animate="title">SkILLS</h2>
+        <h2 data-animate="title" translate="no" className="notranslate">SkILLS</h2>
       </TitleAnimation>
       <div className="h-(--spacing-80)" />
 
