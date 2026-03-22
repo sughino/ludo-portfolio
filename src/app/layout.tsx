@@ -4,7 +4,8 @@ import { cascadia, dirtyline, montserrat } from "../fonts/font";
 import SmoothScroll from "../contexts/ScrollSmoth";
 import { DeviceProvider } from '@/contexts/DeviceContext'
 import CursorInit from "@/utils/customCursor/initCursor";
-import PrintCVInterceptor from "@/utils/printCV/interceptor";
+import PrintCVInterceptor from "@/utils/printInterceptor";
+import KonamiCV from "@/utils/konamiCV";
 
 export const metadata: Metadata = {
   title: "Ludo – Web Developer & UX-Focused Portfolio",
@@ -46,10 +47,12 @@ export const metadata: Metadata = {
 };
 
 //TODO cose importanti prima di martedì:
+//TODO ottimizza perchè è lento con le animazioni
 //TODO animazione delle line
 //TODO fixxa il flick dell'animazione quando torni indietro da una pagina progetto
 //TODO questo non è importantissimo ma sarebbe figo attaccare un iframe di figma
 //TODO sarebbe figo mettere delle immagini per i key features
+//TODO fai in modo che quando clicchi tasto destro esca personalizzato deve uscire tipo: ricarica ispeziona, stampa, indietro(se ti trovi in una pagina diversa dal main)
 
 export default function RootLayout({
   children,
@@ -68,6 +71,7 @@ export default function RootLayout({
             </DeviceProvider>
           </SmoothScroll>
           <PrintCVInterceptor/>
+          <KonamiCV /> 
       </body>
     </html>
   );

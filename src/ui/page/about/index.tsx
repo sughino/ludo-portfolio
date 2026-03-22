@@ -17,7 +17,7 @@ export default function About () {
             <FadeIn>
                 <div className={styles.photoContainer}>
                     <div className={styles.photo}></div>
-                    <div className={styles.character}>
+                    <div className={styles.character} data-cursor="label" data-label="↑ ↑ ↓ ↓ ← → ← → B A">
                         <Image
                             src={'/about/character.webp'}
                             alt='character'
