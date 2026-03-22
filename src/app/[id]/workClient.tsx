@@ -33,8 +33,6 @@ export default function WorkClient({ work }: { work: WorkType }) {
     }
 
     //TODO sistema animazione iniziale per device
-    //TODO sistema il fatto che quando apri da telefono ti fa vedere prima la visualizzazione del pc
-    //TODO aggiungi il grab e il goBack anche per il device
     //TODO sistema il fatto che quando torni indietro nella pagina non ti fliccka le animazioni non viste
 
     const grabBarRef = useRef<HTMLDivElement>(null);
@@ -127,7 +125,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
             ease: "power2.out",
         })
         .to(sectionRef.current, {
-            y: '100%',
+            y: '150%',
             duration: 0.9,
             ease: "power4.inOut",
             onComplete: () => {
