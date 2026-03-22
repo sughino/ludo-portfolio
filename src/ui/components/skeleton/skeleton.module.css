@@ -1,9 +1,0 @@
-.skeleton {
-    background: var(--color-gray);
-    animation: pulse 1.6s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: .2; }
-    50% { opacity: .5; }
-}
