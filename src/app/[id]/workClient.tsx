@@ -147,7 +147,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                                     key={i}
                                     delay={titleWords.length > 1 && i === 0 ? .5 : 0}
                                 >
-                                    <h2 className={styles.workTitleDevice} data-animate="title">
+                                    <h2 translate='no' className={`${styles.workTitleDevice} notranslate`} data-animate="title">
                                         {word}
                                     </h2>
                                 </TitleAnimation>
@@ -194,7 +194,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                                         reverse={currentSlide} 
                                         delay={titleWords.length > 1 && i === 0 && !currentSlide ? .5 : titleWords.length > 1 && i === 1 && currentSlide ? .5 : 0}
                                     >
-                                        <h2 className={styles.workTitle} data-animate="title">
+                                        <h2 translate='no' className={`${styles.workTitle} notranslate`} data-animate="title">
                                             {word}
                                         </h2>
                                     </TitleAnimation>
@@ -223,7 +223,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                             return (
                                 <FadeIn key={category} width='grow'>
                                     <div className={styles.techStackInnerContainer}>
-                                        <p data-cursor="text" className={styles.littleTitle}>
+                                        <p data-cursor="text" translate='no' className={`${styles.littleTitle} notranslate`}>
                                             {categoryMap[category]}:
                                         </p>
 

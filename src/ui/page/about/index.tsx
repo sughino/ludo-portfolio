@@ -53,7 +53,7 @@ export default function About () {
                             <h3>{study.title}</h3>
                             <div className={styles.studyContentContainer}>
                                 <h6>{study.date}</h6>
-                                <p data-cursor="text" className={styles.studySchool}>{study.school}</p>
+                                <p data-cursor="text" translate="no" className={`${styles.studySchool} notranslate`}>{study.school}</p>
                             </div>
                         </div> 
                     </FadeIn>

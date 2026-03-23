@@ -62,7 +62,7 @@ export default function ActionBadge ({
             ref={divContainerRef}
         >
             <div className={styles.actionBadgeContent}>
-                <h6>{info}</h6>
+                <h6 translate='no' className='notranslate'>{info}</h6>
             </div>
             <div 
                 className={styles.actionBadgeIconContainer}

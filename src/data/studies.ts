@@ -7,7 +7,7 @@ interface Study {
 export const studies: Study[] = [
     {
         title: 'computer science', 
-        school: 'i.t.i.s. Gugliemo Marconi',
+        school: 'ITIS Gugliemo Marconi',
         date: '2018 - 2023'
     },{
         title: 'web developer', 

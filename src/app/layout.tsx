@@ -6,6 +6,7 @@ import { DeviceProvider } from '@/contexts/DeviceContext'
 import CursorInit from "@/utils/customCursor/initCursor";
 import PrintCVInterceptor from "@/utils/printInterceptor";
 import Konami from "@/utils/konami";
+import TitleHandler from "@/utils/titleHandler";
 
 export const metadata: Metadata = {
   title: "Ludo – Web Developer & UX-Focused Portfolio",
@@ -70,7 +71,8 @@ export default function RootLayout({
             </DeviceProvider>
           </SmoothScroll>
           <PrintCVInterceptor/>
-          <Konami /> 
+          <Konami />
+          <TitleHandler />
       </body>
     </html>
   );

@@ -67,7 +67,7 @@ export function CodeCard () {
             </div>
             <div className="h-(--spacing-gap-8)" />
             <div className={styles.codeTextContainer}>
-                <p data-cursor="text" className={styles.code}>
+                <p data-cursor="text" translate="no" className={`${styles.code} notranslate`}>
                     PS C:\\Project&gt; <span className="text-[#ED8B00]">npm</span> run dev<br />
                     &gt; client@0.0.0 dev<br />
                     &gt; vite<br />

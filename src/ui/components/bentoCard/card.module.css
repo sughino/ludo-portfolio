@@ -152,6 +152,7 @@ p.blueprintInfo {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 100%;
 }
 .imgCard img {
     width: 70%;

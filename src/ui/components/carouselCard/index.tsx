@@ -59,7 +59,7 @@ export function CarouselCard (
                     //TODO devi inserire qualcosa per far si che chi è da divce capisca che può cliccarlo
                     //TODO sistema carosello per telefono (quando arrivo al carosello e voglio andare sotto si blocca)
                 )}
-                <h3>{title}</h3>
+                <h3 translate="no" className='notranslate'>{title}</h3>
                 <div className={styles.line}/>
                 <p data-cursor="text">{description}</p>
             </div>
