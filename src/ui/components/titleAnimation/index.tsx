@@ -39,6 +39,7 @@ export default function TitleAnimation({
         filter: reverse ? "blur(10px)" : "blur(0px)",
         duration: duration,
         ease: "power4.out",
+        force3D: true,
         delay: delay,
         scrollTrigger: {
           trigger: titleContainerRef.current,

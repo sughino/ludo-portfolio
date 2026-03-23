@@ -11,10 +11,11 @@ type FadeInProps = {
     width?: 'grow' | 'fit' | 'full',
     duration?: number;
     animationStart?: string;
+    blurEffect?: boolean;
     onComplete?: () => void;
 }
 
-export const FadeIn = ({ children, width, duration = 1, animationStart = "70", onComplete } : FadeInProps) => {
+export const FadeIn = ({ children, width, duration = 1, animationStart = "70", blurEffect = false, onComplete } : FadeInProps) => {
     const divContainerRef = useRef<HTMLDivElement>(null);
 
     const widthMap: Record<string, string> = {
@@ -32,7 +33,7 @@ export const FadeIn = ({ children, width, duration = 1, animationStart = "70", o
                 y: 15,
                 opacity: 0,
                 scale: .9,
-                filter: "blur(5px)"
+                filter: blurEffect ? "blur(5px)" : "blur(0px)"
             },
             {
                 y: 0,
@@ -41,6 +42,7 @@ export const FadeIn = ({ children, width, duration = 1, animationStart = "70", o
                 filter: "blur(0px)",
                 duration: duration,
                 ease: "power4.out",
+                force3D: true,
                 onComplete,
                 scrollTrigger: {
                     trigger: divContainerRef.current,

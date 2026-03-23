@@ -20,10 +20,7 @@
     display: flex;
     width: fit-content;
     flex-direction: column;
-    gap: var(--spacing-gap-8);
-    overflow: visible;
-    white-space: nowrap;
-    display: block;
+    gap: var(--spacing-gap-8) !important;
     flex: 1;
 }
 .lifeStyleContentContainer h3 {

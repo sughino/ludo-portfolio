@@ -33,7 +33,7 @@ export default function About () {
 
             <div className={styles.aboutContainer}>
                 {about.map((a, i) => (
-                    <FadeIn key={i}>
+                    <FadeIn key={i} blurEffect={true}>
                         <div className={styles.aboutInnerContainer}>
                             <p data-cursor="text" className="littleTitle">{a.title}</p>
                             <p data-cursor="text">{a.description}</p>
@@ -48,7 +48,7 @@ export default function About () {
 
             <div className={styles.studiesContainer}>
                 {studies.map((study, i) => (
-                    <FadeIn key={i}>
+                    <FadeIn key={i} blurEffect={true}>
                         <div className={styles.studyContainer}>
                             <h3>{study.title}</h3>
                             <div className={styles.studyContentContainer}>

@@ -7,7 +7,7 @@ import { FadeIn } from '@/ui/components/fadeIn';
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      <FadeIn>
+      <FadeIn blurEffect={true}>
         <div className={styles.topBar}>
           <LogoAnimation/>
           <h3>web developer&nbsp;<span className={styles.coloredSpan}>&</span><br/>designer</h3>

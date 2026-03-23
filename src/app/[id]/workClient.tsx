@@ -206,7 +206,9 @@ export default function WorkClient({ work }: { work: WorkType }) {
             </FadeIn>
             <div className="h-(--spacing-80)" />
             <div className={styles.paddingContainer}>
-                <p data-cursor="text">{work.longDescription}</p>
+                <FadeIn blurEffect={true}>
+                    <p data-cursor="text">{work.longDescription}</p>
+                </FadeIn>
 
                 <div className="h-(--spacing-160)" />
                 <div className={styles.mainContentContainer}>
@@ -265,7 +267,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                     </TitleAnimation>
                     <div className={styles.keyFeaturesContainer}>
                         {Object.entries(work.keyFeatures).map(([title, description]) => (
-                            <FadeIn key={title}>
+                            <FadeIn key={title} blurEffect={true}>
                                 <div className={styles.keyFeaturesInnerContainer}>
                                     <p data-cursor="text" className="littleTitle">{title}</p>
                                     <p data-cursor="text">{description}</p>
