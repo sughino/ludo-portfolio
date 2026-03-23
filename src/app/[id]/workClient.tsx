@@ -17,6 +17,17 @@ import Chip from '@/ui/components/chip'
 import { WorkType } from '@/types/work'
 
 export default function WorkClient({ work }: { work: WorkType }) {
+    const saveProjectView = (projectName: string) => {
+        const stored = sessionStorage.getItem('seenProjects');
+        const projects: string[] = stored ? JSON.parse(stored) : [];
+
+        if (!projects.includes(projectName)) {
+            projects.push(projectName);
+            sessionStorage.setItem('seenProjects', JSON.stringify(projects));
+        }
+    };
+    saveProjectView(work.title);
+    
     const router = useRouter();
     const carouselConatinerRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef<HTMLDivElement>(null);

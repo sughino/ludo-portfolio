@@ -16,10 +16,15 @@ footer p::selection {
     width: fit-content;
 }
 
-.contactContainer {
+.contactContainer, .linkContainer {
     display: flex;
-    gap: var(--spacing-gap-32);
     flex-wrap: wrap;
+}
+.contactContainer {
+    gap: var(--spacing-gap-32);
+}
+.linkContainer {
+    gap: var(--spacing-gap-16);
 }
 .contact {
     display: flex;
@@ -31,6 +36,7 @@ footer p::selection {
     text-transform: capitalize;
 }
 .contactContent {
+    font-size: var(--p-size);
     font-weight: var(--font-bold) !important;
     text-decoration: underline !important;
 }
