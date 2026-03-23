@@ -127,12 +127,14 @@ p.blueprintInfo {
 .codeCardContainer {
     border-radius: var(--spacing-padding-radius);
     background: var(--color-gray);
-    overflow: hidden;
+    position: relative;
 }
 .codeCardContainer p::selection, .codeCardContainer span::selection, .codeCardContainer br::selection{
     background: var(--color-white-30);
 }
 .codeTopBar {
+    border-top-left-radius: var(--spacing-padding-radius);
+    border-top-right-radius: var(--spacing-padding-radius);
     background: var(--color-black);
     height: 40px;
     width: 100%;
@@ -156,4 +158,35 @@ p.blueprintInfo {
 }
 .imgCard img {
     width: 70%;
+}
+
+/*bluePrint*/
+.bluePrint {
+    position: absolute;
+    background: var(--color-black);
+    z-index: 3;
+}
+.bluePrintTop {
+    height: 3px;
+    width: 100%;
+    left: -50%;
+    top: 0;
+}
+.bluePrintLeft {
+    width: 3px;
+    height: 110%;
+    top: -5%;
+    left: 0;
+}
+.bluePrintBottom {
+    height: 3px;
+    width: 40%;
+    bottom: 0;
+    right: -30%;
+}
+.bluePrintRight {
+    width: 3px;
+    height: 120%;
+    top: -10%;
+    right: 0;
 }

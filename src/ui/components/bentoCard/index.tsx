@@ -60,6 +60,8 @@ export function BlueprintCard () {
 export function CodeCard () {
     return (
         <div className={styles.codeCardContainer}>
+            <div className={`${styles.bluePrint} ${styles.bluePrintLeft}`}/>
+            <div className={`${styles.bluePrint} ${styles.bluePrintTop}`}/>
             <div className={styles.codeTopBar}>
                 <div className="w-[12px] h-[12px] bg-[#CC2936] rounded-full" />
                 <div className="w-[12px] h-[12px] bg-[#ED8B00] rounded-full" />
@@ -82,6 +84,8 @@ export function CodeCard () {
 export function ImgCard () {
     return (
         <div className={styles.imgCard}>
+            <div className={`${styles.bluePrint} ${styles.bluePrintRight}`}/>
+            <div className={`${styles.bluePrint} ${styles.bluePrintBottom}`}/>
             <Image
                 src="/logo3d.webp"
                 alt="Ludo Portfolio Logo 3d"
