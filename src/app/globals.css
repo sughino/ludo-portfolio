@@ -11,6 +11,8 @@
   --color-white-30: rgba(242, 247, 253, .3);
   --color-white-70: rgba(242, 247, 253, .7);
   --color-red: #941721;
+  --color-red-50: rgba(148, 23, 33, .7);
+  --color-red: #941721;
   --color-light-red: #CC2936;
   --color-red-30: rgba(204, 41, 54, .3);
 
@@ -42,6 +44,7 @@
   --font-code: var(--font-code);
 
   /*font weight*/
+  --font-normal: 400;
   --font-bold: 600;
 
   /*font-size*/
@@ -152,7 +155,7 @@
   }
   h6 {
     font-size: var(--h6-size);
-    font-weight: 600;
+    font-weight: var(--font-bold);
     user-select: none;
   }
 

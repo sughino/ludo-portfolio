@@ -13,9 +13,11 @@ type FadeInProps = {
     animationStart?: string;
     blurEffect?: boolean;
     onComplete?: () => void;
+    reverse?: boolean;
+    delay?: number;
 }
 
-export const FadeIn = ({ children, width, duration = 1, animationStart = "70", blurEffect = false, onComplete } : FadeInProps) => {
+export const FadeIn = ({ children, width, duration = 1, animationStart = "70", blurEffect = false, onComplete, reverse = false, delay } : FadeInProps) => {
     const divContainerRef = useRef<HTMLDivElement>(null);
 
     const widthMap: Record<string, string> = {
@@ -30,19 +32,20 @@ export const FadeIn = ({ children, width, duration = 1, animationStart = "70", b
         gsap.fromTo(
             divContainerRef.current,
             {
-                y: 15,
-                opacity: 0,
-                scale: .9,
+                y: reverse ? 0 : 15,
+                opacity: reverse ? 1 : 0,
+                scale: reverse ? 1 : .9,
                 filter: blurEffect ? "blur(5px)" : "blur(0px)"
             },
             {
-                y: 0,
-                opacity: 1,
-                scale: 1,
+                y: reverse ? 15 : 0,
+                opacity: reverse ? 0 : 1,
+                scale: reverse ? .9 : 1,
                 filter: "blur(0px)",
                 duration: duration,
                 ease: "power4.out",
                 force3D: true,
+                delay: delay,
                 onComplete,
                 scrollTrigger: {
                     trigger: divContainerRef.current,
@@ -51,7 +54,7 @@ export const FadeIn = ({ children, width, duration = 1, animationStart = "70", b
                 }
             }
         );
-    }, [duration]);
+    }, [duration, reverse]);
 
     return (
         <div ref={divContainerRef} className={width && widthMap[width]} style={{ opacity: 0 }}>

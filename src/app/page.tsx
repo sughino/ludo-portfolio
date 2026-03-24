@@ -1,3 +1,4 @@
+import Toast from "@/ui/components/toast";
 import About from "../ui/page/about";
 import Footer from "../ui/page/footer";
 import Hero from "../ui/page/hero";
@@ -14,6 +15,7 @@ export default function Home() {
       <About />
       <LifeStyle />
       <Footer />
+      <Toast title={"Currently Building"} content={"Still cooking… more projects coming soon"}/>
     </main>
   );
 }
