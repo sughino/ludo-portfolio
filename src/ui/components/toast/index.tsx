@@ -6,8 +6,18 @@ import { TriangleAlert, X } from 'lucide-react';
 import { useRef, useState } from "react";
 
 export default function Toast({title, content} : {title: string, content: string}) {
-    const [isOpen, setIsOpen] = useState<boolean>(true);
+    const [isOpen, setIsOpen] = useState<boolean>(() => {
+        if (typeof window === 'undefined') return true;
+        return sessionStorage.getItem('toastClosed') !== 'true';
+    });
     const toastRef = useRef<HTMLDivElement>(null);
+
+    const handleClose = () => {
+        setIsOpen(false);
+        sessionStorage.setItem('toastClosed', 'true');
+    };
+
+    if (!isOpen) return null;
     return(
         <div className={styles.toastOuterContainer} ref={toastRef}>
             <FadeIn 
@@ -27,7 +37,7 @@ export default function Toast({title, content} : {title: string, content: string
                         </div>
                         <button 
                             data-cursor="hover"
-                            onClick={() => {setIsOpen(!isOpen)}} 
+                            onClick={() => {handleClose()}} 
                         >
                             <X />
                         </button>
