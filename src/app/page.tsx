@@ -15,7 +15,7 @@ export default function Home() {
       <About />
       <LifeStyle />
       <Footer />
-      <Toast title={"Currently Building"} content={"Still cooking… more projects coming soon"}/>
+      <Toast title={"Currently Building"} content={"Still cooking… Currently refining this portfolio."}/>
     </main>
   );
 }
