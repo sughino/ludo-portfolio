@@ -1,11 +1,15 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './about.module.css'
 import { studies } from '@/data/studies'
 import TitleAnimation from '@/ui/components/titleAnimation'
 import { FadeIn } from '@/ui/components/fadeIn'
 import { about } from '@/data/about'
+import { useIsTouch } from '@/contexts/DeviceContext'
 
 export default function About () {
+    const isTouch = useIsTouch();
     return (
         <section className="bigSpacing">
             <div className="h-(--spacing-160)" />
@@ -14,7 +18,7 @@ export default function About () {
             </TitleAnimation>
             <div className="h-(--spacing-80)" />
 
-            <FadeIn>
+            <FadeIn disabled={isTouch}>
                 <div className={styles.photoContainer}>
                     <div className={styles.photo}></div>
                     <div className={styles.character} data-cursor="label" data-label="↑ ↑ ↓ ↓ ← → ← → B A">
@@ -33,7 +37,7 @@ export default function About () {
 
             <div className={styles.aboutContainer}>
                 {about.map((a, i) => (
-                    <FadeIn key={i} blurEffect={true}>
+                    <FadeIn key={i} blurEffect={true} disabled={isTouch}>
                         <div className={styles.aboutInnerContainer}>
                             <p data-cursor="text" className="littleTitle">{a.title}</p>
                             <p data-cursor="text">{a.description}</p>
@@ -48,7 +52,7 @@ export default function About () {
 
             <div className={styles.studiesContainer}>
                 {studies.map((study, i) => (
-                    <FadeIn key={i} blurEffect={true}>
+                    <FadeIn key={i} blurEffect={true} disabled={isTouch}>
                         <div className={styles.studyContainer}>
                             <h3>{study.title}</h3>
                             <div className={styles.studyContentContainer}>

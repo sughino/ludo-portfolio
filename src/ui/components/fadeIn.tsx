@@ -15,9 +15,10 @@ type FadeInProps = {
     onComplete?: () => void;
     reverse?: boolean;
     delay?: number;
+    disabled?: boolean;
 }
 
-export const FadeIn = ({ children, width, duration = 1, animationStart = "70", blurEffect = false, onComplete, reverse = false, delay } : FadeInProps) => {
+export const FadeIn = ({ children, width, duration = 1, animationStart = "70", blurEffect = false, onComplete, reverse = false, delay, disabled = false } : FadeInProps) => {
     const divContainerRef = useRef<HTMLDivElement>(null);
 
     const widthMap: Record<string, string> = {
@@ -29,7 +30,24 @@ export const FadeIn = ({ children, width, duration = 1, animationStart = "70", b
     useEffect(() => {
         if (!divContainerRef.current) return;
 
-        gsap.fromTo(
+        if (disabled) {
+            ScrollTrigger.getAll().forEach(trigger => {
+                if (trigger.trigger === divContainerRef.current) {
+                    trigger.kill();
+                }
+            });
+
+            gsap.set(divContainerRef.current, {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                filter: "blur(0px)"
+            });
+
+            return;
+        }
+
+        const animation = gsap.fromTo(
             divContainerRef.current,
             {
                 y: reverse ? 0 : 15,
@@ -54,10 +72,15 @@ export const FadeIn = ({ children, width, duration = 1, animationStart = "70", b
                 }
             }
         );
-    }, [duration, reverse]);
+
+        return () => {
+            animation.scrollTrigger?.kill();
+            animation.kill();
+        };
+    }, [duration, reverse, disabled]);
 
     return (
-        <div ref={divContainerRef} className={width && widthMap[width]} style={{ opacity: 0 }}>
+        <div ref={divContainerRef} className={width && widthMap[width]} style={{ opacity: disabled ? 1 : 0 }}>
             {children}
         </div>
     )

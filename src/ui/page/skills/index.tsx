@@ -37,14 +37,13 @@ export default function Skills() {
       </div>
       <div className="grid grid-cols-1 gap-(--spacing-gap-32) h-fit lg:hidden">
         {skills.map((skill, i) => (
-          <FadeIn key={i}>
-            <Card
-              level={skill.level}
-              color={skill.color}
-              title={skill.title}
-              description={skill.description}
-            />
-          </FadeIn>
+          <Card
+            key={i}
+            level={skill.level}
+            color={skill.color}
+            title={skill.title}
+            description={skill.description}
+          />
         ))
         }
       </div>

@@ -22,17 +22,15 @@ export default function LifeStyle() {
 
       {isTouch ? (
         <div className={styles.carouselContainer}>
-          <FadeIn>
-            <Carousel
-              data={hobbies}
-              renderItem={(item, i, active) => (
-                <CarouselCard
-                  {...item}
-                  variant={i !== active ? 'not-selected' : ''}
-                />
-              )}
-            />
-          </FadeIn>
+          <Carousel
+            data={hobbies}
+            renderItem={(item, i, active) => (
+              <CarouselCard
+                {...item}
+                variant={i !== active ? 'not-selected' : ''}
+              />
+            )}
+          />
         </div>
       ) : (
         <LifeStyleBento data={hobbies} />

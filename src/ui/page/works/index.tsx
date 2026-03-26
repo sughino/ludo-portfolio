@@ -10,7 +10,6 @@ import TitleAnimation from '@/ui/components/titleAnimation'
 import { useRef } from "react";
 import gsap from 'gsap'
 import { useRouter } from "next/navigation";
-import { FadeIn } from '@/ui/components/fadeIn'
 
 export default function Works() {
   const isTouch = useIsTouch()
@@ -52,18 +51,16 @@ export default function Works() {
       
       {isTouch ? (
         <div className={styles.carouselContainer}>
-          <FadeIn>
-            <Carousel
-              data={works}
-              renderItem={(item, i, active) => (
-                <CarouselCard
-                  {...item}
-                  variant={i !== active ? 'not-selected' : ''}
-                  onClick={(id) => goTo(id)}
-                />
-              )}
-            />
-          </FadeIn>
+          <Carousel
+            data={works}
+            renderItem={(item, i, active) => (
+              <CarouselCard
+                {...item}
+                variant={i !== active ? 'not-selected' : ''}
+                onClick={(id) => goTo(id)}
+              />
+            )}
+          />
         </div>
       ) : (
         <HorizontalScroll data={works} onClick={(id) => goTo(id)}/>

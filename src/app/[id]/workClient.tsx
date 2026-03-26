@@ -217,7 +217,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
             </FadeIn>
             <div className="h-(--spacing-80)" />
             <div className={styles.paddingContainer}>
-                <FadeIn blurEffect={true}>
+                <FadeIn blurEffect={true} disabled={isTouch}>
                     <p data-cursor="text">{work.longDescription}</p>
                 </FadeIn>
 
@@ -232,7 +232,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                             if (!items) return null;
 
                             return (
-                                <FadeIn key={category} width='grow'>
+                                <FadeIn key={category} width='grow' disabled={isTouch}>
                                     <div className={styles.techStackInnerContainer}>
                                         <p data-cursor="text" translate='no' className={`${styles.littleTitle} notranslate`}>
                                             {categoryMap[category]}:
@@ -278,7 +278,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                     </TitleAnimation>
                     <div className={styles.keyFeaturesContainer}>
                         {Object.entries(work.keyFeatures).map(([title, description]) => (
-                            <FadeIn key={title} blurEffect={true}>
+                            <FadeIn key={title} blurEffect={true} disabled={isTouch}>
                                 <div className={styles.keyFeaturesInnerContainer}>
                                     <p data-cursor="text" className="littleTitle">{title}</p>
                                     <p data-cursor="text">{description}</p>
