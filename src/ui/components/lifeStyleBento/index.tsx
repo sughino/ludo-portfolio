@@ -16,7 +16,7 @@ export default function LifeStyleBento({ data }: Props) {
             className={styles.lifeStyleInnerContainer}
             data-variant={i % 2 !== 0 ? 'reverse' : ''}
           >
-            <div className={styles.holderImg} data-cursor="image" data-label={hobby.img}>
+            <div className={styles.holderImg} data-cursor="image">
               <Image
                 src={hobby.img}
                 width={hobby.width}

@@ -3,18 +3,18 @@ import styles from './customCursor.module.css';
 type CursorState = 'hover' | 'text' | 'arrowLeft' | 'arrowRight' | 'label' | 'default' | 'image';
 
 interface CursorAPI {
-  setState: (type: CursorState, labelText?: string) => void;
+  setState: (type: CursorState, labelText?: string, imgEl?: HTMLImageElement | null) => void;
   reset: () => void;
   destroy: () => void;
 }
 
 const CURSOR_STATES: Record<Exclude<CursorState, 'default'>, string> = {
-  hover:      styles.hover,
-  text:       styles.textActive,
-  arrowLeft:  styles.arrowLeftActive,
+  hover: styles.hover,
+  text: styles.textActive,
+  arrowLeft: styles.arrowLeftActive,
   arrowRight: styles.arrowRightActive,
-  label:      styles.labelActive,
-  image:      styles.imageActive,
+  label: styles.labelActive,
+  image: styles.imageActive,
 };
 
 const buildMarkup = (): string => `
@@ -48,13 +48,17 @@ const buildMarkup = (): string => `
 export function CustomCursor(): CursorAPI {
   document.body.insertAdjacentHTML('beforeend', buildMarkup());
   document.body.classList.add('customCursorActive');
-
   
   const children = document.body.children;
-  const el           = children[children.length - 2] as HTMLDivElement;
+  const el = children[children.length - 2] as HTMLDivElement;
   const imgContainer = children[children.length - 1] as HTMLDivElement;
-  const label        = el.querySelector<HTMLDivElement>(`.${styles.label}`) as HTMLDivElement;
-  const cursorImg    = imgContainer.querySelector<HTMLImageElement>(`.${styles.cursorImg}`) as HTMLImageElement;
+  const label = el.querySelector(`.${styles.label}`)! as HTMLDivElement;
+  const cursorImg = imgContainer.querySelector('img')!;
+
+  imgContainer.style.willChange = 'transform';
+  el.style.willChange = 'transform';
+
+  const imageCache = new Map<string, string>();
 
   let mx = -300, my = -300;
   let cx = -300, cy = -300;
@@ -62,18 +66,14 @@ export function CustomCursor(): CursorAPI {
   let rafId: number;
 
   const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
-  const SPEED       = 0.13;
-  const IMAGE_SPEED = 0.08;
-
-  function tick(): void {
-    cx = lerp(cx, mx, SPEED);
-    cy = lerp(cy, my, SPEED);
+  function tick() {
+    cx = lerp(cx, mx, 0.13);
+    cy = lerp(cy, my, 0.13);
     el.style.left = `${cx}px`;
-    el.style.top  = `${cy}px`;
+    el.style.top = `${cy}px`;
 
-    
-    ix = lerp(ix, mx, IMAGE_SPEED);
-    iy = lerp(iy, my, IMAGE_SPEED);
+    ix = lerp(ix, mx, 0.08);
+    iy = lerp(iy, my, 0.08);
     imgContainer.style.left = `${ix}px`;
     imgContainer.style.top  = `${iy}px`;
 
@@ -82,9 +82,9 @@ export function CustomCursor(): CursorAPI {
   rafId = requestAnimationFrame(tick);
 
   
-  const onMouseMove  = (e: MouseEvent): void => { mx = e.clientX; my = e.clientY; };
-  const onMouseDown  = (): void => el.classList.add(styles.clicking);
-  const onMouseUp    = (): void => el.classList.remove(styles.clicking);
+  const onMouseMove = (e: MouseEvent): void => { mx = e.clientX; my = e.clientY; };
+  const onMouseDown = (): void => el.classList.add(styles.clicking);
+  const onMouseUp = (): void => el.classList.remove(styles.clicking);
   const onMouseLeave = (): void => { 
     el.classList.add(styles.hidden);
     imgContainer.classList.add(styles.hidden);
@@ -94,9 +94,9 @@ export function CustomCursor(): CursorAPI {
     imgContainer.classList.remove(styles.hidden);
   };
 
-  document.addEventListener('mousemove',  onMouseMove);
-  document.addEventListener('mousedown',  onMouseDown);
-  document.addEventListener('mouseup',    onMouseUp);
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mousedown', onMouseDown);
+  document.addEventListener('mouseup', onMouseUp);
   document.addEventListener('mouseleave', onMouseLeave);
   document.addEventListener('mouseenter', onMouseEnter);
 
@@ -106,7 +106,7 @@ export function CustomCursor(): CursorAPI {
     imgContainer.classList.remove(styles.visible);
   }
 
-  function applyState(type: CursorState, labelText?: string): void {
+  function applyState(type: CursorState, labelText?: string, imgEl?: HTMLImageElement | null): void {
     clearStates();
     if (type === 'default') return;
     el.classList.add(CURSOR_STATES[type]);
@@ -116,26 +116,44 @@ export function CustomCursor(): CursorAPI {
     }
 
     if (type === 'image') {
-      const nextSrc = labelText ?? '';
-      const preloader = new Image();
-      preloader.src = nextSrc;
-      preloader.onload = () => {
-          cursorImg.src = nextSrc;
-          imgContainer.style.left = `${mx}px`;
-          imgContainer.style.top  = `${my}px`;
+      const src = imgEl?.currentSrc || imgEl?.src;
+
+      if (src) {
+        cursorImg.src = src;
+        imgContainer.classList.add(styles.visible);
+        return;
+      }
+
+      if (labelText) {
+        const cached = imageCache.get(labelText);
+
+        if (!cached) {
+          const img = new Image();
+          img.src = labelText;
+          imageCache.set(labelText, labelText);
+
+          img.onload = () => {
+            cursorImg.src = labelText;
+            imgContainer.classList.add(styles.visible);
+          };
+        } else {
+          cursorImg.src = cached;
           imgContainer.classList.add(styles.visible);
-      };
-  }
+        }
+      }
+    }
+    
   }
 
   const onMouseOver = (e: MouseEvent): void => {
     const target = (e.target as Element).closest<HTMLElement>('[data-cursor]');
     if (!target) { clearStates(); return; }
-    const cursorType = target.dataset.cursor as CursorState | undefined;
-    if (!cursorType) return;
-    applyState(cursorType, target.dataset.label);
-  };
 
+    const type = target.dataset.cursor as CursorState;
+    const img = target.querySelector('img');
+
+    applyState(type, target.dataset.label, img);
+  };
   const onMouseOut = (e: MouseEvent): void => {
     const leaving  = (e.target as Element).closest('[data-cursor]');
     const entering = (e.relatedTarget as Element | null)?.closest('[data-cursor]');
@@ -159,21 +177,21 @@ export function CustomCursor(): CursorAPI {
 
   document.addEventListener('mouseover', onMouseOverBlend);
   document.addEventListener('mouseout',  onMouseOutBlend);
-
   return {
     setState: applyState,
     reset: clearStates,
     destroy(): void {
       cancelAnimationFrame(rafId);
-      document.removeEventListener('mousemove',  onMouseMove);
-      document.removeEventListener('mousedown',  onMouseDown);
-      document.removeEventListener('mouseup',    onMouseUp);
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mousedown', onMouseDown);
+      document.removeEventListener('mouseup', onMouseUp);
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mouseenter', onMouseEnter);
-      document.removeEventListener('mouseover',  onMouseOver);
-      document.removeEventListener('mouseout',   onMouseOut);
+      document.removeEventListener('mouseover', onMouseOver);
+      document.removeEventListener('mouseout', onMouseOut);
       document.removeEventListener('mouseover',  onMouseOverBlend);
       document.removeEventListener('mouseout',   onMouseOutBlend);
+
       el.remove();
       imgContainer.remove();
       document.body.classList.remove('customCursorActive');
