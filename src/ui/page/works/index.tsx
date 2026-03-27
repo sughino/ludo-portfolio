@@ -20,7 +20,7 @@ export default function Works() {
   const goTo = (id: string) => {
     if (!animationDivRef.current) return;
 
-    document.body.style.overflowY = "hidden";
+    document.documentElement.style.overflow = "hidden";
     tl.to(animationDivRef.current, {
       y: 0,
       duration: 0.9,

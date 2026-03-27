@@ -189,8 +189,8 @@ export function CustomCursor(): CursorAPI {
       document.removeEventListener('mouseenter', onMouseEnter);
       document.removeEventListener('mouseover', onMouseOver);
       document.removeEventListener('mouseout', onMouseOut);
-      document.removeEventListener('mouseover',  onMouseOverBlend);
-      document.removeEventListener('mouseout',   onMouseOutBlend);
+      document.removeEventListener('mouseover', onMouseOverBlend);
+      document.removeEventListener('mouseout', onMouseOutBlend);
 
       el.remove();
       imgContainer.remove();

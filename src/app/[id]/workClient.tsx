@@ -127,7 +127,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
     const goBack = () => {
         if (!sectionRef.current) return;
         const tl = gsap.timeline()
-        document.body.style.overflowY = "hidden";
+        document.documentElement.style.overflow = "hidden";
 
         tl.to(sectionRef.current, {
             borderTopLeftRadius: '40px',
@@ -172,7 +172,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
             <FadeIn duration={2.5} onComplete={() => {
                 if (carouselConatinerRef.current) {
                     carouselConatinerRef.current.style.overflow = 'hidden';
-                    document.body.style.overflowY = "scroll";
+                    document.documentElement.style.overflow = "scroll";
                 }
             }}>
                 <div className={styles.carouselContainer} ref={carouselConatinerRef}>
@@ -288,11 +288,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                     </div>
                 </div>
 
-                {isTouch ? (
-                    <div className="h-(--spacing-40)" />
-                ) : (
-                    <div className="h-(--spacing-160)" />
-                )}
+                <div className="h-(--spacing-160)" />
             </div>
 
             {!isTouch && (
