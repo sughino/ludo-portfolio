@@ -64,7 +64,7 @@
 }
 .bluePrintLeft {
     width: 3px;
-    height: 100dvh;
+    height: 100vh;
     top: 250px;
     left: var(--spacing);
 }

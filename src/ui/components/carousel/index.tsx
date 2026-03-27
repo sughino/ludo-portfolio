@@ -20,6 +20,9 @@ export default function Carousel<T>({
     const currentX = useRef(0);
     const isDragging = useRef(false);
 
+    const touchStartY = useRef(0);
+    const isScrolling = useRef<null | boolean>(null);
+
 
     const getSlideWidth = () => {
         if (!carouselRef.current) return 100;
@@ -43,40 +46,54 @@ export default function Carousel<T>({
     }, [slideCount, onSlideChange]);
 
 
-    const handleStart = (clientX: number) => {
+    const handleStart = (clientX: number, clientY: number) => {
         isDragging.current = true;
+        isScrolling.current = null;
+
         touchStartX.current = clientX;
+        touchStartY.current = clientY;
+
         const slideWidth = getSlideWidth();
         currentX.current = -slideCount * slideWidth;
-       
+
         if (slidesRef.current) {
             gsap.killTweensOf(slidesRef.current);
         }
     };
 
-
-    const handleMove = (clientX: number) => {
+    const handleMove = (clientX: number, clientY: number) => {
         if (!isDragging.current || !slidesRef.current || !carouselRef.current) return;
 
+        const diffX = clientX - touchStartX.current;
+        const diffY = clientY - touchStartY.current;
 
-        const diff = clientX - touchStartX.current;
+        if (isScrolling.current === null) {
+            isScrolling.current = Math.abs(diffY) > Math.abs(diffX);
+        }
+
+        if (isScrolling.current) return;
+
         const containerWidth = carouselRef.current.offsetWidth;
-        const percentDiff = (diff / containerWidth) * 100;
-       
+        const percentDiff = (diffX / containerWidth) * 100;
+
         gsap.set(slidesRef.current, {
             x: currentX.current + percentDiff + '%'
         });
     };
 
-
     const handleEnd = (clientX: number) => {
-        if (!isDragging.current || !carouselRef.current) return;
-       
-        isDragging.current = false;
-        const diff = clientX - touchStartX.current;
-        const containerWidth = carouselRef.current.offsetWidth;
-        const threshold = containerWidth * 0.2;
+        if (!isDragging.current) return;
 
+        if (isScrolling.current) {
+            isDragging.current = false;
+            return;
+        }
+
+        isDragging.current = false;
+
+        const diff = clientX - touchStartX.current;
+        const containerWidth = carouselRef.current?.offsetWidth ?? 0;
+        const threshold = containerWidth * 0.2;
 
         if (diff < -threshold && slideCount < data.length - 1) {
             setSlideCount(prev => prev + 1);
@@ -96,36 +113,36 @@ export default function Carousel<T>({
 
 
     const handleTouchStart = (e: React.TouchEvent) => {
-        handleStart(e.touches[0].clientX);
+        handleStart(e.touches[0].clientX, e.touches[0].clientY);
     };
-
 
     const handleTouchMove = (e: React.TouchEvent) => {
-        handleMove(e.touches[0].clientX);
+        handleMove(e.touches[0].clientX, e.touches[0].clientY);
     };
-
 
     const handleTouchEnd = (e: React.TouchEvent) => {
         handleEnd(e.changedTouches[0].clientX);
     };
 
-
     const handleMouseDown = (e: React.MouseEvent) => {
-        handleStart(e.clientX);
+        handleStart(e.clientX, e.clientY);
     };
-
 
     const handleMouseMove = (e: React.MouseEvent) => {
-        if (isDragging.current) {
-            handleMove(e.clientX);
-        }
-    };
+        if (!isDragging.current) return;
 
+        const diffX = e.clientX - touchStartX.current;
+        const containerWidth = carouselRef.current?.offsetWidth ?? 0;
+        const percentDiff = (diffX / containerWidth) * 100;
+
+        gsap.set(slidesRef.current, {
+            x: currentX.current + percentDiff + '%'
+        });
+    };
 
     const handleMouseUp = (e: React.MouseEvent) => {
         handleEnd(e.clientX);
     };
-
 
     const handleMouseLeave = (e: React.MouseEvent) => {
         if (isDragging.current) {
@@ -168,7 +185,7 @@ export default function Carousel<T>({
                         key={i}
                         data-variant={i === slideCount ? 'selected' : ''}
                         onClick={() => setSlideCount(i)}
-                        style={{ cursor: 'pointer' }}
+                        data-cursor="hover"
                     />
                 ))}
             </div>

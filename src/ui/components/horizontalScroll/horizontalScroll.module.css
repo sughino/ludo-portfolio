@@ -4,6 +4,6 @@
     gap: calc(var(--spacing-padding-50) + var(--spacing-padding-150));
     will-change: transform;
     align-items: start;
-    height: 100dvh;
+    height: 100vh;
     padding-block: var(--spacing-40);
 }
