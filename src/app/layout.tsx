@@ -48,11 +48,8 @@ export const metadata: Metadata = {
 };
 
 //TODO animazione delle line
-//TODO sistema link footer e aggiungi scarica cv
-
 //TODO questo non è importantissimo ma sarebbe figo attaccare un iframe di figma
 //TODO sarebbe figo mettere delle immagini per i key features
-//TODO fai in modo che quando clicchi tasto destro esca personalizzato deve uscire tipo: ricarica ispeziona, stampa, indietro(se ti trovi in una pagina diversa dal main)
 //TODO aggiungi dei nomi per i bottoni per migliorare l'accessibilità
 
 export default function RootLayout({

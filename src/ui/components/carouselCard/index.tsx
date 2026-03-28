@@ -57,7 +57,6 @@ export function CarouselCard (
                 {isTouch && role && id && (
                     <Button content={'go to'} icon={'arrow-right'} width={'full'} onClick={() => onClick?.(id)}/>
                     //TODO devi inserire qualcosa per far si che chi è da divce capisca che può cliccarlo
-                    //TODO sistema carosello per telefono (quando arrivo al carosello e voglio andare sotto si blocca)
                 )}
                 <h3 translate="no" className='notranslate'>{title}</h3>
                 <div className={styles.line}/>

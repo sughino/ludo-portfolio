@@ -65,5 +65,5 @@ export default function About () {
             </div>
         </section>
     )
-}//TODO sistema visualizzazione per device
+}
 //TODO vedi se riesci a fare il personaggino 3d, magari da mettere le footer in piccolo o sulla prima pagina penzolante

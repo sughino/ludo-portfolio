@@ -43,9 +43,6 @@ export default function WorkClient({ work }: { work: WorkType }) {
         design: 'Design'
     }
 
-    //TODO sistema animazione iniziale per device
-    //TODO sistema il fatto che quando torni indietro nella pagina non ti fliccka le animazioni non viste
-
     const grabBarRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -127,7 +124,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
     const goBack = () => {
         if (!sectionRef.current) return;
         const tl = gsap.timeline()
-        document.documentElement.style.overflow = "hidden";
+        document.documentElement.style.overflowY = "hidden";
 
         tl.to(sectionRef.current, {
             borderTopLeftRadius: '40px',
@@ -171,8 +168,8 @@ export default function WorkClient({ work }: { work: WorkType }) {
             )}
             <FadeIn duration={2.5} onComplete={() => {
                 if (carouselConatinerRef.current) {
-                    carouselConatinerRef.current.style.overflow = 'hidden';
-                    document.documentElement.style.overflow = "scroll";
+                    carouselConatinerRef.current.style.overflowY = 'hidden';
+                    document.documentElement.style.overflowY = "scroll";
                 }
             }}>
                 <div className={styles.carouselContainer} ref={carouselConatinerRef}>
