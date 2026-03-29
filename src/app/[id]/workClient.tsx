@@ -15,6 +15,7 @@ import { FadeIn } from '@/ui/components/fadeIn'
 import gsap from 'gsap'
 import Chip from '@/ui/components/chip'
 import { WorkType } from '@/types/work'
+import Button from '@/ui/components/button'
 
 export default function WorkClient({ work }: { work: WorkType }) {
     const saveProjectView = (projectName: string) => {
@@ -121,6 +122,44 @@ export default function WorkClient({ work }: { work: WorkType }) {
         };
     }, [isTouch, router]);
 
+
+    const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+    const descriptionConatinerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!descriptionConatinerRef.current) return;
+
+        const el = descriptionConatinerRef.current;
+        const overlay = el.querySelector(`.${styles.fadeOverlay}`);
+
+        if (isAccordionOpen) {
+            gsap.to(el, {
+                height: el.scrollHeight,
+                duration: 0.5,
+                ease: "power2.out",
+            });
+
+            gsap.to(overlay, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+
+        } else {
+            gsap.to(el, {
+                height: "7em",
+                duration: 0.4,
+                ease: "power2.out",
+            });
+
+            gsap.to(overlay, {
+                opacity: 1,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        }
+    }, [isAccordionOpen]);
+
     const goBack = () => {
         if (!sectionRef.current) return;
         const tl = gsap.timeline()
@@ -215,7 +254,15 @@ export default function WorkClient({ work }: { work: WorkType }) {
             <div className="h-(--spacing-80)" />
             <div className={styles.paddingContainer}>
                 <FadeIn blurEffect={true} disabled={isTouch}>
-                    <p data-cursor="text">{work.longDescription}</p>
+                    <div className={`flex ${styles.descriptionContainer} md:hidden`}>
+                        <div className={styles.descriptionContentContainer} ref={descriptionConatinerRef}>
+                            <p data-cursor="text">{work.longDescription}</p>
+                            <div className={styles.fadeOverlay}></div>
+                        </div>
+                        <Button onClick={() => {setIsAccordionOpen(!isAccordionOpen)}} content={isAccordionOpen ? "see less" : "see more"} icon={isAccordionOpen ? "chevron-up" : "chevron-down"} direction="column" trasparent={true} width={"full"}/>
+                    </div>
+
+                    <p data-cursor="text" className='hidden md:block'>{work.longDescription}</p>
                 </FadeIn>
 
                 <div className="h-(--spacing-160)" />

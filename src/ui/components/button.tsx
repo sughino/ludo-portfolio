@@ -9,6 +9,8 @@ type ButtonProps = {
   className?: string;
   reverse?: boolean;
   iconColor?: string;
+  direction?: 'column';
+  trasparent?: boolean;
   onClick?: () => void;
 }
 
@@ -20,6 +22,8 @@ export default function Button({
   className,
   reverse = false,
   iconColor,
+  direction,
+  trasparent = false,
   onClick
 }: ButtonProps) {
 
@@ -29,15 +33,15 @@ export default function Button({
 
   return (
     <button
-      className={`${widthClass} ${bgColorClass} ${className}`}
+      className={`${widthClass} ${trasparent ?  "bg-[rgba(255,255,255,0)]" :bgColorClass} ${className} ${direction}`}
       data-cursor="hover"
       onClick={(e) => {
         e.stopPropagation()
         onClick?.()
       }}
     >
-      {!onlyIcon && content && <span className={txtColorClass}>{content}</span>}
-      {icon && <Icon name={icon} color={iconColor}/>}
+      {!onlyIcon && content && <span className={trasparent ? "text-[var(--color-red)]" : txtColorClass}>{content}</span>}
+      {icon && <Icon name={icon} color={trasparent ? "red" : iconColor}/>}
     </button>
   )
 }

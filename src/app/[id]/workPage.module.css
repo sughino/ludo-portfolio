@@ -72,6 +72,27 @@
     filter: brightness(0.8);
 }
 
+.descriptionContainer {
+    flex-direction: column;
+    gap: var(--spacing-gap-8);
+}
+.descriptionContentContainer {
+    font-size: var(--p-size);
+    height: 7em;
+    overflow: hidden;
+    position: relative;
+}
+.fadeOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4em;
+    background-image: url('/texture.webp');
+    mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    pointer-events: none;
+}
+
 .mainContentContainer {
     display: flex;
     flex-direction: column;
