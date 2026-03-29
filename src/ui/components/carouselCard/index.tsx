@@ -2,7 +2,6 @@ import Image from 'next/image';
 import styles from './carouselCard.module.css';
 import type { CarouselType } from '@/types/carouselType';
 import ActionBadge from '../actionBadge';
-import Button from '../button';
 import { useIsTouch } from '@/contexts/DeviceContext'
 
 type CarouselCardProps = CarouselType & {
@@ -50,12 +49,12 @@ export function CarouselCard (
                     draggable={false}
                 />
                 {!isTouch && role && id && (
-                    <ActionBadge info={role} onClick={() => onClick?.(id)}/>
+                    <ActionBadge ariaLabel={`go to ${title} page`} info={role} onClick={() => onClick?.(id)}/>
                 )}
             </div>
             <div className={styles.cardTitleContainer}>
                 {isTouch && role && id && (
-                    <ActionBadge info={role} onClick={() => onClick?.(id)} absolute={false}/>
+                    <ActionBadge ariaLabel={`go to ${title} page`} info={role} onClick={() => onClick?.(id)} absolute={false}/>
                 )}
                 <h3 translate="no" className='notranslate'>{title}</h3>
                 <div className={styles.line}/>
@@ -99,9 +98,9 @@ export function CarouselImage (
             <div className={styles.imgWrapper}>
                 {!isTouch && (
                     <div className={styles.carouselButtonContainer}>
-                        <button className={styles.carouselButton} data-size={index === 0 ? '0' : '1'} onClick={onPrev} data-cursor="arrowLeft"/>
+                        <button className={styles.carouselButton} data-size={index === 0 ? '0' : '1'} onClick={onPrev} data-cursor="arrowLeft" aria-label='previous image'/>
                         <button className={styles.carouselButton} data-size={'2'} onClick={onOpen} data-cursor="label" data-label="Toggle gui"/>
-                        <button className={styles.carouselButton} data-size={index === totalImages - 1 ? '0' : '1'} onClick={onNext} data-cursor="arrowRight"/>
+                        <button className={styles.carouselButton} data-size={index === totalImages - 1 ? '0' : '1'} onClick={onNext} data-cursor="arrowRight" aria-label='next image'/>
                     </div>
                 )}
                 {isMainImg && (

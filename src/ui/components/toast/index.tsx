@@ -38,6 +38,7 @@ export default function Toast({title, content} : {title: string, content: string
                         <button 
                             data-cursor="hover"
                             onClick={() => {handleClose()}} 
+                            aria-label="close error"
                         >
                             <X />
                         </button>

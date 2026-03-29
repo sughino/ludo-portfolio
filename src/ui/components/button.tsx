@@ -11,6 +11,7 @@ type ButtonProps = {
   iconColor?: string;
   direction?: 'column';
   trasparent?: boolean;
+  ariaLabel?: string;
   onClick?: () => void;
 }
 
@@ -24,6 +25,7 @@ export default function Button({
   iconColor,
   direction,
   trasparent = false,
+  ariaLabel,
   onClick
 }: ButtonProps) {
 
@@ -35,6 +37,7 @@ export default function Button({
     <button
       className={`${widthClass} ${trasparent ?  "bg-[rgba(255,255,255,0)]" :bgColorClass} ${className} ${direction}`}
       data-cursor="hover"
+      aria-label={ariaLabel}
       onClick={(e) => {
         e.stopPropagation()
         onClick?.()

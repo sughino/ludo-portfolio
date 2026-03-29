@@ -233,7 +233,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                     />
                     {!isTouch && (
                         <>
-                            <ActionBadge hidden={isActionBarHidden} info={work.role} reverse={true} iconColor={work.color} position={'top'} onClick={() => goBack()}/>
+                            <ActionBadge ariaLabel='go back' hidden={isActionBarHidden} info={work.role} reverse={true} iconColor={work.color} position={'top'} onClick={() => goBack()}/>
                             <div className={styles.workTitleContainer}>
                                 {titleWords.map((word, i) => (
                                     <TitleAnimation 
@@ -259,7 +259,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                             <p data-cursor="text">{work.longDescription}</p>
                             <div className={styles.fadeOverlay}></div>
                         </div>
-                        <Button onClick={() => {setIsAccordionOpen(!isAccordionOpen)}} content={isAccordionOpen ? "see less" : "see more"} icon={isAccordionOpen ? "chevron-up" : "chevron-down"} direction="column" trasparent={true} width={"full"}/>
+                        <Button onClick={() => {setIsAccordionOpen(!isAccordionOpen)}} content={isAccordionOpen ? "see less" : "see more"} icon={isAccordionOpen ? "chevron-up" : "chevron-down"} direction="column" trasparent={true} width={"full"} ariaLabel={isAccordionOpen ? 'reduce text' : 'expand text'}/>
                     </div>
 
                     <p data-cursor="text" className='hidden md:block'>{work.longDescription}</p>

@@ -12,6 +12,7 @@ type ActionBadgeProps = {
   position?: 'top' | 'bottom';
   hidden?: boolean;
   absolute?: boolean;
+  ariaLabel?: string;
   onClick?: () => void;
 }
 
@@ -22,6 +23,7 @@ export default function ActionBadge ({
     position = 'bottom',
     hidden = false,
     absolute = true,
+    ariaLabel,
     onClick
 } : ActionBadgeProps) {
     const divContainerRef = useRef<HTMLDivElement>(null);
@@ -70,7 +72,7 @@ export default function ActionBadge ({
             <div 
                 className={styles.actionBadgeIconContainer}
             >
-                <Button onClick={() => onClick?.()} iconColor={iconColor} icon={reverse ? 'arrow-left' : 'arrow-right'} className={styles.actionBadgeIcon} reverse={reverse}/>
+                <Button ariaLabel={ariaLabel} onClick={() => onClick?.()} iconColor={iconColor} icon={reverse ? 'arrow-left' : 'arrow-right'} className={styles.actionBadgeIcon} reverse={reverse}/>
             </div>
         </div>
     )
