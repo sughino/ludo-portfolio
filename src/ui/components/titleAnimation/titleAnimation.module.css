@@ -4,6 +4,10 @@
     overflow: hidden;
     position: relative;
 }
+.titleContainer [data-animate="title"] {
+    bottom: -180px;
+    filter: blur(10px);
+}
 .titleContainer[data-position="center"] {
     left: 50%;
     transform: translateX(-50%);
