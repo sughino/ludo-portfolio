@@ -55,8 +55,7 @@ export function CarouselCard (
             </div>
             <div className={styles.cardTitleContainer}>
                 {isTouch && role && id && (
-                    <Button content={'go to'} icon={'arrow-right'} width={'full'} onClick={() => onClick?.(id)}/>
-                    //TODO devi inserire qualcosa per far si che chi è da divce capisca che può cliccarlo
+                    <ActionBadge info={role} onClick={() => onClick?.(id)} absolute={false}/>
                 )}
                 <h3 translate="no" className='notranslate'>{title}</h3>
                 <div className={styles.line}/>

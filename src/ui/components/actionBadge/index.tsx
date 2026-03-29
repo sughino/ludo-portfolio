@@ -11,6 +11,7 @@ type ActionBadgeProps = {
   iconColor?: string;
   position?: 'top' | 'bottom';
   hidden?: boolean;
+  absolute?: boolean;
   onClick?: () => void;
 }
 
@@ -19,7 +20,8 @@ export default function ActionBadge ({
     reverse = false,
     iconColor,
     position = 'bottom',
-    hidden= false,
+    hidden = false,
+    absolute = true,
     onClick
 } : ActionBadgeProps) {
     const divContainerRef = useRef<HTMLDivElement>(null);
@@ -60,6 +62,7 @@ export default function ActionBadge ({
             data-variant={reverse && 'reverse'}
             data-position={position}
             ref={divContainerRef}
+            data-absolute={absolute && "absolute"}
         >
             <div className={styles.actionBadgeContent}>
                 <h6 translate='no' className='notranslate'>{info}</h6>

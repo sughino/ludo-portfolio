@@ -4,13 +4,18 @@
     overflow: hidden;
     border-radius: var(--radius-50);
     color: var(--color-white) !important;
-    background-color: var(--color-white-30);
-    width: calc(100% - 40px);
+    background-color: var(--color-black-30);
+    width: 100%;
     backdrop-filter: blur(10px);
+}
+.actionBadgeContainer[data-absolute="absolute"] {
+    background-color: var(--color-white-30) !important;
+    width: calc(100% - 40px);
     position: absolute;
     left: 20px;
     z-index: 20;
 }
+
 .actionBadgeContainer[data-variant="reverse"] {
     flex-direction: row-reverse;
 }
