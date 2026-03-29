@@ -8,6 +8,9 @@ import PrintCVInterceptor from "@/utils/printInterceptor";
 import Konami from "@/utils/konami";
 import TitleHandler from "@/utils/titleHandler";
 
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 export const metadata: Metadata = {
   title: "Ludo – Web Developer & UX-Focused Portfolio",
   description:
@@ -50,7 +53,6 @@ export const metadata: Metadata = {
 //TODO animazione delle line
 //TODO questo non è importantissimo ma sarebbe figo attaccare un iframe di figma
 //TODO sarebbe figo mettere delle immagini per i key features
-//TODO aggiungi dei nomi per i bottoni per migliorare l'accessibilità
 
 export default function RootLayout({
   children,
@@ -71,6 +73,9 @@ export default function RootLayout({
           <PrintCVInterceptor/>
           <Konami />
           <TitleHandler />
+
+          <Analytics />
+          <SpeedInsights />
       </body>
     </html>
   );
