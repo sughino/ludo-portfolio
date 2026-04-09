@@ -23,8 +23,7 @@ export const works: WorkType[] = [
       'Expense Submission': 'Ability to register and manage company-related expenses directly within the platform.',
       'Project-based Time Management': 'Hours were categorized by project, allowing better tracking of company resources.',
       'Enterprise Integration': 'Connected to the company backend and database infrastructure for centralized data management.'
-    },
-    figmaLink: "https://embed.figma.com/design/v4Z6iyLQNMVyxhiPnAhD1x/Work-playground?node-id=0-1&embed-host=share"
+    }
   },{
     id: 'userManagment',
     title: 'user managment', 

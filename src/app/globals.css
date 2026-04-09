@@ -52,6 +52,11 @@
   /*transition*/
   --transition-beizer: cubic-bezier(.0.5, 0, 0.44, 1);
 }
+@media (width <= 48rem) {
+  @theme {
+    --spacing-padding-150: 0px;
+  }
+}
 
 /*base style*/
 @layer base {
