@@ -16,9 +16,10 @@ type FadeInProps = {
     reverse?: boolean;
     delay?: number;
     disabled?: boolean;
+    className?: string
 }
 
-export const FadeIn = ({ children, width, duration = 1, animationStart = "70", blurEffect = false, onComplete, reverse = false, delay, disabled = false } : FadeInProps) => {
+export const FadeIn = ({ children, width, duration = 1, animationStart = "70", blurEffect = false, onComplete, reverse = false, delay, disabled = false, className} : FadeInProps) => {
     const divContainerRef = useRef<HTMLDivElement>(null);
 
     const widthMap: Record<string, string> = {
@@ -80,7 +81,7 @@ export const FadeIn = ({ children, width, duration = 1, animationStart = "70", b
     }, [duration, reverse, disabled]);
 
     return (
-        <div ref={divContainerRef} className={width && widthMap[width]} style={{ opacity: disabled ? 1 : 0 }}>
+        <div ref={divContainerRef} className={`${width && widthMap[width]} ${className}`} style={{ opacity: disabled ? 1 : 0 }}>
             {children}
         </div>
     )

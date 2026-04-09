@@ -54,6 +54,7 @@ export function CustomCursor(): CursorAPI {
   const imgContainer = children[children.length - 1] as HTMLDivElement;
   const label = el.querySelector(`.${styles.label}`)! as HTMLDivElement;
   const cursorImg = imgContainer.querySelector('img')!;
+  const iframes = document.querySelectorAll('iframe');
 
   imgContainer.style.willChange = 'transform';
   el.style.willChange = 'transform';
@@ -99,6 +100,30 @@ export function CustomCursor(): CursorAPI {
   document.addEventListener('mouseup', onMouseUp);
   document.addEventListener('mouseleave', onMouseLeave);
   document.addEventListener('mouseenter', onMouseEnter);
+
+  iframes.forEach((iframe) => {
+    iframe.addEventListener('mouseenter', () => {
+      el.classList.add(styles.hidden);
+      clearStates();
+    });
+
+    iframe.addEventListener('mouseleave', () => {
+      el.classList.remove(styles.hidden);
+      clearStates();
+    });
+  });
+  const observer = new MutationObserver(() => {
+    document.querySelectorAll('iframe').forEach((iframe) => {
+      if (!iframe.dataset.cursorBound) {
+        iframe.dataset.cursorBound = 'true';
+
+        iframe.addEventListener('mouseenter', onMouseLeave);
+        iframe.addEventListener('mouseleave', onMouseEnter);
+      }
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
 
 
   function clearStates(): void {

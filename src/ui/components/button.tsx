@@ -48,3 +48,20 @@ export default function Button({
     </button>
   )
 }
+
+export function GithubButton ({link, className, width="fit"} : {link: string, className?: string, width?: "full" | "fit";}) {
+  const widthClass = width === "full" ? "w-full" : "w-fit"
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`See on github`}
+      data-cursor="hover" 
+      className={`${widthClass} ${className} rounded-[var(--radius-50)] px-[20px] py-[10px] bg-[var(--color-black)] text-[var(--color-white)] flex gap-[var(--spacing-gap-8)] items-center`}
+    >
+      <h6>See on github</h6>
+      <Icon name={"github"}/>
+    </a>
+  )
+}

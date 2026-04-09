@@ -15,7 +15,7 @@ import { FadeIn } from '@/ui/components/fadeIn'
 import gsap from 'gsap'
 import Chip from '@/ui/components/chip'
 import { WorkType } from '@/types/work'
-import Button from '@/ui/components/button'
+import Button, { GithubButton } from '@/ui/components/button'
 
 export default function WorkClient({ work }: { work: WorkType }) {
     const saveProjectView = (projectName: string) => {
@@ -200,7 +200,12 @@ export default function WorkClient({ work }: { work: WorkType }) {
                                 </TitleAnimation>
                             ))}
                         </div>
-                        <Chip content={work.role}/>
+                        <div className='flex justify-between'>
+                            <Chip content={work.role}/>
+                            {work.githubLink && (
+                                <GithubButton link={work.githubLink}/>
+                            )}
+                        </div>
                     </div>
                     <div className="h-(--spacing-40)" />
                 </>
@@ -234,6 +239,9 @@ export default function WorkClient({ work }: { work: WorkType }) {
                     {!isTouch && (
                         <>
                             <ActionBadge ariaLabel='go back' hidden={isActionBarHidden} info={work.role} reverse={true} iconColor={work.color} position={'top'} onClick={() => goBack()}/>
+                            {work.githubLink && (
+                                <GithubButton link={work.githubLink} className={styles.githubButton}/>
+                            )}
                             <div className={styles.workTitleContainer}>
                                 {titleWords.map((word, i) => (
                                     <TitleAnimation 
@@ -315,7 +323,7 @@ export default function WorkClient({ work }: { work: WorkType }) {
                     </div>
                 </div>
                 
-                <div className="h-(--spacing-160)" />
+                <div className="h-(--spacing-80)" />
                 <div className={styles.mainContentContainer}>
                     <TitleAnimation>
                         <h3 data-animate="title">KeY FEaTUrES</h3>
@@ -331,6 +339,15 @@ export default function WorkClient({ work }: { work: WorkType }) {
                         ))}
                     </div>
                 </div>
+
+                {work.figmaLink && (
+                    <>
+                        <div className="h-(--spacing-80)" />
+                        <div className="w-full aspect-[16/9] overflow-hidden rounded-xl">
+                            <iframe width="100%" height="100%" src={work.figmaLink} allowFullScreen></iframe>
+                        </div>
+                    </>
+                )}
 
                 <div className="h-(--spacing-160)" />
             </div>

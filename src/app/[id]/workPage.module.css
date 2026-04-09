@@ -1,6 +1,6 @@
 .workSection {
     padding-inline: 0;
-    padding-top: var(--spacing-padding-50);
+    padding-top: calc(var(--spacing-padding-50) / 2);
     box-shadow: var(--shadow);
     will-change: transform;
     overscroll-behavior-y: none;
@@ -59,6 +59,12 @@
 .workTitle {
     color: var(--color-white);  
     filter: drop-shadow(0 0px 2.5px var(--color-black-50)) !important;
+}
+
+.githubButton {
+    position: absolute;
+    bottom: calc(var(--spacing-gap-32) + 10px + 20px);
+    right: calc(var(--spacing-padding-50) + 20px);
 }
 
 .paddingContainer {

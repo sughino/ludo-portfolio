@@ -16,4 +16,6 @@ export interface WorkType {
         design?: string[]
     };
     keyFeatures: Record<string, string>;
+    githubLink?: string;
+    figmaLink?: string;
 }

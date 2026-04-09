@@ -38,11 +38,6 @@
   --little-shadow: 0px 0px 10px 5px var(--color-black-30);
   --shadow: 0px 0px 20px 15px var(--color-black-30);
 
-  /*font*/
-  --font-montserrat: var(--font-montserrat);
-  --font-dirtyline: var(--font-dirtyline);
-  --font-code: var(--font-code);
-
   /*font weight*/
   --font-normal: 400;
   --font-bold: 600;

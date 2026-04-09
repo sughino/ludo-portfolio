@@ -53,6 +53,7 @@ export const metadata: Metadata = {
 //TODO animazione delle line
 //TODO questo non è importantissimo ma sarebbe figo attaccare un iframe di figma
 //TODO sarebbe figo mettere delle immagini per i key features
+//TODO sistema margin schermo piccolo
 
 export default function RootLayout({
   children,

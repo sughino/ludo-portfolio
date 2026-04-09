@@ -23,7 +23,8 @@ export const works: WorkType[] = [
       'Expense Submission': 'Ability to register and manage company-related expenses directly within the platform.',
       'Project-based Time Management': 'Hours were categorized by project, allowing better tracking of company resources.',
       'Enterprise Integration': 'Connected to the company backend and database infrastructure for centralized data management.'
-    }
+    },
+    figmaLink: "https://embed.figma.com/design/v4Z6iyLQNMVyxhiPnAhD1x/Work-playground?node-id=0-1&embed-host=share"
   },{
     id: 'userManagment',
     title: 'user managment', 
@@ -47,7 +48,9 @@ export const works: WorkType[] = [
         'Authorization Levels': 'Role-based access control (Admin/User) and protected routes based on user permissions',
         'Token-based Authentication': 'JWT implementation for secure API access',
         'Form Validation': 'Client and server-side validation for data integrity'
-    }
+    },
+    githubLink: "https://github.com/sughino/repo-exam",
+    figmaLink: "https://embed.figma.com/design/D0elQI6nGzmeXd85xWqsv4/template-esame?node-id=0-1&embed-host=share"
   },{
     id: 'scriptorium',
     title: 'scriptorium', 
@@ -115,7 +118,8 @@ export const works: WorkType[] = [
       'SEO Optimization': 'Robots.txt configuration and search engine friendly structure.',
       'Responsive Design': 'Optimized layout for both desktop and mobile devices.',
       'Clean and Calming UI': 'Minimal design tailored for a psychology practice.'
-    }
+    },
+    githubLink: "https://github.com/sughino/mentecorpo"
   },{
     id: 'donisi',
     title: 'donisi', 
@@ -136,6 +140,7 @@ export const works: WorkType[] = [
       'Modern Visual Identity': 'Bold colors and typography to strengthen brand recognition.',
       'User-friendly Navigation': 'Simple navigation structure for easy browsing.',
       'Design-ready Layout': 'Prepared for development with organized design components.'
-    }
+    },
+    figmaLink: "https://embed.figma.com/design/TxUhifeVpRshio9dEnPX3v/donisi-website?node-id=0-1&embed-host=share"
   }
 ]
