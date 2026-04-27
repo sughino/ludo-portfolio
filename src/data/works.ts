@@ -72,7 +72,8 @@ export const works: WorkType[] = [
       'Code Snippet Storage': 'Ability to store and manage programming snippets and text files.',
       'Server-side Rendering': 'PHP-based SSR architecture for faster content delivery.',
       'Personal Code Library': 'Users can maintain their own collection of reusable scripts.'
-    }
+    },
+    githubLink: "https://github.com/sughino/Scriptorium",
   },{
     id: 'polveriSottili',
     title: 'polveri sottili', 
